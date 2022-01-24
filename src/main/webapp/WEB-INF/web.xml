@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminBookListServlet</display-name>
+		<servlet-name>AdminBookListServlet</servlet-name>
+		<servlet-class>com.library.model.AdminBookListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminBookListServlet1</display-name>
+		<servlet-name>AdminBookListServlet1</servlet-name>
+		<servlet-class>com.library.Servlet.AdminBookListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UnavailableBookServlet</display-name>
+		<servlet-name>UnavailableBookServlet</servlet-name>
+		<servlet-class>com.library.Servlet.UnavailableBookServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminUserListServlet</display-name>
+		<servlet-name>AdminUserListServlet</servlet-name>
+		<servlet-class>com.library.Servlet.AdminUserListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminOrderBookServlet</display-name>
+		<servlet-name>AdminOrderBookServlet</servlet-name>
+		<servlet-class>com.library.Servlet.AdminOrderBookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminBookListServlet</servlet-name>
+		<url-pattern>/AdminBookListServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminBookListServlet1</servlet-name>
+		<url-pattern>/AdminBookListServlet1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UnavailableBookServlet</servlet-name>
+		<url-pattern>/UnavailableBookServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminUserListServlet</servlet-name>
+		<url-pattern>/AdminUserListServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminOrderBookServlet</servlet-name>
+		<url-pattern>/AdminOrderBookServlet</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+<welcome-file>home.jsp</welcome-file>
+</welcome-file-list>
+</web-app>
