@@ -75,7 +75,7 @@
         <fieldset id="register">
             <legend><h2>User register</h2></legend>
             <hr>
-        <form action="index1" method="post" class="was-validated">
+        <form action="signUp" method="post" class="was-validated">
         <div class="container mt-1">
         <div class="mb-1 mt-1">
         <label for="user name" class="form-label">User name</label><br>

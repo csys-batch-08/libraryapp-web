@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -17,19 +17,19 @@ import javax.servlet.http.HttpSession;
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.model.Books;
 
-/**
- * Servlet implementation class AdminBookListServlet
- */
+
 @WebServlet("/adminBookList")
 public class AdminBookListServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		BooksDaoImpl user = new BooksDaoImpl();
 
 		List<Books> bookList = user.availableBookList();
-		HttpSession session = request.getSession();
 
 		request.setAttribute("availableBookList", bookList);
 		RequestDispatcher rd = request.getRequestDispatcher("availableBookList.jsp");

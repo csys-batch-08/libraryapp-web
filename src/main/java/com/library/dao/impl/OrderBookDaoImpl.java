@@ -126,22 +126,31 @@ public int updateStatus(OrderBook order)  {
 	
 }
 
-public ResultSet adminView()  {
-	// TODO Auto-generated method stub
+public List adminView()  {
 	String query="select book_name,author,status from order_book";
-//	String query1="update order_book set status='sent' where supplier_name in ?";
 	ResultSet rs=null;
 	try {
 	Connection con=ConnectionUtil.getDBConnect();
 	PreparedStatement pstmt=con.prepareStatement(query);
 	
 	rs=pstmt.executeQuery();
-//	PreparedStatement pstmt1=con.prepareStatement(query1);
-//	pstmt1.setString(1, order.getUser_name());
-//	pstmt1.executeUpdate();
-	return rs;
+	
+	List<OrderBook> orderList=new ArrayList();
+	if (rs.next()) {
+		do{ 
+			
+			OrderBook orderBook=new OrderBook();
+			orderBook.setBook_name(rs.getString(1));
+			orderBook.setAuthor(rs.getString(2));
+			orderBook.setStatus(rs.getString(3));
+			orderList.add(orderBook);
+			
+		
+		
+}while (rs.next());
+	}
+	return orderList;
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
    return null;
@@ -150,22 +159,31 @@ public ResultSet adminView()  {
 }
 
 
-public ResultSet userView(OrderBook order )  {
-	// TODO Auto-generated method stub
-	String query="select user_name,book_name,author,supplier_name,status from order_book where user_name in ?";
-//	String query1="update order_book set status='sent' where supplier_name in ?";
+public List userView(OrderBook order )  {
+	String query="select user_name,book_name,author,status from order_book where user_name in ?";
 	ResultSet rs=null;
 	try {
 	Connection con=ConnectionUtil.getDBConnect();
 	PreparedStatement pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getUser_name());
 	rs=pstmt.executeQuery();
-//	PreparedStatement pstmt1=con.prepareStatement(query1);
-//	pstmt1.setString(1, order.getUser_name());
-//	pstmt1.executeUpdate();
-	return rs;
+
+	List<OrderBook> orderList=new ArrayList();
+	if (rs.next()) {
+		do{ 
+			
+			OrderBook orderBook=new OrderBook();
+			orderBook.setBook_name(rs.getString(1));
+			orderBook.setAuthor(rs.getString(2));
+			orderBook.setStatus(rs.getString(3));
+			orderList.add(orderBook);
+			
+		
+		
+}while (rs.next());
+	}
+	return orderList;
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
    return null;

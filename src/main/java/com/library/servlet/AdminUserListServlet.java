@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -18,12 +18,14 @@ import com.library.dao.impl.UsersDaoImpl;
 import com.library.model.Books;
 import com.library.model.Users;
 
-/**
- * Servlet implementation class AdminUserListServlet
- */
+
 @WebServlet("/adminUserList")
 public class AdminUserListServlet extends HttpServlet {
 	
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsersDaoImpl user = new UsersDaoImpl();
 		HttpSession session=request.getSession();

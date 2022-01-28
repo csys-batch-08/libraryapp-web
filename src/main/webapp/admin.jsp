@@ -111,14 +111,14 @@ i {
 							class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
 							id="menu" >
 							<li class="nav-item"><a href="home.jsp"
-								class="nav-link align-middle px-0 text-dark"> <i
-									class="fs-4 bi-house\"></i> <span
+								class="nav-link align-middle px-0 text-dark"> <em
+									class="fs-4 bi-house\"></em>> <span
 									class="ms-1 d-none d-sm-inline">Home</span>
 							</a></li>
 
 							<li><a href="bookShowUser"
-								class="nav-link px-0 align-middle text-dark"> <i
-									class="fs-4 bi-table"></i> <span
+								class="nav-link px-0 align-middle text-dark"> <em
+									class="fs-4 bi-table"></em>> <span
 									
 									class="ms-1 d-none d-sm-inline">Show Books</span></a></li>
 							<li><a href="addBook.jsp"
@@ -144,14 +144,12 @@ i {
 
 
 							<li><a href="BookIssueList"
-								class="nav-link px-0 align-middle text-dark"> <i
-									class="fs-4 bi-people"></i> <span
+								class="nav-link px-0 align-middle text-dark"> <em class="fs-4 bi-people"></em> <span
 									class="ms-1 d-none d-sm-inline">View Book Issue Details</span>
 							</a></li>
 							
 							<li><a href="adminOrderBook"
-								class="nav-link px-0 align-middle text-dark"> <i
-									class="fs-4 bi-people"></i> <span
+								class="nav-link px-0 align-middle text-dark"> <em class="fs-4 bi-people"></em>> <span
 									class="ms-1 d-none d-sm-inline">View Ordered Book list</span>
 							</a></li>
 							
@@ -168,18 +166,7 @@ i {
 
 
 
-	<!--     <div class="sidenav">
-  <a href="authorShowBook.jsp">Show Books</a>
-  <a href="addBook.jsp">Add Books</a>
-  <a href="supplier.jsp">Add Supplier Details</a>
-  <a href="FineHistory.jsp">Add Fine Details</a>
-  <a href="UserInsert.jsp">Add User</a>
-  <a href="showFineHistory.jsp">View Fine History</a>
-  <a href="UserList.jsp">View All Users</a>
-  <a href="AvailableBookList.jsp">View Available Books</a>
-  <a href="UnavailableBookList.jsp">View Unavailable Books</a>
-  
-</div>   -->
+
 
 
 

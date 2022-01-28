@@ -1,8 +1,6 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,36 +14,21 @@ import javax.servlet.http.HttpSession;
 import com.library.dao.impl.OrderBookDaoImpl;
 import com.library.model.OrderBook;
 
-/**
- * Servlet implementation class AdminOrderBookServlet
- */
+
 @WebServlet("/adminOrderBook")
 public class AdminOrderBookServlet extends HttpServlet {
 	
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 				HttpSession session = request.getSession();
 				OrderBookDaoImpl obDao = new OrderBookDaoImpl();
-				String book_name=null;
-				String author=null;
-				List<OrderBook> orderList=new ArrayList();
 				
-				
-				try {
-					ResultSet rs = obDao.adminView();
-					if (rs.next()) {
-						do{ 
-							
-							OrderBook orderBook=new OrderBook();
-							orderBook.setBook_name(rs.getString(1));
-							orderBook.setAuthor(rs.getString(2));
-							orderBook.setStatus(rs.getString(3));
-							orderList.add(orderBook);
-							
-						
-						
-				}while (rs.next());
+				List<OrderBook> orderList= obDao.adminView();
+					
 						if((session.getAttribute("userRole").toString()).equals("admin")){
 						request.setAttribute("adminOrderBook", orderList);
 						RequestDispatcher rd=request.getRequestDispatcher("viewOrderBook.jsp");
@@ -59,9 +42,7 @@ public class AdminOrderBookServlet extends HttpServlet {
 				
 
 					}
-				}  catch (Exception e) {
-					e.printStackTrace();
-				}
+				
 	}
 
-}
+

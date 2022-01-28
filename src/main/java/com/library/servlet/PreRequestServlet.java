@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 
@@ -19,14 +19,20 @@ import com.library.model.Books;
 @WebServlet("/bookPrerequest")
 public class PreRequestServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
 		BooksDaoImpl book=new BooksDaoImpl(); 
 		HttpSession session=request.getSession();
-		String book_title=session.getAttribute("bookname").toString();
-		String user_name=session.getAttribute("user").toString();
-			Books b1 = new Books(book_title, user_name);
+		String bookTitle=session.getAttribute("bookname").toString();
+		String userName=session.getAttribute("user").toString();
+			Books b1 = new Books(bookTitle, userName);
 			String prerequestStatus=book.preRequest(b1);
 			
 			request.setAttribute("preRequestStatus", prerequestStatus);

@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -20,37 +20,19 @@ import com.library.model.Users;
 public class RequestAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RequestAdminServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String uname=request.getParameter("uname1");
 		String password=request.getParameter("password1");
-		String supplier_name=request.getParameter("supplier");
-		String book_name=session.getAttribute("newbook").toString();
+		String supplierName=request.getParameter("supplier");
+		String bookName=session.getAttribute("newbook").toString();
 		Users u1 = new Users(uname, password);
 		UsersDaoImpl user=new UsersDaoImpl();
 		String adminCheck = user.fetch(u1);
 		if (adminCheck.equals("admin")) {
-			OrderBook order=new OrderBook(supplier_name, book_name);
+			OrderBook order=new OrderBook(supplierName, bookName);
 			OrderBookDaoImpl obDao=new OrderBookDaoImpl();
 			obDao.update(order);
 			response.sendRedirect("user.jsp");

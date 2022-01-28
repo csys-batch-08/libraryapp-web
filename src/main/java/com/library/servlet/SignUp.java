@@ -1,8 +1,7 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,51 +17,23 @@ import com.library.model.Users;
 /**
  * Servlet implementation class SignUp
  */
-@WebServlet("/index1")
+@WebServlet("/signUp")
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public SignUp() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		String user_name=request.getParameter("text");
-//		String city=request.getParameter("text1");
-//		String password=request.getParameter("text2");
-//		Long phone=Long.parseLong(request.getParameter("text3"));
-//		String email=request.getParameter("text4");
-//		
-//		System.out.println(user_name+city+password+phone.toString()+email);
-//		
-//		Users user=new Users(user_name,city,password,phone,email);
-//		UsersDaoImpl userDao=new UsersDaoImpl();
-//		userDao.insert(user);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session=request.getSession();
-		String user_name=request.getParameter("text");
+		String userName=request.getParameter("text");
 		String city=request.getParameter("text1");
 		String password=request.getParameter("text2");
 		Long phone=Long.parseLong(request.getParameter("text3"));
 		String email=request.getParameter("text4");
 		
-		System.out.println(user_name+city+password+phone.toString()+email);
 		
-		Users user=new Users(user_name,city,password,phone,email);
+		Users user=new Users(userName,city,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
 		
 		

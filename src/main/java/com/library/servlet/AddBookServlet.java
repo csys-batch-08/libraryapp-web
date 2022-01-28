@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,39 +12,30 @@ import com.library.dao.impl.OrderBookDaoImpl;
 import com.library.model.Books;
 import com.library.model.OrderBook;
 
-/**
- * Servlet implementation class addBook
- */
 @WebServlet("/addBook")
 public class AddBookServlet extends HttpServlet {
 	
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String book_code=request.getParameter("text");
-		String book_name=request.getParameter("text1");
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bookCode=request.getParameter("text");
+		String bookName=request.getParameter("text1");
 		String category=request.getParameter("text2");
 		String author=request.getParameter("text3");
 		int price=Integer.parseInt(request.getParameter("text4"));
-		int rack_number=Integer.parseInt(request.getParameter("text5"));
+		int rackNumber=Integer.parseInt(request.getParameter("text5"));
 		
 		 OrderBookDaoImpl obDao=new OrderBookDaoImpl();
-	       OrderBook order=new OrderBook("null",book_name,author);
+	       OrderBook order=new OrderBook("null",bookName,author);
 	       obDao.updateStatus(order);
-		System.out.println(book_code+book_name+category+author+price+rack_number);
 		BooksDaoImpl book=new BooksDaoImpl();
-		Books p1 = new Books(book_code, book_name, category, author, price, rack_number);
+		Books p1 = new Books(bookCode, bookName, category, author, price, rackNumber);
 		try {
 			book.insert(p1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		response.sendRedirect("admin.jsp");

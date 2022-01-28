@@ -1,11 +1,10 @@
-package com.library.Servlet;
+package com.library.servlet;
+
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
+
 import java.util.List;
-import java.util.Scanner;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,25 +16,26 @@ import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.exception.InvalidAuthorException;
-import com.library.exception.InvalidCategoryException;
 import com.library.model.Books;
 
-/**
- * Servlet implementation class SearchBook
- */
+
 @WebServlet("/authorSearch")
 public class AuthorSearch extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String authorName=request.getParameter("author");
 		
 		BooksDaoImpl book=new BooksDaoImpl();
 		HttpSession session = request.getSession();
 		
-		String category = null,book_title=null,author=null;
-		Books books=new Books(book_title,category,authorName);
+		String category = null;
+		String bookTitle=null;
+		Books books=new Books(bookTitle,category,authorName);
 		
 		session.setAttribute("booksearch", category);
 		List<Books> bookList=book.authorFetch(books);

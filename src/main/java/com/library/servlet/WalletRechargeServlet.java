@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 
@@ -19,6 +19,11 @@ import com.library.model.Users;
 @WebServlet("/WalletRecharge")
 public class WalletRechargeServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsersDaoImpl user=new UsersDaoImpl();

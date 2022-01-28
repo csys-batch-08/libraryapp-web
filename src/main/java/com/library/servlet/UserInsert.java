@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,38 +17,21 @@ import com.library.model.Users;
 public class UserInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserInsert() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
-		String user_name=request.getParameter("text");
+		String userName=request.getParameter("text");
 		String city=request.getParameter("text1");
 		String password=request.getParameter("text2");
 		Long phone=Long.parseLong(request.getParameter("text3"));
 		String email=request.getParameter("text4");
 		String role=request.getParameter("role");
 		
-		System.out.println(user_name+city+password+phone.toString()+email);
+		System.out.println(userName+city+password+phone.toString()+email);
 		
-		Users user=new Users(user_name,city,role,password,phone,email);
+		Users user=new Users(userName,city,role,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
 		userDao.adminInsert(user);
 		

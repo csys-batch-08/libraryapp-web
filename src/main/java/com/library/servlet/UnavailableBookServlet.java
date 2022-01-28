@@ -1,9 +1,7 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.model.Books;
@@ -23,12 +20,16 @@ import com.library.model.Books;
 @WebServlet("/unavailableBooks")
 public class UnavailableBookServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
 		BooksDaoImpl user = new BooksDaoImpl();
 	
-		HttpSession session=request.getSession();
 
 		List<Books> bookList = user.unavailableBookList();
 		request.setAttribute("unavailableBookList", bookList);

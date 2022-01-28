@@ -28,8 +28,7 @@
 
 <form action="userlogout" method="post" id="register">
 <h1> Thanks for visiting us </h1>
-<%
-request.getSession().invalidate(); %>
+
 
 
 </form>

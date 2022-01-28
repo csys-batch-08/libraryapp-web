@@ -1,9 +1,6 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,8 +20,14 @@ import com.library.model.Books;
 @WebServlet("/bookShowUser")
 public class UserShowBookServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		BooksDaoImpl book = new BooksDaoImpl();
 		
 		List<Books> list=book.showBooks();
@@ -41,7 +44,6 @@ public class UserShowBookServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

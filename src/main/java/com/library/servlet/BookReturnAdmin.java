@@ -1,9 +1,7 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BookIssueDaoImpl;
-import com.library.dao.impl.FineHistoryDaoImpl;
 import com.library.dao.impl.FinesDaoImpl;
 import com.library.dao.impl.UsersDaoImpl;
 import com.library.exception.InvalidFineException;
-import com.library.exception.InvalidUserException;
 import com.library.model.BookIssue;
 import com.library.model.Fines;
 import com.library.model.Users;
@@ -29,29 +25,24 @@ import com.library.model.Users;
 @WebServlet("/returnadmin")
 public class BookReturnAdmin extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String user_name=request.getParameter("uname1");
+		String userName=request.getParameter("uname1");
 		String password=request.getParameter("password1");
-		LocalDate date_returned=LocalDate.parse(request.getParameter("returndate").toString());
-		String book_title=session.getAttribute("bookname").toString();
-		System.out.println(user_name+password);
+		LocalDate dateReturned=LocalDate.parse(request.getParameter("returndate"));
+		String bookTitle=session.getAttribute("bookname").toString();
 		UsersDaoImpl user = new UsersDaoImpl();
-		Users u1 = new Users(user_name, password);
-		System.out.println(user_name);
-		System.out.println(password);
+		Users u1 = new Users(userName, password);
 		
 		String val = user.fetch(u1);
-		String userName=session.getAttribute("user").toString();
-		System.out.println(val);
+		userName=session.getAttribute("user").toString();
 		if (val.equals("admin")) {
-			System.out.println("welcome admin " + user_name);
-			LocalDate date_returned1=null;
-			boolean flag=false;
-			System.out.println(session.getAttribute("bookissueno").toString());
-			int book_issue_no=Integer.parseInt(session.getAttribute("bookissueno").toString());
-			BookIssue bi1=new BookIssue(book_issue_no,date_returned,book_title);
+			int bookIssueNo=Integer.parseInt(session.getAttribute("bookissueno").toString());
+			BookIssue bi1=new BookIssue(bookIssueNo,dateReturned,bookTitle);
 			BookIssueDaoImpl bookIssue=new BookIssueDaoImpl();
 			int userFine = bookIssue.returnBookIssue(bi1);
 			if(userFine>12) {
@@ -61,23 +52,18 @@ public class BookReturnAdmin extends HttpServlet {
 					user.delete(users);
 					throw new InvalidFineException();
 				}catch(InvalidFineException e) {
-					System.out.println("hi");
 					String validate=e.getMessage();
-					System.out.println(validate);
 					response.sendRedirect(validate);
 					
 				}
 			}
-			System.out.println(userFine);
 			Fines f1 = new Fines(userFine);
 			FinesDaoImpl fine=new FinesDaoImpl();
 			int fineAmount = fine.fineCalculation(f1);
-			System.out.println("FineAmount= " + fineAmount);
-			Users u2 = new Users(fineAmount, user_name);
+			Users u2 = new Users(fineAmount, userName);
 			user.update(u2);
-			Users u3 = new Users(user_name);
+			Users u3 = new Users(userName);
 			int fineOf = 0;
-			FineHistoryDaoImpl fineHistory = new FineHistoryDaoImpl();
 			try {
 				fineOf= user.getFine(u3);
 				if(fineOf>0) {

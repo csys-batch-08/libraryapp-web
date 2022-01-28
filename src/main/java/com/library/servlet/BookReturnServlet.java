@@ -1,6 +1,7 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -20,15 +21,20 @@ import com.library.model.Books;
 @WebServlet("/BookReturn")
 public class BookReturnServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BooksDaoImpl book=new BooksDaoImpl();
 		HttpSession session=request.getSession();
-		String user_name=session.getAttribute("user").toString();
-		String book_name=null;
-		Books books=new Books(book_name,user_name);
+		String userName=session.getAttribute("user").toString();
+		String bookName=null;
+		Books books=new Books(bookName,userName);
 
 		List<Books> returnBooks=book.returnBookList(books);
-		System.out.println(returnBooks);
 		request.setAttribute("returnBookList", returnBooks);
 		RequestDispatcher rd=request.getRequestDispatcher("returnBook.jsp");
 		rd.forward(request, response);

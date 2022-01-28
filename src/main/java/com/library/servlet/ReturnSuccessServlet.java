@@ -1,4 +1,4 @@
-package com.library.Servlet;
+package com.library.servlet;
 
 import java.io.IOException;
 
@@ -21,17 +21,23 @@ import com.library.model.Users;
 @WebServlet("/returnSuccess")
 public class ReturnSuccessServlet extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userWallet;
 		HttpSession session=request.getSession();
 		int fineOf=Integer.parseInt(session.getAttribute("fineamount").toString());
-		String user_name=session.getAttribute("user").toString();
-		Users u3=new Users(fineOf,user_name);
+		String userName=session.getAttribute("user").toString();
+		Users u3=new Users(fineOf,userName);
 		UsersDaoImpl user=new UsersDaoImpl();
 		FineHistoryDaoImpl fineHistory=new FineHistoryDaoImpl();
 			try {
 						userWallet=user.setFine(u3);
-						FineHistory fh1 = new FineHistory(user_name, fineOf);
+						FineHistory fh1 = new FineHistory(userName, fineOf);
 						fineHistory.insert(fh1);
 						request.setAttribute("userWallet", userWallet);
 						RequestDispatcher rd=request.getRequestDispatcher("returnSuccess.jsp");
