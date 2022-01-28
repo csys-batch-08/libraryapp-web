@@ -33,7 +33,7 @@ public class BookIssueDaoImpl implements BookIssueDao {
 		 pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -62,7 +62,7 @@ public class BookIssueDaoImpl implements BookIssueDao {
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -87,7 +87,7 @@ public void delete(BookIssue bookIssue) throws SQLException  {
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -117,7 +117,7 @@ public int getBookIssueNo(BookIssue book) throws SQLException {
 			return rs.getInt(1);
 		}
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -157,7 +157,7 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 			return rs2.getInt(1);
 		}
 	} catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -200,7 +200,7 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
 
 
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -245,7 +245,7 @@ public List<BookIssue> bookIssueList() throws SQLException {
 
 
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();

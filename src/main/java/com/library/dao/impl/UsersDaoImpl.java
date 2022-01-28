@@ -31,7 +31,7 @@ public class UsersDaoImpl implements UsersDao{
 		if(i>0)
 			return true;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -64,7 +64,7 @@ public boolean adminInsert(Users user) throws SQLException  {
 		if(i>0)
 			return true;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -101,7 +101,7 @@ public String fetch(Users user) throws SQLException {
 		return rs1.getString(1);
 	}
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -130,7 +130,7 @@ public void delete(Users user) throws SQLException  {
      pstmt.executeUpdate();
 	
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -153,7 +153,7 @@ public void update(Users user) throws SQLException  {
 	pstmt.setString(2, user.getUserName());
 	pstmt.executeUpdate();
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -181,7 +181,7 @@ public int getUserWallet(Users user) throws SQLException  {
 	
 	}catch (Exception e) {
 	
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -208,7 +208,7 @@ public int getFine(Users user) throws SQLException  {
 	}
 	
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -243,7 +243,7 @@ public int setFine(Users user) throws SQLException  {
 	pstmt.setString(2, user.getUserName());
 	pstmt.executeUpdate();
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -273,7 +273,7 @@ public boolean forgotPassword(Users users) throws SQLException {
 		}
 		
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -299,7 +299,7 @@ try {
 		if(i>0) {
 		}
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -332,7 +332,7 @@ public List<Users> userList() throws SQLException {
 			}
 			return userList;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -359,7 +359,7 @@ public boolean unameCheck(Users user) throws SQLException {
 				return true;
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -387,7 +387,7 @@ public boolean emailCheck(Users user) throws SQLException {
 				return true;
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -413,7 +413,7 @@ public boolean mobileCheck(Users user) throws SQLException {
 				return true;
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
