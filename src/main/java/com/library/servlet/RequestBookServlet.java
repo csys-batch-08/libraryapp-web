@@ -34,7 +34,7 @@ public class RequestBookServlet extends HttpServlet {
 		try {
 			obDao.insert(p1);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		response.sendRedirect("requestAdmin.jsp");
 		

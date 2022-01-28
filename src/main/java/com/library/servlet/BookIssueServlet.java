@@ -31,7 +31,7 @@ public class BookIssueServlet extends HttpServlet {
 		try {
 			bookIssue = user.bookIssueList();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		request.setAttribute("BookIssueList", bookIssue);
 		RequestDispatcher rd=request.getRequestDispatcher("bookIssueList.jsp");

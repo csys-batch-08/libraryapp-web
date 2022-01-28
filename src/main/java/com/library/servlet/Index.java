@@ -107,7 +107,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 	}
 }catch(Exception e) {
-	e.printStackTrace();
+	e.getMessage();
 	
 }}
 }

@@ -29,7 +29,7 @@ public class Supplier extends HttpServlet {
 		try {
 			supply.insert(s1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		response.sendRedirect("admin.jsp");
 	}

@@ -82,7 +82,7 @@ public class BookReturnAdmin extends HttpServlet {
 					rd.forward(request, response);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 			
@@ -94,7 +94,7 @@ public class BookReturnAdmin extends HttpServlet {
 	response.sendRedirect("bookReturnAdmin.jsp");
 }
 }catch (Exception e) {
-	e.printStackTrace();
+	e.getMessage();
 }
 	
 	

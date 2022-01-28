@@ -59,7 +59,7 @@ public class SignUp extends HttpServlet {
 				response.sendRedirect("index.jsp");
 			}
 			}catch (SQLException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 		
 		

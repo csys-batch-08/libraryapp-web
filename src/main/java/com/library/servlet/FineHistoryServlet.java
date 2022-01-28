@@ -34,7 +34,7 @@ public class FineHistoryServlet extends HttpServlet {
 		try {
 			fineList = fineHist.view();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		request.setAttribute("fineList", fineList);

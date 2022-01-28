@@ -36,7 +36,7 @@ public class UserInsert extends HttpServlet {
 		try {
 			userDao.adminInsert(user);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		response.sendRedirect("admin.jsp");

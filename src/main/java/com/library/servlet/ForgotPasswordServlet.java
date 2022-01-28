@@ -35,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		try {
 			valid = user.forgotPassword(users);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		if(valid) {
 			

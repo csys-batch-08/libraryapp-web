@@ -32,7 +32,7 @@ public class AdminOrderBookServlet extends HttpServlet {
 				try {
 					orderList = obDao.adminView();
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getMessage();
 				}
 					
 						if((session.getAttribute("userRole").toString()).equals("admin")){

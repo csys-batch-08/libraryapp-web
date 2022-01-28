@@ -38,7 +38,7 @@ public class UnavailableBookServlet extends HttpServlet {
 		RequestDispatcher rd=request.getRequestDispatcher("unavailableBookList.jsp");
 		rd.forward(request, response);
 		}catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

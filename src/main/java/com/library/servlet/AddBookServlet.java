@@ -34,8 +34,8 @@ public class AddBookServlet extends HttpServlet {
 	       OrderBook order=new OrderBook("null",bookName,author);
 	       try {
 			obDao.updateStatus(order);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			e.getMessage();
 		}
 		BooksDaoImpl book=new BooksDaoImpl();
 		Books p1 = new Books(bookCode, bookName, category, author, price, rackNumber);

@@ -45,7 +45,7 @@ public class ReturnBookServlet extends HttpServlet {
 		PrintWriter pw=response.getWriter();
 		pw.write("The book You enter is invalid");
 		}}catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

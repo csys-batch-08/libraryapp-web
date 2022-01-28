@@ -36,7 +36,7 @@ public class WalletRechargeServlet extends HttpServlet {
 					user.walletRecharge(u3);
 				} catch (Exception e) {
 				
-					e.printStackTrace();
+					e.getMessage();
 				}
 				int userWallet=(int)session.getAttribute("userWalletLogin");
 				userWallet+=500;

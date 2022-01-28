@@ -38,7 +38,7 @@ public class BookReturnServlet extends HttpServlet {
 		try {
 			returnBooks = book.returnBookList(books);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		request.setAttribute("returnBookList", returnBooks);
 		RequestDispatcher rd=request.getRequestDispatcher("returnBook.jsp");

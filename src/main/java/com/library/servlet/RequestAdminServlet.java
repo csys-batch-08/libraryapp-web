@@ -45,7 +45,7 @@ public class RequestAdminServlet extends HttpServlet {
 			session.setAttribute("AdminError", "adminWrong");
 			response.sendRedirect("requestAdmin.jsp");
 		}} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}}
 		
 

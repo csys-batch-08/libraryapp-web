@@ -29,7 +29,7 @@ public class FineDetailsServlet extends HttpServlet {
 		try {
 			fine.insert(fines);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		response.sendRedirect("admin.jsp");

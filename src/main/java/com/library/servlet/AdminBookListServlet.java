@@ -31,7 +31,7 @@ public class AdminBookListServlet extends HttpServlet {
 		try {
 			bookList = user.availableBookList();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 		request.setAttribute("availableBookList", bookList);

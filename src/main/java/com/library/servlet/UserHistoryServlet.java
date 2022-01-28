@@ -38,7 +38,7 @@ public class UserHistoryServlet extends HttpServlet {
 						RequestDispatcher rd=request.getRequestDispatcher("userHistory.jsp");
 						rd.forward(request, response);
 	}catch (SQLException e) {
-		e.printStackTrace();
+		e.getMessage();
 	}}
 
 }

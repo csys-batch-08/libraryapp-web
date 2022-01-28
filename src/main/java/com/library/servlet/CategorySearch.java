@@ -40,7 +40,7 @@ public class CategorySearch extends HttpServlet {
 		try {
 			bookList = book.categoryFetch(b1);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		

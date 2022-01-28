@@ -43,7 +43,7 @@ public class BorrowBookServlet extends HttpServlet {
 				response.sendRedirect("bookUnavailable.jsp");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 			

@@ -41,7 +41,7 @@ public class SupplierLoginServlet extends HttpServlet {
 					try {
 						orderBook = obDao.view(order);
 					} catch (SQLException e) {
-						e.printStackTrace();
+						e.getMessage();
 					}
 				if (orderBook!=null) {
 					request.setAttribute("OrderBookList", orderBook);

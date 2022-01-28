@@ -67,7 +67,7 @@ public class BookAvailableServlet extends HttpServlet {
 			response.sendRedirect("bookAvailable.jsp");
 		}
 	}catch(SQLException e) {
-		e.printStackTrace();
+		e.getMessage();
 	}}
 
 }

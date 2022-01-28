@@ -38,7 +38,7 @@ public class PreRequestServlet extends HttpServlet {
 			try {
 				prerequestStatus = book.preRequest(b1);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 			request.setAttribute("preRequestStatus", prerequestStatus);
