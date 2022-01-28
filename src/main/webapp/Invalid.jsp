@@ -65,7 +65,7 @@ overflow:hidden;
 </div>
 
 
-<center><h1>Invalid User</h1></center>
+<h1>Invalid User</h1>
 
 
 </body>

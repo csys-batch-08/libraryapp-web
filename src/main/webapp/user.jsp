@@ -131,11 +131,11 @@ button {
 <body>
 	
 	
-	<center>
+	
 		<h1 id="capital">
 			Welcome to Library Management System! ${user}
 		</h1>
-	</center>
+
 	<br>
 	<div class="topnav">
 
@@ -161,13 +161,13 @@ button {
 					</nav>
 				</div>
 			</div>
+			</div>
 </form>
 			
 
 		</div>
 		
 		
-	</div>
 	<br>
 	<br>
 	<br>
