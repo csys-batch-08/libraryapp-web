@@ -80,6 +80,7 @@ public boolean adminInsert(Users user) throws SQLException  {
 	}
 	
 	
+@SuppressWarnings("resource")
 public String fetch(Users user) throws SQLException {
 	
 	String query="select user_name,password from user_details where user_name in ? and password in ?";
@@ -93,9 +94,9 @@ public String fetch(Users user) throws SQLException {
 	ResultSet rs = pstmt.executeQuery();
 	if(rs.next()) {
 		String query1="select user_role from user_details where user_name in ?";
-		PreparedStatement pstmt1 = con.prepareStatement(query1);
-		pstmt1.setString(1, user.getUser_name());
-		ResultSet rs1 = pstmt1.executeQuery();
+		pstmt = con.prepareStatement(query1);
+		pstmt.setString(1, user.getUser_name());
+		ResultSet rs1 = pstmt.executeQuery();
 		rs1.next();
 		return rs1.getString(1);
 	}
@@ -218,13 +219,13 @@ public int getFine(Users user) throws SQLException  {
 	}
 	return 0;
 }
+@SuppressWarnings("resource")
 public int setFine(Users user) throws SQLException  {
 	String query1="select userwallet,fine_amount from user_details where user_name in ?";
 	String query="update user_details set userwallet =?,fine_amount=0 where user_name in ?";
 	Connection con=null;
 	PreparedStatement pstmt =null;
 
-	PreparedStatement pstmt1 =null;
 	int userWallet=0;
 	try {
 	 con=ConnectionUtil.getDBConnect();
@@ -237,19 +238,17 @@ public int setFine(Users user) throws SQLException  {
 		userWallet=rs.getInt(1)-user.getFine_amount();
 	}
 	
-	 pstmt1=con.prepareStatement(query);
-	pstmt1.setInt(1, userWallet);
-	pstmt1.setString(2, user.getUser_name());
-	pstmt1.executeUpdate();
+	 pstmt=con.prepareStatement(query);
+	pstmt.setInt(1, userWallet);
+	pstmt.setString(2, user.getUser_name());
+	pstmt.executeUpdate();
 	}catch (Exception e) {
 		e.printStackTrace();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
 		}
-		if(pstmt1!=null) {
-			pstmt1.close();
-		}
+		
 		if(con!=null) {
 			con.close();
 		}

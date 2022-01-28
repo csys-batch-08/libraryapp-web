@@ -92,6 +92,7 @@ public void delete(OrderBook orderBook) throws SQLException  {
 		}
 	}
 
+@SuppressWarnings("resource")
 public List<OrderBook> view(OrderBook order) throws SQLException  {
 	String query="select book_name,author from order_book where supplier_name in ? and status in 'pending'";
 	String query1="update order_book set status='sent' where supplier_name in ?";
@@ -103,9 +104,9 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getUser_name());
 	rs=pstmt.executeQuery();
-	PreparedStatement pstmt1=con.prepareStatement(query1);
-	pstmt1.setString(1, order.getUser_name());
-	pstmt1.executeUpdate();
+	pstmt=con.prepareStatement(query1);
+	pstmt.setString(1, order.getUser_name());
+	pstmt.executeUpdate();
 	List<OrderBook> orderBook=new ArrayList<OrderBook>();
 	while(rs.next()) {
 		order=new OrderBook();
@@ -166,7 +167,7 @@ public List<OrderBook> adminView() throws SQLException  {
 	
 	rs=pstmt.executeQuery();
 	
-	List<OrderBook> orderList=new ArrayList<OrderBook>();
+	List<OrderBook> orderList=new ArrayList<>();
 	if (rs.next()) {
 		do{ 
 			
