@@ -32,7 +32,7 @@ public class BooksDaoImpl implements BooksDao {
 		 pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -70,7 +70,7 @@ public class BooksDaoImpl implements BooksDao {
 			}
 			return list;
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -106,7 +106,7 @@ public class BooksDaoImpl implements BooksDao {
 				
 				return bookList;
 		}} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -142,7 +142,7 @@ public class BooksDaoImpl implements BooksDao {
 			
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -171,7 +171,7 @@ public void delete(Books book) throws SQLException {
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -197,7 +197,7 @@ public void delete(Books book) throws SQLException {
 			pstmt.setString(2, book.getBookCode());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -230,7 +230,7 @@ public void delete(Books book) throws SQLException {
 				
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -259,7 +259,7 @@ public void delete(Books book) throws SQLException {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -283,7 +283,7 @@ public void delete(Books book) throws SQLException {
 		    pstmt.setString(2, book.getBookTitle());
 		    pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -310,7 +310,7 @@ public void delete(Books book) throws SQLException {
 			pstmt.setString(2, book.getBookTitle());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {
 			if(pstmt!=null) {
@@ -335,7 +335,7 @@ public void delete(Books book) throws SQLException {
 			pstmt.setString(1, book.getBookTitle());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {
 			if(pstmt!=null) {
@@ -365,7 +365,7 @@ public void delete(Books book) throws SQLException {
 			return "Prerequest un success";
 		}
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -394,7 +394,7 @@ public void delete(Books book) throws SQLException {
 				return true;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -422,7 +422,7 @@ public void delete(Books book) throws SQLException {
 				return rs.getInt(1);
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -455,7 +455,7 @@ public void delete(Books book) throws SQLException {
 			}
 			return returnBook;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -490,7 +490,7 @@ public void delete(Books book) throws SQLException {
 				}
 			return bookList;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -526,7 +526,7 @@ public void delete(Books book) throws SQLException {
 			}
 			return bookList;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -550,7 +550,7 @@ public void delete(Books book) throws SQLException {
 			return rs;
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -577,7 +577,7 @@ public void delete(Books book) throws SQLException {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();

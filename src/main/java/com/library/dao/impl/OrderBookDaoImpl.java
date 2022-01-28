@@ -31,7 +31,7 @@ public class OrderBookDaoImpl implements OrderBookDao {
 		 pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -57,7 +57,7 @@ public class OrderBookDaoImpl implements OrderBookDao {
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -81,7 +81,7 @@ public void delete(OrderBook orderBook) throws SQLException  {
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -116,7 +116,7 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 	}
 	return orderBook;
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -142,7 +142,7 @@ public int updateStatus(OrderBook order) throws SQLException  {
 
 	return 1;
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -183,7 +183,7 @@ public List<OrderBook> adminView() throws SQLException  {
 	}
 	return orderList;
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();
@@ -225,7 +225,7 @@ public List<OrderBook> userView(OrderBook order ) throws SQLException  {
 	}
 	return orderList;
 	}catch (Exception e) {
-		e.printStackTrace();
+		e.getMessage();
 	}finally {
 		if(pstmt!=null) {
 			pstmt.close();

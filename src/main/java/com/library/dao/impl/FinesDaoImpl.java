@@ -23,7 +23,7 @@ public class FinesDaoImpl implements FinesDao {
 		 pstmt.executeUpdate();
 
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -50,7 +50,7 @@ public class FinesDaoImpl implements FinesDao {
 
 		System.out.println(i + "rows updated successfully");
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -74,7 +74,7 @@ public class FinesDaoImpl implements FinesDao {
 		pstmt.executeUpdate();
 
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -99,7 +99,7 @@ public class FinesDaoImpl implements FinesDao {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();

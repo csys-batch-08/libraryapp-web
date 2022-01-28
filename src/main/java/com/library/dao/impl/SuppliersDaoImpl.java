@@ -26,7 +26,7 @@ public class SuppliersDaoImpl implements SuppliersDao{
 		pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -54,7 +54,7 @@ public class SuppliersDaoImpl implements SuppliersDao{
 		
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -79,7 +79,7 @@ public void delete(Suppliers supply) throws SQLException  {
         pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();

@@ -27,7 +27,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
@@ -64,7 +64,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 			}
 		return fineList;
 		}catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
 				pstmt.close();
