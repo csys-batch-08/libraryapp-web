@@ -21,7 +21,7 @@ public class RequestBookServlet extends HttpServlet {
        
   
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String bookName=request.getParameter("bookName");
 		String author=request.getParameter("authorName");

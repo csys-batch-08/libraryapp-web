@@ -19,9 +19,8 @@ public class UserInsert extends HttpServlet {
        
     
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		doGet(request, response);
 		String userName=request.getParameter("text");
 		String city=request.getParameter("text1");
 		String password=request.getParameter("text2");
@@ -29,7 +28,6 @@ public class UserInsert extends HttpServlet {
 		String email=request.getParameter("text4");
 		String role=request.getParameter("role");
 		
-		System.out.println(userName+city+password+phone.toString()+email);
 		
 		Users user=new Users(userName,city,role,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
