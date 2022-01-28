@@ -20,59 +20,59 @@ public class Users {
 		this.userWallet = userWallet;
 	}
 
-	public Users(String user_name, String city, String user_role, String password, long mobile_no, String email_id) {
+	public Users(String userName, String city, String userRole, String password, long mobileNo, String emailId) {
 		super();
-		this.userName = user_name;
+		this.userName = userName;
 		this.city = city;
 		this.password = password;
-		this.mobileNo = mobile_no;
-		this.emailId = email_id;
-		this.userRole = user_role;
+		this.mobileNo = mobileNo;
+		this.emailId = emailId;
+		this.userRole = userRole;
 	}
 
 	public String getUserRole() {
 		return userRole;
 	}
 
-	public void setUserRole(String user_role) {
-		this.userRole = user_role;
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 
 	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int user_id) {
-		this.userId = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getFineAmount() {
 		return fineAmount;
 	}
 
-	public void setFineAmount(int fine_amount) {
-		this.fineAmount = fine_amount;
+	public void setFineAmount(int fineAmount) {
+		this.fineAmount = fineAmount;
 	}
 
 	public Users() {
 		super();
 	}
 
-	public Users(String user_name, String city, String password, long mobile_no,String email_id) {
+	public Users(String userName, String city, String password, long mobileNo,String emailId) {
 		super();
-		this.userName = user_name;
+		this.userName = userName;
 		this.city = city;
 		this.password = password;
-		this.mobileNo = mobile_no;
-		this.emailId = email_id;
+		this.mobileNo = mobileNo;
+		this.emailId = emailId;
 	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(String user_name) {
-		this.userName = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getCity() {
@@ -95,34 +95,34 @@ public class Users {
 		return mobileNo;
 	}
 
-	public void setMobileNo(long mobile_no) {
-		this.mobileNo = mobile_no;
+	public void setMobileNo(long mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 
 	public String getEmailId() {
 		return emailId;
 	}
 
-	public void setEmailId(String email_id) {
-		this.emailId = email_id;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
-	public Users(int user_id) {
-		this.userId=user_id;
+	public Users(int userId) {
+		this.userId=userId;
 	}
 
-	public Users(String user_name, String password) {
-		this.userName=user_name;
+	public Users(String userName, String password) {
+		this.userName=userName;
 		this.password=password;
 	}
 
-	public Users(int fineAmount, String user_name2) {
+	public Users(int fineAmount, String userName2) {
 		this.fineAmount=fineAmount;
-		this.userName=user_name2;
+		this.userName=userName2;
 	}
 
-	public Users(String user_name2) {
-		this.userName=user_name2;
+	public Users(String userName2) {
+		this.userName=userName2;
 	}
 
 	@Override

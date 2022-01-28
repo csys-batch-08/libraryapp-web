@@ -209,7 +209,7 @@ public List<OrderBook> userView(OrderBook order ) throws SQLException  {
 	pstmt.setString(1, order.getUserName());
 	rs=pstmt.executeQuery();
 
-	List<OrderBook> orderList=new ArrayList<OrderBook>();
+	List<OrderBook> orderList=new ArrayList<>();
 	if (rs.next()) {
 		do{ 
 			

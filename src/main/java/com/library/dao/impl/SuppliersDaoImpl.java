@@ -53,7 +53,6 @@ public class SuppliersDaoImpl implements SuppliersDao{
          pstmt.executeUpdate();
 		
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.getMessage();
 		}finally {
 			if(pstmt!=null) {

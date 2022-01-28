@@ -25,11 +25,11 @@ public class BookIssueDaoImpl implements BookIssueDao {
 		con=ConnectionUtil.getDBConnect();
 		pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1, bookIssue.getUser_name());
+		pstmt.setString(1, bookIssue.getuserName());
 		pstmt.setString(2, bookIssue.getBookCode());
-		pstmt.setString(3, bookIssue.getDate_issue());
+		pstmt.setString(3, bookIssue.getdateIssue());
 		pstmt.setString(4,bookIssue.getDateReturn());
-		pstmt.setString(5,bookIssue.getDate_returned());
+		pstmt.setString(5,bookIssue.getdateReturned());
 		 pstmt.executeUpdate();
 		
 		}catch (Exception e) {
@@ -56,8 +56,8 @@ public class BookIssueDaoImpl implements BookIssueDao {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setInt(1,bookIssue.getFine_range());
-		pstmt.setString(2,bookIssue.getUser_name());
+		pstmt.setInt(1,bookIssue.getfineRange());
+		pstmt.setString(2,bookIssue.getuserName());
 		
          pstmt.executeUpdate();
 		
@@ -82,7 +82,7 @@ public void delete(BookIssue bookIssue) throws SQLException  {
 		con=ConnectionUtil.getDBConnect();
 		pstmt = con.prepareStatement(query);
 		
-		pstmt.setInt(1,bookIssue.getBook_issue_id());
+		pstmt.setInt(1,bookIssue.getbookIssueId());
 		
          pstmt.executeUpdate();
 		
@@ -107,9 +107,9 @@ public int getBookIssueNo(BookIssue book) throws SQLException {
 	try {
 		con=ConnectionUtil.getDBConnect();
 		pstmt=con.prepareStatement(query);
-		pstmt.setString(1, book.getUser_name());
+		pstmt.setString(1, book.getuserName());
 		pstmt.setString(2, book.getBookCode());
-		pstmt.setString(3, book.getDate_issue());
+		pstmt.setString(3, book.getdateIssue());
 		pstmt.setString(4, book.getDateReturn());
 		
 		ResultSet rs=pstmt.executeQuery();
@@ -143,14 +143,14 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 		con=ConnectionUtil.getDBConnect();
 		
 		pstmt = con.prepareStatement(query);
-		pstmt.setString(1, bookIssue.getDate_returned());
-		pstmt.setInt(2,bookIssue.getBook_issue_id());
+		pstmt.setString(1, bookIssue.getdateReturned());
+		pstmt.setInt(2,bookIssue.getbookIssueId());
 		pstmt.executeUpdate();
 		pstmt=con.prepareStatement(query1);
 		pstmt.executeUpdate();
 		String query2="select fine_range_in_month from book_issue_details where book_issue_no in ?";
 		pstmt1=con.prepareStatement(query2);
-		pstmt1.setInt(1,bookIssue.getBook_issue_id());
+		pstmt1.setInt(1,bookIssue.getbookIssueId());
 		ResultSet rs2=pstmt1.executeQuery();
 		
 		while(rs2.next()) {
@@ -183,16 +183,16 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt = con.prepareStatement(query);
 	
-	pstmt.setString(1, book.getUser_name());
+	pstmt.setString(1, book.getuserName());
 	List<BookIssue> bookIssue=new ArrayList<>();
      ResultSet rs = pstmt.executeQuery();
      while(rs.next()) {
     	 book=new BookIssue();
     	 book.setBookCode(rs.getString(1));
-    	 book.setDate_issue(rs.getDate(2).toLocalDate());
+    	 book.setdateIssue(rs.getDate(2).toLocalDate());
     	 book.setDateReturn(rs.getDate(3).toLocalDate());
-    	 book.setDate_returned(rs.getDate(4).toLocalDate());
-    	 book.setFine_range(rs.getInt(5));
+    	 book.setdateReturned(rs.getDate(4).toLocalDate());
+    	 book.setfineRange(rs.getInt(5));
     	 bookIssue.add(book);
      }
      
@@ -231,12 +231,12 @@ public List<BookIssue> bookIssueList() throws SQLException {
      while(rs.next()){
 			BookIssue books=new BookIssue();
 			books.setBookCode(rs.getString(2));
-			books.setUser_name(rs.getString(1));
-			books.setDate_issue(rs.getDate(3).toLocalDate());
+			books.setuserName(rs.getString(1));
+			books.setdateIssue(rs.getDate(3).toLocalDate());
 			books.setDateReturn(rs.getDate(4).toLocalDate());
-			books.setDate_returned(rs.getDate(5).toLocalDate());
-			books.setFine_range(rs.getInt(6));
-			books.setBook_issue_id(rs.getInt(7));
+			books.setdateReturned(rs.getDate(5).toLocalDate());
+			books.setfineRange(rs.getInt(6));
+			books.setbookIssueId(rs.getInt(7));
 			bookIssue.add(books);
 			
      }

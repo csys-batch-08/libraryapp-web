@@ -17,95 +17,95 @@ public class BookIssue {
 		     DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 	
-	public BookIssue(int bookIssueId, String user_name, String book_code, LocalDate date_issue, LocalDate date_return,
-			LocalDate date_returned, int fine_range) {
+	public BookIssue(int bookIssueId, String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn,
+			LocalDate dateReturned, int fineRange) {
 		super();
 		this.bookIssueId = bookIssueId;
-		this.userName = user_name;
-		this.bookCode = book_code;
-		this.dateIssue = date_issue;
-		this.dateReturn = date_return;
-		this.dateReturned = date_returned;
-		this.fineRange = fine_range;
+		this.userName = userName;
+		this.bookCode = bookCode;
+		this.dateIssue = dateIssue;
+		this.dateReturn = dateReturn;
+		this.dateReturned = dateReturned;
+		this.fineRange = fineRange;
 	}
-	public void setDateReturn(LocalDate date_return) {
-		this.dateReturn = date_return;
+	public void setDateReturn(LocalDate dateReturn) {
+		this.dateReturn = dateReturn;
 	}
 	public BookIssue() {
 		super();
 	}
-	public int getBook_issue_id() {
+	public int getbookIssueId() {
 		return bookIssueId;
 	}
-	public void setBook_issue_id(int book_issue_id) {
-		this.bookIssueId = book_issue_id;
+	public void setbookIssueId(int bookIssueId) {
+		this.bookIssueId = bookIssueId;
 	}
 	
-	public String getUser_name() {
+	public String getuserName() {
 		return userName;
 	}
-	public void setUser_name(String user_name) {
-		this.userName = user_name;
+	public void setuserName(String userName) {
+		this.userName = userName;
 	}
 	public String getBookCode() {
 		return bookCode;
 	}
-	public void setBookCode(String book_code) {
-		this.bookCode = book_code;
+	public void setBookCode(String bookCode) {
+		this.bookCode = bookCode;
 	}
-public String getDate_issue() {
+public String getdateIssue() {
 		return dateIssue.format(formatter);
 	}
-	public void setDate_issue(LocalDate date_issue) {
-		this.dateIssue = date_issue;
+	public void setdateIssue(LocalDate dateIssue) {
+		this.dateIssue = dateIssue;
 	}
 	public String getDateReturn() {
 		return dateReturn.format(formatter);
 	}
 	
-public String getDate_returned() {
+public String getdateReturned() {
 		return dateReturned.format(formatter);
 	}
-	public void setDate_returned(LocalDate date_returned) {
-		this.dateReturned = date_returned;
+	public void setdateReturned(LocalDate dateReturned) {
+		this.dateReturned = dateReturned;
 	}
-	public int getFine_range() {
+	public int getfineRange() {
 		return fineRange;
 	}
-	public BookIssue(String user_name) {
+	public BookIssue(String userName) {
 		super();
-		this.userName = user_name;
+		this.userName = userName;
 	}
-	public void setFine_range(int fine_range) {
-		this.fineRange = fine_range;
+	public void setfineRange(int fineRange) {
+		this.fineRange = fineRange;
 	}
 	
-	public BookIssue(String user_name, String book_code, LocalDate date_issue, LocalDate date_return,
-			LocalDate date_returned, int fine_range) {
+	public BookIssue(String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn,
+			LocalDate dateReturned, int fineRange) {
 		super();
-		this.userName = user_name;
-		this.bookCode = book_code;
-		this.dateIssue = date_issue;
-		this.dateReturn = date_return;
-		this.dateReturned = date_returned;
-		this.fineRange = fine_range;
+		this.userName = userName;
+		this.bookCode = bookCode;
+		this.dateIssue = dateIssue;
+		this.dateReturn = dateReturn;
+		this.dateReturned = dateReturned;
+		this.fineRange = fineRange;
 	}
-	public BookIssue(int book_issue_no) {
-		this.bookIssueId=book_issue_no;
+	public BookIssue(int bookIssueNo) {
+		this.bookIssueId=bookIssueNo;
 	}
-	public BookIssue(int book_issue_no, LocalDate date_returned, String book_title) {
+	public BookIssue(int bookIssueNo, LocalDate dateReturned, String bookTitle) {
 
-		this.bookIssueId=book_issue_no;
-		this.dateReturned = date_returned;
-		this.bookCode = book_title;
+		this.bookIssueId=bookIssueNo;
+		this.dateReturned = dateReturned;
+		this.bookCode = bookTitle;
 		
 	}
-	public BookIssue(int book_issue_no, String user_name2, String book_title) {
+	public BookIssue(int bookIssueNo, String userName, String bookTitle) {
 	}
 	public String toString() {
-		return "BookIssue [book_issue_id=" + bookIssueId + ", user_name=" + userName+ ", bookCode=" + bookCode
-				+ ", date_issue=" + dateIssue + ", dateReturn=" + dateReturn + ", date_returned=" + dateReturned
-				+ ", fine_range=" + fineRange + "]";
+		return "BookIssue [bookIssueId=" + bookIssueId + ", userName=" + userName+ ", bookCode=" + bookCode
+				+ ", dateIssue=" + dateIssue + ", dateReturn=" + dateReturn + ", dateReturned=" + dateReturned
+				+ ", fineRange=" + fineRange + "]";
 	}
 	
 	

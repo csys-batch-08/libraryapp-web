@@ -9,8 +9,8 @@ public class Suppliers {
 	public String getSupplierName() {
 		return supplierName;
 	}
-	public void setSupplierName(String supplier_name) {
-		this.supplierName = supplier_name;
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
 	}
 	public String getAddress() {
 		return address;
@@ -24,20 +24,20 @@ public class Suppliers {
 	public void setContact(long contact) {
 		this.contact = contact;
 	}
-	public Suppliers(String supplier_name, String address, long contact) {
+	public Suppliers(String supplierName, String address, long contact) {
 		super();
-		this.supplierName = supplier_name;
+		this.supplierName = supplierName;
 		this.address = address;
 		this.contact = contact;
 	}
 	public Suppliers() {
 		super();
 	}
-	public Suppliers(String supplier_name) {
-		this.supplierName=supplier_name;
+	public Suppliers(String supplierName) {
+		this.supplierName=supplierName;
 	}
-	public Suppliers(String supplier_name, long contact) {
-		this.supplierName = supplier_name;
+	public Suppliers(String supplierName, long contact) {
+		this.supplierName = supplierName;
 		this.contact = contact;
 	}
 	

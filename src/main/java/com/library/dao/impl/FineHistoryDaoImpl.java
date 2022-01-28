@@ -22,8 +22,8 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,fineHistory.getUser_name());
-		pstmt.setInt(2,fineHistory.getFine_amount());
+		pstmt.setString(1,fineHistory.getuserName());
+		pstmt.setInt(2,fineHistory.getfineAmount());
 		pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -56,8 +56,8 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
 			FineHistory fine=new FineHistory();
-			fine.setUser_name(rs.getString(1));
-			fine.setFine_amount(rs.getInt(2));
+			fine.setuserName(rs.getString(1));
+			fine.setfineAmount(rs.getInt(2));
 			fine.setCollectedTime(rs.getString(3));
 			fineList.add(fine);
 			

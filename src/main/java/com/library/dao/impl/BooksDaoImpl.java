@@ -306,7 +306,7 @@ public void delete(Books book) throws SQLException {
 			
 
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, book.getBook_issue_id());
+			pstmt.setInt(1, book.getbookIssueId());
 			pstmt.setString(2, book.getBookTitle());
 			pstmt.executeUpdate();
 		} catch (Exception e) {

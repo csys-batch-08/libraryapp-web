@@ -18,14 +18,14 @@ public class OrderBook {
 	public String getUserName() {
 		return userName;
 	}
-	public void setUserName(String user_name) {
-		this.userName = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getBookName() {
 		return bookName;
 	}
-	public void setBookName(String book_name) {
-		this.bookName = book_name;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 	public String getAuthor() {
 		return author;
@@ -36,26 +36,26 @@ public class OrderBook {
 	public String getSupplierId() {
 		return supplierId;
 	}
-	public void setSupplierId(String supplier_id) {
-		this.supplierId = supplier_id;
+	public void setSupplierId(String supplierId) {
+		this.supplierId = supplierId;
 	}
-	public OrderBook(String user_name,String book_name, String author, String status) {
+	public OrderBook(String userName,String bookName, String author, String status) {
 		super();
-		this.userName=user_name;
-		this.bookName = book_name;
+		this.userName=userName;
+		this.bookName = bookName;
 		this.author = author;
 		this.status = status;
 	}
-	public OrderBook(String supplier_id, String book_name) {
-		this.supplierId = supplier_id;
-		this.bookName = book_name;
+	public OrderBook(String supplierId, String bookName) {
+		this.supplierId = supplierId;
+		this.bookName = bookName;
 	}
-	public OrderBook(String book_name) {
-		this.bookName = book_name;
+	public OrderBook(String bookName) {
+		this.bookName = bookName;
 	}
-	public OrderBook(String user_name, String author, String book_name) {
-		this.userName=user_name;
-		this.bookName = book_name;
+	public OrderBook(String userName, String author, String bookName) {
+		this.userName=userName;
+		this.bookName = bookName;
 		this.author = author;
 	}
 	

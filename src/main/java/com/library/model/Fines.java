@@ -7,25 +7,25 @@ public class Fines {
 	public int getFineRange() {
 		return fineRange;
 	}
-	public void setFineRange(int fine_range) {
-		this.fineRange = fine_range;
+	public void setFineRange(int fineRange) {
+		this.fineRange = fineRange;
 	}
 	public int getFineAmount() {
 		return fineAmount;
 	}
-	public void setFineAmount(int fine_amount) {
-		this.fineAmount = fine_amount;
+	public void setFineAmount(int fineAmount) {
+		this.fineAmount = fineAmount;
 	}
-	public Fines(int fine_range, int fine_amount) {
+	public Fines(int fineRange, int fineAmount) {
 		super();
-		this.fineRange = fine_range;
-		this.fineAmount = fine_amount;
+		this.fineRange = fineRange;
+		this.fineAmount = fineAmount;
 	}
 	public Fines() {
 		super();
 	}
-	public Fines(int fine_range) {
-		this.fineRange=fine_range;
+	public Fines(int fineRange) {
+		this.fineRange=fineRange;
 	}
 	
 

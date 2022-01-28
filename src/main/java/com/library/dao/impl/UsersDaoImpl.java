@@ -295,9 +295,8 @@ try {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt=con.prepareStatement(query);
 		pstmt.setString(1, user.getUserName());
-		int i=pstmt.executeUpdate();
-		if(i>0) {
-		}
+		pstmt.executeUpdate();
+		
 	}catch (Exception e) {
 		e.getMessage();
 	}finally {
@@ -320,7 +319,7 @@ public List<Users> userList() throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
-			List<Users> userList=new ArrayList<Users>();
+			List<Users> userList=new ArrayList<>();
 			while(rs.next()) {
 				Users user=new Users();
 				user.setUserName(rs.getString(1));

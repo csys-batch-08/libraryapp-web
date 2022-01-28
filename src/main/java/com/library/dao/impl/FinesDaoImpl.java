@@ -48,7 +48,6 @@ public class FinesDaoImpl implements FinesDao {
 
 		int i = pstmt.executeUpdate();
 
-		System.out.println(i + "rows updated successfully");
 		}catch (Exception e) {
 			e.getMessage();
 		}finally {
