@@ -145,7 +145,9 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 		pstmt = con.prepareStatement(query);
 		pstmt.setString(1, bookIssue.getDate_returned());
 		pstmt.setInt(2,bookIssue.getBook_issue_id());
+		pstmt.executeUpdate();
 		pstmt=con.prepareStatement(query1);
+		pstmt.executeUpdate();
 		String query2="select fine_range_in_month from book_issue_details where book_issue_no in ?";
 		pstmt1=con.prepareStatement(query2);
 		pstmt1.setInt(1,bookIssue.getBook_issue_id());
@@ -182,7 +184,7 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
 	 pstmt = con.prepareStatement(query);
 	
 	pstmt.setString(1, book.getUser_name());
-	List<BookIssue> bookIssue=new ArrayList<BookIssue>();
+	List<BookIssue> bookIssue=new ArrayList<>();
      ResultSet rs = pstmt.executeQuery();
      while(rs.next()) {
     	 book=new BookIssue();
@@ -222,7 +224,7 @@ public List<BookIssue> bookIssueList() throws SQLException {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt = con.prepareStatement(query);
-	List<BookIssue> bookIssue=new ArrayList<BookIssue>();
+	List<BookIssue> bookIssue=new ArrayList<>();
 	
      ResultSet rs = pstmt.executeQuery();
      

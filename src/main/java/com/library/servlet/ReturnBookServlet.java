@@ -23,31 +23,33 @@ public class ReturnBookServlet extends HttpServlet {
     
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		try {
+		String bookName=request.getParameter("bookreturn");
 		BooksDaoImpl book=new BooksDaoImpl();
 		HttpSession session=request.getSession();
-		String bookTitle=session.getAttribute("bookname").toString();
+		session.setAttribute("bookname",bookName);
 		String userName=session.getAttribute("user").toString();
-		Books b1 = new Books(bookTitle, userName);
-		try {
+		Books b1 = new Books(bookName, userName);
 		boolean returnCheck = book.checkReturn(b1);
 		if (returnCheck) {
 		
-				b1=new Books(bookTitle);
+				b1=new Books(bookName);
 			int bookIssueNo=book.getBookIssueNo(b1);
 			session.setAttribute("bookissueno", bookIssueNo);
-			b1 = new Books(bookTitle);
+			b1 = new Books(bookName);
 			book.returnBook(b1);
 			response.sendRedirect("bookReturnAdmin.jsp");
 		}
 		else {
 		PrintWriter pw=response.getWriter();
 		pw.write("The book You enter is invalid");
-		}}catch (SQLException e) {
+		}
+		}catch (SQLException e) {
 			e.getMessage();
 		}
-		
 	}
+	
 
 }

@@ -112,13 +112,13 @@ i {
 							id="menu" >
 							<li class="nav-item"><a href="home.jsp"
 								class="nav-link align-middle px-0 text-dark"> <em
-									class="fs-4 bi-house\"></em>> <span
+									class="fs-4 bi-house\"></em> <span
 									class="ms-1 d-none d-sm-inline">Home</span>
 							</a></li>
 
 							<li><a href="bookShowUser"
 								class="nav-link px-0 align-middle text-dark"> <em
-									class="fs-4 bi-table"></em>> <span
+									class="fs-4 bi-table"></em> <span
 									
 									class="ms-1 d-none d-sm-inline">Show Books</span></a></li>
 							<li><a href="addBook.jsp"
@@ -149,7 +149,7 @@ i {
 							</a></li>
 							
 							<li><a href="adminOrderBook"
-								class="nav-link px-0 align-middle text-dark"> <em class="fs-4 bi-people"></em>> <span
+								class="nav-link px-0 align-middle text-dark"> <em class="fs-4 bi-people"></em> <span
 									class="ms-1 d-none d-sm-inline">View Ordered Book list</span>
 							</a></li>
 							

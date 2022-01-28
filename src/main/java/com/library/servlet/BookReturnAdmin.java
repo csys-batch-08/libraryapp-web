@@ -46,18 +46,15 @@ public class BookReturnAdmin extends HttpServlet {
 			BookIssue bi1=new BookIssue(bookIssueNo,dateReturned,bookTitle);
 			BookIssueDaoImpl bookIssue=new BookIssueDaoImpl();
 			int userFine = bookIssue.returnBookIssue(bi1);
+			
 			if(userFine>12) {
-				try {
+				
 					
 					Users users=new Users(userName);
 					user.delete(users);
 					throw new InvalidFineException();
-				}catch(InvalidFineException e) {
-					String validate=e.getMessage();
-					response.sendRedirect(validate);
-					
-				}
 			}
+			
 			Fines f1 = new Fines(userFine);
 			FinesDaoImpl fine=new FinesDaoImpl();
 			int fineAmount = fine.fineCalculation(f1);
@@ -65,8 +62,9 @@ public class BookReturnAdmin extends HttpServlet {
 			user.update(u2);
 			Users u3 = new Users(userName);
 			int fineOf = 0;
-			try {
+			
 				fineOf= user.getFine(u3);
+				
 				if(fineOf>0) {
 				request.setAttribute("fineamount", fineOf);
 				session.setAttribute("fineamount", fineOf);
@@ -81,9 +79,7 @@ public class BookReturnAdmin extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("returnSuccess.jsp");
 					rd.forward(request, response);
 				}
-			} catch (Exception e) {
-				e.getMessage();
-			}
+			
 			
 			
 		

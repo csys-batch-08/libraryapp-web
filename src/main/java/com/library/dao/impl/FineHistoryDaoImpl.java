@@ -46,7 +46,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 	}
 
 	public List<FineHistory> view() throws SQLException {
-		List<FineHistory> fineList = new ArrayList<FineHistory>();
+		List<FineHistory> fineList = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {

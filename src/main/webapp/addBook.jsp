@@ -77,7 +77,7 @@ border:2px solidx;}
 </div>
 
         <fieldset id="register">
-        <legend><h3>Book register</h3></legend>
+        <legend>Book register</legend>
         <form action="addBook" method="post">
         <div class="container">
         
@@ -99,7 +99,7 @@ border:2px solidx;}
 </fieldset>
 
 
-    </div>
+    
 
 
 </body>

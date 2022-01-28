@@ -89,7 +89,7 @@ public class BooksDaoImpl implements BooksDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;  
 		ResultSet rs=null;
-		List<Books> bookList=new ArrayList<Books>();
+		List<Books> bookList=new ArrayList<>();
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
@@ -124,7 +124,7 @@ public class BooksDaoImpl implements BooksDao {
 		String query="select book_title from book_details where category in ?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		List<Books> bookList=new ArrayList<Books>();
+		List<Books> bookList=new ArrayList<>();
 		ResultSet rs=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -195,6 +195,7 @@ public void delete(Books book) throws SQLException {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,book.getAvailability());
 			pstmt.setString(2, book.getBook_code());
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -219,7 +220,7 @@ public void delete(Books book) throws SQLException {
 			con=ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
 		    pstmt.setString(1, book.getBook_title());
-		ResultSet rs=null;
+		    ResultSet rs=null;
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				if(rs.getString(1).equals("available")&&(rs.getString(2).equals(book.getUser_name())||rs.getString(2).equals("none"))) {
@@ -280,6 +281,7 @@ public void delete(Books book) throws SQLException {
 		    pstmt=con.prepareStatement(query);
 		    pstmt.setString(1, book.getUser_name());
 		    pstmt.setString(2, book.getBook_title());
+		    pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -306,6 +308,7 @@ public void delete(Books book) throws SQLException {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, book.getBook_issue_id());
 			pstmt.setString(2, book.getBook_title());
+			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -438,7 +441,7 @@ public void delete(Books book) throws SQLException {
 		ResultSet rs=null;
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		List<Books> returnBook=new ArrayList<Books>();
+		List<Books> returnBook=new ArrayList<>();
 		try {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
@@ -469,7 +472,7 @@ public void delete(Books book) throws SQLException {
 		ResultSet rs=null;
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		List<Books> bookList=new ArrayList<Books>();
+		List<Books> bookList=new ArrayList<>();
 		try {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
@@ -509,7 +512,7 @@ public void delete(Books book) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
-			List<Books> bookList=new ArrayList<Books>();
+			List<Books> bookList=new ArrayList<>();
 			while(rs.next()) {
 				Books book=new Books();
 				book.setBook_title(rs.getString(1));
