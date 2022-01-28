@@ -33,19 +33,14 @@ text-decoration:none;
 <title>Book Unavailable</title>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <fieldset id="register">
 <h3>The Book is not available</h3>
 
-<a href="bookPreRequest.jsp">Prerequest Book</a><br><br>
+<a href="bookPrerequest">Prerequest Book</a><br><br>
 <a href="user.jsp">Back to user Page</a><br><br>
-<a href="showBook.jsp">Back to view Books</a><br><Br>
-<button><a href="Logout.jsp" id="but">Logout</a></button>
+<a href="bookShowUser">Back to view Books</a><br><Br>
+<button><a href="logout.jsp" id="but">Logout</a></button>
 </fieldset>
 
 </body>

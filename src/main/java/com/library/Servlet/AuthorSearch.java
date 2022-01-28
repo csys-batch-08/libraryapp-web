@@ -3,8 +3,11 @@ package com.library.Servlet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
+import com.library.exception.InvalidAuthorException;
 import com.library.exception.InvalidCategoryException;
 import com.library.model.Books;
 
@@ -21,27 +25,7 @@ import com.library.model.Books;
  */
 @WebServlet("/authorSearch")
 public class AuthorSearch extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AuthorSearch() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
@@ -49,31 +33,27 @@ public class AuthorSearch extends HttpServlet {
 		
 		BooksDaoImpl book=new BooksDaoImpl();
 		HttpSession session = request.getSession();
-		try {
+		
 		String category = null,book_title=null,author=null;
 		Books books=new Books(book_title,category,authorName);
-		ResultSet rs = book.authorFetch(books);
-		session.setAttribute("booksearch", category);
 		
-			if (rs.next()){
-				do {
-				System.out.println(rs.getString(1));
-				}while(rs.next());
-				response.sendRedirect("AuthorSearch.jsp");
-
+		session.setAttribute("booksearch", category);
+		List<Books> bookList=book.authorFetch(books);
+		
+			if(bookList!=null) {
+				request.setAttribute("authorBookList", bookList);
+				RequestDispatcher rd=request.getRequestDispatcher("authorSearch.jsp");
+				rd.forward(request, response);
 			}
 			else {
-			
-					throw new InvalidCategoryException();
+			try {
+					throw new InvalidAuthorException();
+				}catch(InvalidAuthorException e){
+					String validate=e.getMessage();
+					response.sendRedirect(validate);
 				}
 			
-		}catch(InvalidCategoryException e){
-			String validate=e.getMessage();
-			response.sendRedirect(validate);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		} 
 		
 		
 	}

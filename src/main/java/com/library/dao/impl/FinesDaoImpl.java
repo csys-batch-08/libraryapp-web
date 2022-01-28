@@ -67,7 +67,6 @@ public class FinesDaoImpl implements FinesDao {
 	}
 
 	public int fineCalculation(Fines fine) {
-		// TODO Auto-generated method stub
 		String query = "select fine_amount from fine_details where fine_range_in_month in ?";
 		Connection con = null;
 		try {
@@ -80,7 +79,6 @@ public class FinesDaoImpl implements FinesDao {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 0;

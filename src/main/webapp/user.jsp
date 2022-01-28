@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
@@ -13,10 +13,9 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<%
-String user = session.getAttribute("user").toString();
-%>
-<title>Welcome <%=user%></title>
+
+
+<title>Welcome ${user}</title>
 <style type="text/css">
 table, th, td {
 	border: 1px solid black;
@@ -130,18 +129,11 @@ button {
 </style>
 </head>
 <body>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null) && (session.getAttribute("admin") == null)
-			&& (session.getAttribute("supplier") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+	
 	
 	<center>
 		<h1 id="capital">
-			Welcome to Library Management System!
-			<%=user%>
+			Welcome to Library Management System! ${user}
 		</h1>
 	</center>
 	<br>
@@ -154,13 +146,13 @@ button {
 				<div id="admin1">
 					<nav class="navitem">
 						<div class='navbar-links' id='navbar-links'>
-							<a href="SearchBook.jsp">Search Books</a> 
+							<a href="searchBook.jsp">Search Books</a> 
 							<a href="bookShowUser">View	Books</a> 
-							<a href="orderBook.jsp">Ordered Book List</a> 
-							<a href="returnBook.jsp">Return Book</a> 
+							<a href="adminOrderBook">Ordered Book List</a> 
+							<a href="BookReturn">Return Book</a> 
 							<a href="requestBook.jsp">Request New Book</a> 
-							<a href="userHistory.jsp">View Book Borrow History</a>
-							<a href="Logout.jsp" style="float: right;">Logout</a>
+							<a href="UserHistoryList">View Book Borrow History</a>
+							<a href="logout.jsp" style="float: right;">Logout</a>
 
 
 
@@ -173,9 +165,7 @@ button {
 			
 
 		</div>
-		<%
-		String userWallet = session.getAttribute("userWalletLogin").toString();
-		%>
+		
 		
 	</div>
 	<br>
@@ -184,7 +174,7 @@ button {
 	<br>
 	<h1>
 		Your User Wallet Amount is
-		<%=userWallet%></h1>
+		${userWalletLogin}</h1>
 		<br><br>
 <%
    if(session.getAttribute("eligible") != null){%>

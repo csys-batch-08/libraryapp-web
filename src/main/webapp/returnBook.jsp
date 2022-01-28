@@ -1,6 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*" import="com.library.exception.InvalidReturnException"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,46 +63,21 @@ overflow:hidden;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 	<div class="topnav" >
 	<h2 style="float:left;">Library Management</h2>
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 <h1>The Books To be Returned</h1>
 <fieldset id="register">
 <form action="bookReturn">
 
-<%!ResultSet rs; %>
-<%
-BooksDaoImpl book=new BooksDaoImpl();
-String user_name=session.getAttribute("user").toString();
-String book_name=null;
-Books books=new Books(book_name,user_name);
-rs=book.returnBookList(books);
-if(rs.next()){%>
-	
-<%do{%>
-<%=rs.getString(1) %>&emsp;&ensp;<a href="bookReturn?bookreturn=<%=rs.getString(1)%>">Return Book</a><br><br>
-<%}while(rs.next());
-}else{ %>
 
-<%
-try {
-			throw new InvalidReturnException();
-		}catch(InvalidReturnException e) {
-			out.println(new InvalidReturnException());
-			System.out.println(new InvalidReturnException());
-		//	response.sendRedirect(validate);
-			
-		}%>
-<%} %>
+<c:forEach var="returnBook" items="${returnBookList}">
+${returnBook.book_title}&emsp;&ensp;<a href="bookReturn?bookreturn=${returnBook.book_title}">Return Book</a><br><br>
 
+</c:forEach>
 
 
 

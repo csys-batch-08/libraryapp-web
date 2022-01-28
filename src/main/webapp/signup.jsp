@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,28 +55,21 @@
 <body>
 
 <div class="topnav" >
-  <a href="Logout.jsp">Logout</a>
+  <a href="logout.jsp">Logout</a>
   
 </div>
 <br><Br>
-<%
-   if(session.getAttribute("unameExists") != null){%>
-	   <h1 style="color:red;background-color:white;font-size:25px;float:left;">UserName Already Exists</h1>
+
+	<c:if test="${not empty unameExists}">   <h1 style="color:red;background-color:white;font-size:25px;float:left;">UserName Already Exists</h1>
+	   </c:if>
 	   
-   <%session.removeAttribute("unameExists"); }
-   %>
-   <%
-   if(session.getAttribute("emailExists") != null){%>
-	   <h1 style="color:red;background-color:white;font-size:25px;float:left;">Email Id Already Exists</h1>
-	   
-   <%session.removeAttribute("emailExists"); }
-   %>
-   <%
-   if(session.getAttribute("mobileExists") != null){%>
-	   <h1 style="color:red;background-color:white;font-size:25px;float:left;">Mobile Number Already Exists</h1>
-	   
-   <%session.removeAttribute("mobileExists"); }
-   %>
+	 <c:if test="${not empty email}">   <h1 style="color:red;background-color:white;font-size:25px;float:left;">EmailId Already Exists</h1>
+	   </c:if> 
+	 
+	 <c:if test="${not empty mobileExists}">   <h1 style="color:red;background-color:white;font-size:25px;float:left;">Mobileno Already Exists</h1>
+	   </c:if>   
+   
+  
 
     <div >
         <fieldset id="register">

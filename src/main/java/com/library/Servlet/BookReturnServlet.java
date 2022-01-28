@@ -1,9 +1,6 @@
 package com.library.Servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,22 +15,23 @@ import com.library.dao.impl.BooksDaoImpl;
 import com.library.model.Books;
 
 /**
- * Servlet implementation class UnavailableBookServlet
+ * Servlet implementation class BookReturnServlet
  */
-@WebServlet("/unavailableBooks")
-public class UnavailableBookServlet extends HttpServlet {
+@WebServlet("/BookReturn")
+public class BookReturnServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-		BooksDaoImpl user = new BooksDaoImpl();
-	
+		BooksDaoImpl book=new BooksDaoImpl();
 		HttpSession session=request.getSession();
+		String user_name=session.getAttribute("user").toString();
+		String book_name=null;
+		Books books=new Books(book_name,user_name);
 
-		List<Books> bookList = user.unavailableBookList();
-		request.setAttribute("unavailableBookList", bookList);
-		RequestDispatcher rd=request.getRequestDispatcher("unavailableBookList.jsp");
-		rd.forward(request, response);			
+		List<Books> returnBooks=book.returnBookList(books);
+		System.out.println(returnBooks);
+		request.setAttribute("returnBookList", returnBooks);
+		RequestDispatcher rd=request.getRequestDispatcher("returnBook.jsp");
+		rd.forward(request, response);
 	}
 
 }

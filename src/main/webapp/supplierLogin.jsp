@@ -1,6 +1,8 @@
+<%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,49 +32,24 @@ table, th, td {
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
-<%!ResultSet rs = null; %>
-<%
-		session = request.getSession();
-		OrderBookDaoImpl obDao = new OrderBookDaoImpl();
-		String book_name=null;
-		String author=null;
-		String user_name=session.getAttribute("supplier").toString();
-		OrderBook order=new OrderBook(user_name,author,book_name);
-		
-		try {
-			rs = obDao.view(order);
-		}  catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}if (rs.next()) {
-	%>
 		<table>
 		<tr>
 		<th><b>BookName</b></th>
 		<th><b>Author</b></th>
 		</tr>
-	<%do{ %>
+	<c:forEach var="orderBook" items="${OrderBookList}">
 			<tr>
-			<td><%=rs.getString(1)%></td>
-			<td><%=rs.getString(2)%></td>
+			<td>${orderBook.book_name }</td>
+			<td>${orderBook.author}</td>
+			
 			</tr>
-	<%	}while (rs.next());%>
+	</c:forEach>
 	</table>
 	<br>
 		<button style="margin-left:650px;font-size:large;"><a href="index.jsp">Send Books</a></button>
 		
-		<%}
-	else{%>
 	
-	<h1>You dont have any orders</h1>
-	<%}%>
 
 </body>
 </html>

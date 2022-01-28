@@ -23,6 +23,7 @@
 </head>
 <body>
 <fieldset id="register">
+<legend>Forgot Password</legend>
 <form action="forgotpass" method="post">
 <label for="User Name">User Name</label>
     <input type="text" id = "uname" name="uname" pattern="[A-Za-z]{3,}" required oninvalid="setCustomValidity('Username must contains only alphabets')" onchange="try{setCustomValidity('')}catch(e){}" ><br><br>

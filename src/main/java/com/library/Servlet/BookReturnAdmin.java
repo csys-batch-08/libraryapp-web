@@ -3,7 +3,9 @@ package com.library.Servlet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,27 +28,7 @@ import com.library.model.Users;
  */
 @WebServlet("/returnadmin")
 public class BookReturnAdmin extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BookReturnAdmin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
@@ -61,20 +43,20 @@ public class BookReturnAdmin extends HttpServlet {
 		System.out.println(password);
 		
 		String val = user.fetch(u1);
-		
+		String userName=session.getAttribute("user").toString();
 		System.out.println(val);
 		if (val.equals("admin")) {
 			System.out.println("welcome admin " + user_name);
 			LocalDate date_returned1=null;
 			boolean flag=false;
-			
+			System.out.println(session.getAttribute("bookissueno").toString());
 			int book_issue_no=Integer.parseInt(session.getAttribute("bookissueno").toString());
 			BookIssue bi1=new BookIssue(book_issue_no,date_returned,book_title);
 			BookIssueDaoImpl bookIssue=new BookIssueDaoImpl();
 			int userFine = bookIssue.returnBookIssue(bi1);
 			if(userFine>12) {
 				try {
-					String userName=session.getAttribute("user").toString();
+					
 					Users users=new Users(userName);
 					user.delete(users);
 					throw new InvalidFineException();
@@ -97,12 +79,22 @@ public class BookReturnAdmin extends HttpServlet {
 			int fineOf = 0;
 			FineHistoryDaoImpl fineHistory = new FineHistoryDaoImpl();
 			try {
-				ResultSet rs= user.getFine(u3);
-				fineOf=rs.getInt(1);
+				fineOf= user.getFine(u3);
+				if(fineOf>0) {
+				request.setAttribute("fineamount", fineOf);
 				session.setAttribute("fineamount", fineOf);
-				response.sendRedirect("fineCalculation.jsp");
+				request.setAttribute("userName", userName);
+				RequestDispatcher rd=request.getRequestDispatcher("fineCalculation.jsp");
+				rd.forward(request, response);
+				}
+				else {
+					String userWallet=session.getAttribute("userWalletLogin").toString();
+					request.setAttribute("userName", userName);
+					request.setAttribute("userWallet",userWallet);
+					RequestDispatcher rd=request.getRequestDispatcher("returnSuccess.jsp");
+					rd.forward(request, response);
+				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

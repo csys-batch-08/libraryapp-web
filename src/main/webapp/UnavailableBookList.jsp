@@ -2,6 +2,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.connection.*" import="com.library.dao.impl.*" import="com.library.model.*"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,16 +70,11 @@ background-color:gray;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav">
 <h1 style="float:left;">Library Managemen</h1>
   <a class="active" href="admin.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>
+  <a href="logout.jsp">Logout</a>
 <h1>t	</h1>
 
   
@@ -94,20 +90,20 @@ background-color:gray;
 <th><b>User Name</b></th>
 <th><b>Price</b></th>
 <th><b>Pre Request</b></th>
-<%List<Books> book=(List<Books>) session.getAttribute("unavailableBookList");
-for(Books books:book){%>
+
+<c:forEach var="availableBooks" items="${unavailableBookList }">
 					
 			<tr>
 
-<td>  <%=books.getBook_title() %></td>
-<td>  <%=books.getCategory() %></td>
-<td>  <%=books.getAuthor() %></td>
-<td id="capital">  <%=books.getUser_name() %></td>
-<td>  <%=books.getPrice() %></td>
-<td><%=books.getPrerequest() %></td>
+<td>${availableBooks.book_title }</td>
+<td>${availableBooks.category }</td>
+<td>${availableBooks.author }</td>
+<td id="capital">${availableBooks.user_name }</td>
+<td>${availableBooks.price }</td>
+<td>${availableBooks.prerequest }</td>
 </tr>	
 				
-			<%} %>
+			</c:forEach>
 			
 			</table>
 </div>

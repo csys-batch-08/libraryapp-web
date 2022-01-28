@@ -70,16 +70,11 @@ overflow:hidden;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 	<div class="topnav" >
 	<h1 style="float:left;color:white;">Library Management</h1>
   <a class="active" href="admin.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 <h3>Ordered Book List</h3>
 
@@ -97,7 +92,7 @@ overflow:hidden;
 			<td>${orderBook.status }</td>
 			<c:set var="sent" value="sent" />
 			<c:if test="${orderBook.status eq sent}">
-			<td><button style="font-size:large;width:100px;"><a href="addOrderBook.jsp?orderBookName=${orderBook.book_name}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Add Book</a></button></td>
+			<td><button style="font-size:large;width:100px;"><a href="addOrderBook?orderBookName=${orderBook.book_name}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Add Book</a></button></td>
 			</c:if>
 			</tr>
 	</c:forEach>

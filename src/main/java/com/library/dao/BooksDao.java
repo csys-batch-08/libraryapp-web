@@ -8,9 +8,9 @@ import com.library.model.Books;
 public interface BooksDao {
 	
 	public void insert(Books book);
-	public ResultSet showBooks();
-	public ResultSet authorFetch(Books books);
-	public ResultSet categoryFetch(Books books);
+	public List<Books> showBooks();
+	public List<Books> authorFetch(Books books);
+	public List<Books> categoryFetch(Books books);
 	public void delete(Books book);
 	public void update(Books book);
 	public String bookBorrow(Books book);

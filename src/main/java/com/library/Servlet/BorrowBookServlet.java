@@ -48,10 +48,10 @@ public class BorrowBookServlet extends HttpServlet {
 		BooksDaoImpl book=new BooksDaoImpl();
 		Books b1 = new Books(book_name, user_name);
 		String availability = book.bookBorrow(b1);
-		ResultSet rs=book.eligle(b1);
-		try {
-			while(rs.next()) {
-				if(rs.getInt(1)>=2) {
+		int count=book.eligle(b1);
+		
+			
+				if(count>=2) {
 					session.setAttribute("eligible", "hi");
 					response.sendRedirect("user.jsp");
 				}else if (availability.equals("available")) {
@@ -62,10 +62,7 @@ public class BorrowBookServlet extends HttpServlet {
 					response.sendRedirect("bookUnavailable.jsp");
 				}
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 
 //			if (opinion.equals("yes")) {
 
@@ -94,7 +91,7 @@ public class BorrowBookServlet extends HttpServlet {
 //					book.updateBookIssue(b2);
 		
 	//	response.sendRedirect("bookAvailable.jsp");
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -112,10 +109,9 @@ public class BorrowBookServlet extends HttpServlet {
 		BooksDaoImpl book=new BooksDaoImpl();
 		Books b1 = new Books(book_name, user_name);
 		String availability = book.bookBorrow(b1);
-		ResultSet rs=book.eligle(b1);
-		try {
-			while(rs.next()) {
-				if(rs.getInt(1)>=2) {
+		int count=book.eligle(b1);
+	
+				if(count>=2) {
 					session.setAttribute("eligible", "hi");
 					response.sendRedirect("user.jsp");
 				}else if (availability.equals("available")) {
@@ -124,12 +120,9 @@ public class BorrowBookServlet extends HttpServlet {
 				}else {
 					System.out.println("Unavailable");
 					response.sendRedirect("bookUnavailable.jsp");
-				}
+				
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 
 //			if (opinion.equals("yes")) {
@@ -162,4 +155,4 @@ public class BorrowBookServlet extends HttpServlet {
 
 	
 
-}}
+}

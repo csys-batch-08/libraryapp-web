@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,23 +27,12 @@
     </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <fieldset id="register">
-<%
-BooksDaoImpl book=new BooksDaoImpl(); 
-String book_title=session.getAttribute("bookname").toString();
-String user_name=session.getAttribute("user").toString();
-	Books b1 = new Books(book_title, user_name);
-	String prerequestStatus=book.preRequest(b1);
-	System.out.println(prerequestStatus);%>
+
 	
-	<h3><%=prerequestStatus %></h3>
-	<button><a href="Logout.jsp">logout</a></button>
+	<h3><c:out value="${preRequestStatus}" /></h3>
+	<button><a href="logout.jsp">logout</a></button>
 </fieldset>
 </body>
 </html>

@@ -55,7 +55,7 @@ table, th, td {
 	%>
 <div class="topnav" >
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 <%
    if(session.getAttribute("eligible") != null){%>

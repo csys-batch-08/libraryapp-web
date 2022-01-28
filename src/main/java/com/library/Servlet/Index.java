@@ -3,7 +3,9 @@ package com.library.Servlet;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.library.dao.impl.OrderBookDaoImpl;
 import com.library.dao.impl.UsersDaoImpl;
 import com.library.exception.InvalidUserException;
+import com.library.model.OrderBook;
 import com.library.model.Users;
 
 
@@ -42,20 +46,30 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	System.out.println(password);
 	
 	String val = user.fetch(u1);
-	
+	session.setAttribute("userRole", val);
 	
 	System.out.println(val);
 	if (val.equals("admin")) {
 session.setAttribute("admin", user_name);
 		System.out.println("welcome admin " + user_name);
-		
-		resp.sendRedirect("admin.jsp");
+		req.setAttribute("admin", user_name);
+		RequestDispatcher rd= req.getRequestDispatcher("admin.jsp");
+		rd.forward(req, resp);
 	}
 	else if (val.equals("supplier")) {
 		session.setAttribute("supplier", user_name);
 				System.out.println("welcome Supplier " + user_name);
 				
-				resp.sendRedirect("supplierLogin.jsp");
+						session = req.getSession();
+						OrderBookDaoImpl obDao = new OrderBookDaoImpl();
+						String book_name=null;
+						String author=null;
+						user_name=session.getAttribute("supplier").toString();
+						OrderBook order=new OrderBook(user_name,author,book_name);
+						List<OrderBook> orderBook = obDao.view(order);
+						req.setAttribute("OrderBookList", orderBook);
+						RequestDispatcher rd=req.getRequestDispatcher("supplierLogin.jsp");
+						rd.forward(req, resp);
 			}
 	else if(val.equals("user")) {
 		session.setAttribute("user", user_name);
@@ -64,25 +78,25 @@ session.setAttribute("admin", user_name);
 		int fineOf=0;
 		Users u3 = new Users(fineOf,user_name);
 		UsersDaoImpl user1=new UsersDaoImpl();
-		ResultSet rs = user1.getFine(u3);
-		try {
-			fineamount=Integer.parseInt(rs.getString(1));
-			userwallet=Integer.parseInt(rs.getString(2));
-			session.setAttribute("oldwallet", userwallet);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int userWallet= user1.getUserWallet(u3);
 		
-		System.out.println(fineamount);
+		session.setAttribute("oldwallet", userwallet);
+		System.out.println(userWallet);
 		session.setAttribute("loginfine", fineamount);
 		
-		if(userwallet>500) {
-			session.setAttribute("userWalletLogin", userwallet);
-			resp.sendRedirect("user.jsp");
+		if(userWallet>500) {
+			session.setAttribute("userWalletLogin", userWallet);
+			req.setAttribute("userWalletLogin", userWallet);
+			req.setAttribute("user", user_name);
+			RequestDispatcher rd= req.getRequestDispatcher("user.jsp");
+			rd.forward(req, resp);
 			}
-		else if(userwallet<=500) {
-			resp.sendRedirect("walletRecharge.jsp");
+		else if(userWallet<=500) {
+			session.setAttribute("userWalletLogin", userWallet);
+			req.setAttribute("userWalletLogin", userWallet);
+			req.setAttribute("user", user_name);
+			RequestDispatcher rd= req.getRequestDispatcher("walletRecharge.jsp");
+			rd.forward(req, resp);
 		}
 		
 		
@@ -92,9 +106,10 @@ session.setAttribute("admin", user_name);
 		try {
 			throw new InvalidUserException();
 		}catch(InvalidUserException e) {
-			session.setAttribute("invalidUser", "invalid");
+			req.setAttribute("invalidUser", "invalid");
 			String validate=e.getMessage();
-			resp.sendRedirect(validate);
+			RequestDispatcher rd=req.getRequestDispatcher(validate);
+			rd.forward(req, resp);
 			
 		}
 		

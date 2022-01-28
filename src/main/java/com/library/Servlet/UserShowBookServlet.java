@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,27 +26,21 @@ public class UserShowBookServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		BooksDaoImpl book = new BooksDaoImpl();
-		ResultSet rs = book.showBooks();
-		List<Books> list=new ArrayList();
+		
+		List<Books> list=book.showBooks();
 		HttpSession session=request.getSession();
 		
 		try {
-			while(rs.next()) {
-				Books books=new Books();
-				books.setBook_title(rs.getString(1));
-				books.setAuthor(rs.getString(3));
-				books.setCategory(rs.getString(2));
-				list.add(books);
-				
-				
-			}
-			session.setAttribute("booksList", list);
+			
+			request.setAttribute("booksList", list);
 			if((session.getAttribute("user") != null)) {
-			response.sendRedirect("showBook.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("showBook.jsp");
+				rd.forward(request, response);
 			}else if((session.getAttribute("admin") != null)) {
-				response.sendRedirect("authorShowBook.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("authorShowBook.jsp");
+				rd.forward(request, response);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

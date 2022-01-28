@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,24 +29,13 @@
     </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <fieldset id="register">
-<%
-int fineOf=Integer.parseInt(session.getAttribute("fineamount").toString());
-String user_name=null;
-if (fineOf > 0) {
-	user_name=session.getAttribute("user").toString();
-%>
-	<p id="para"><%=user_name %></p><p>you have fine of rs</p><%=fineOf %>
+
+	<p id="para">${userName }</p><p>you have fine of rs</p>${fineamount}
 	<p>	You have to pay now</p>
-	<button type="submit"><a href="returnSuccess.jsp">Pay now</a></button>
-	<%}else{
-	response.sendRedirect("returnSuccess.jsp");} %>
+	<button type="submit"><a href="returnSuccess">Pay now</a></button>
+	
 </fieldset>							
 </body>
 </html>

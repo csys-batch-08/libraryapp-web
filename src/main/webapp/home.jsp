@@ -179,7 +179,7 @@ text-shadow: 2px 2px #ff0000;
       </nav>
       <br><br><br>
       <div id="image">
-        <img src="Assets/library.jpg" width="600px" height="450px">
+        <img src="Assets/library.jpg" width="600px" height="450px" alt="image">
         
   </div>
   <div id="quotes">

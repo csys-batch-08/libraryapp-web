@@ -2,6 +2,7 @@
 <%@page import="com.library.dao.impl.OrderBookDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,15 +67,10 @@ border:2px solidx;}
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav" >
   <a class="active" href="admin.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>
+  <a href="logout.jsp">Logout</a>
   
 </div>
 
@@ -87,16 +83,13 @@ border:2px solidx;}
         <input type="text" id="text" name="text" required pattern="[0-9]{3,}" class="form-control"><br>
         
         
-       <%String bookName=request.getParameter("orderBookName");
-       String author=request.getParameter("orderAuthorName");
-       String orderUserName=null;
-      %>
+      
        <label for="city">Book Name</label><br>
-        <input type="text" id="text1" name="text1" value="<%=bookName %>" readonly required pattern="[A-Za-z\s]{3,}" class="form-control"><br>
+        <input type="text" id="text1" name="text1" value="<c:out value="${orderBookName}" />" readonly required pattern="[A-Za-z\s]{3,}" class="form-control"><br>
         <label for="password">Category</label><br>
         <input type="text" id="text2" name="text2" required pattern="[A-Za-z]{3,}" class="form-control"><br>
         <label for="mobileno">Author</label><br>
-        <input type="tel" id="text3" name="text3" value="<%=author %>" readonly required pattern="[A-Za-z\s]{3,}" class="form-control"><br>
+        <input type="tel" id="text3" name="text3" value="<c:out value="${orderAuthorName}" />" readonly required pattern="[A-Za-z\s]{3,}" class="form-control"><br>
         
         <label for="email">Price</label><br>
         <input type="number" id="text4" name="text4" required min="1" max="10000" class="form-control" onkeyup="if(parseInt(this.value)>10000){ this.value =10000; return false; }"><br>

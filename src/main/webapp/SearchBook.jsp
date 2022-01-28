@@ -95,17 +95,17 @@ overflow:hidden;}
 <div class="topnav" >
 <h1 style="float:left;">Library Management</h1>
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 
 </div>
 
 <fieldset id="register" class="alignment">
-<form action="AuthorSearch.jsp" method="post">
+<form action="authorSearch" method="post">
 <label >Search By Author Name</label><br>
 <input type="text" name="author" pattern="[A-Za-z\s]{3,}" required>
 <button type="submit" class="button button1">Search Book</button>
 </form>
-<form action="CategorySearch.jsp" method="post">
+<form action="categorySearch" method="post">
 <label >Search By Category Name</label>
 <input type="text" name="category" pattern="[A-Za-z\s]{3,}" required>
 <button type="submit" class="button button1">Search Book</button>

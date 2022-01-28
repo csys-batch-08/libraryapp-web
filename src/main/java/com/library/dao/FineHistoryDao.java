@@ -8,6 +8,6 @@ import com.library.model.FineHistory;
 public interface FineHistoryDao {
 	
 	public void insert(FineHistory fineHistory);
-	public ResultSet view();
+	public List<FineHistory> view();
 
 }

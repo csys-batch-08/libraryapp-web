@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.library.connection.*;
 import com.library.dao.UsersDao;
@@ -26,7 +28,6 @@ public class UsersDaoImpl implements UsersDao{
 		if(i>0)
 			return true;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -146,23 +147,48 @@ public void update(Users user)  {
 	
 	
 }
-public ResultSet getFine(Users user)  {
+public int getUserWallet(Users user)  {
 	// TODO Auto-generated method stub
-	String query="Select fine_amount,userwallet from user_details where user_name in ?";
+	String query="Select userwallet from user_details where user_name in ?";
 	try {
 	Connection con=ConnectionUtil.getDBConnect();
 	PreparedStatement pstmt=con.prepareStatement(query);
 	pstmt.setString(1, user.getUser_name());
 	ResultSet rs=pstmt.executeQuery();
 	System.out.println(user.getUser_name());
-	rs.next();
-	return rs;
+	
+	while(rs.next()) {
+		System.out.println(rs.getInt(1));
+		return rs.getInt(1);
+	}
 	
 	}catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	return null;
+	return 0;
+}
+
+public int getFine(Users user)  {
+	// TODO Auto-generated method stub
+	String query="Select fine_amount from user_details where user_name in ?";
+	try {
+	Connection con=ConnectionUtil.getDBConnect();
+	PreparedStatement pstmt=con.prepareStatement(query);
+	pstmt.setString(1, user.getUser_name());
+	ResultSet rs=pstmt.executeQuery();
+	System.out.println(user.getUser_name());
+	
+	while(rs.next()) {
+		System.out.println(rs.getInt(1));
+		return rs.getInt(1);
+	}
+	
+	}catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return 0;
 }
 public int setFine(Users user)  {
 	// TODO Auto-generated method stub
@@ -241,14 +267,24 @@ try {
 	return 1;
 }
 
-public ResultSet userList() {
+public List<Users> userList() {
 	String query="select USER_NAME,CITY,MOBILE_NO,EMAIL_ID,USERWALLET from user_details where user_role in 'user'";
 	try {
 			
 			Connection con=ConnectionUtil.getDBConnect();
 			PreparedStatement pstmt=con.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
-			return rs;
+			List<Users> userList=new ArrayList();
+			while(rs.next()) {
+				Users user=new Users();
+				user.setUser_name(rs.getString(1));
+				user.setCity(rs.getString(2));
+				user.setMobile_no(rs.getLong(3));
+				user.setEmail_id(rs.getString(4));
+				user.setUserWallet(rs.getInt(5));
+				userList.add(user);
+			}
+			return userList;
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -256,7 +292,7 @@ public ResultSet userList() {
 		return null;
 	
 }
-public ResultSet unameCheck(Users user) {
+public boolean unameCheck(Users user) {
 	// TODO Auto-generated method stub
 	String query="select user_name from user_details where user_name in ?";
 	try {
@@ -266,15 +302,17 @@ public ResultSet unameCheck(Users user) {
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getUser_name());
 			ResultSet rs=pstmt.executeQuery();
-			return rs;
+			while(rs.next()) {
+				return true;
+			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
-	return null;
+	return false;
 }
-public ResultSet emailCheck(Users user) {
+public boolean emailCheck(Users user) {
 	// TODO Auto-generated method stub
 	String query="select email_id from user_details where email_id in ?";
 	try {
@@ -284,14 +322,16 @@ public ResultSet emailCheck(Users user) {
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getEmail_id());
 			ResultSet rs=pstmt.executeQuery();
-			return rs;
+			while(rs.next()) {
+				return true;
+			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	return null;
+	return false;
 }
-public ResultSet mobileCheck(Users user) {
+public boolean mobileCheck(Users user) {
 	// TODO Auto-generated method stub
 	String query="select mobile_no from user_details where mobile_no in ?";
 	try {
@@ -301,12 +341,14 @@ public ResultSet mobileCheck(Users user) {
 			PreparedStatement pstmt=con.prepareStatement(query);
 			pstmt.setLong(1, user.getMobile_no());
 			ResultSet rs=pstmt.executeQuery();
-			return rs;
+			while(rs.next()) {
+				return true;
+			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	return null;
+	return false;
 }
 
 

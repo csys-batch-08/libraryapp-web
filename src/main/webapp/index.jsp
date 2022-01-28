@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,13 +49,10 @@
     </style>
 </head>
 <body>
-<%
-   if(session.getAttribute("passchange") != null){%>
+ <c:if test="${not empty passchange}">
 	   <h1>Password Changed Successfully!!</h1>
 	   
-   <%session.removeAttribute("passchange"); }
-   %>
-   
+   </c:if>
   
     <h1 style="color: white;font-size: 50px;margin-left: 480px;" >Welcome to Library</h1>
     
@@ -69,18 +67,16 @@
     <label for= "password"style="color:white;"	><h3>Password</h3></label>
     
     <input type="password" id="myInput" name="password" pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" class="form-control form-control-lg" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" 	 required>
-    <%
-   if(session.getAttribute("invalidUser") != null){%>
+    <c:if test="${not empty invalidUser}">
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
-   <%session.removeAttribute("invalidUser"); }
-   %>
-   
+   </c:if>
+   <c:remove var="invalidUser" scope="request" />
     <input type="checkbox" onclick="myFunction()" style="color:red;">Show Password<br><br>
      
     <button type="submit">Log In</button>
     
-    <button id="forgot" style="width:200px;"><a href="ForgotPassword.jsp" style="color:black;">Forgot Password</a></button><br><br>
+    <button id="forgot" style="width:200px;"><a href="forgotPassword.jsp" style="color:black;">Forgot Password</a></button><br><br>
     <h3>New user <a href="signup.jsp">Sign Up </a>here</h3>
 
         </form>

@@ -21,12 +21,7 @@
     </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <fieldset id="register">
 <h3>Here After admin will takeover</h3>
 <h3>Hi admin Enter your user_name</h3>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,31 +65,29 @@ public class SignUp extends HttpServlet {
 		Users user=new Users(user_name,city,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
 		
-		try {
-			ResultSet rs=userDao.unameCheck(user);
-			ResultSet rs1=userDao.emailCheck(user);
-			ResultSet rs2=userDao.mobileCheck(user);
-			if(rs.next()) {
-				session.setAttribute("unameExists", "uname");
-				response.sendRedirect("signup.jsp");
+		
+			
+			if(userDao.unameCheck(user)) {
+				request.setAttribute("unameExists", "uname");
+				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				rd.forward(request, response);
 			}
 			
-			else if(rs1.next()) {
+			else if(userDao.emailCheck(user)) {
 				session.setAttribute("emailExists", "uname");
-				response.sendRedirect("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				rd.forward(request, response);
 			}
-			else if(rs2.next()) {
+			else if(userDao.mobileCheck(user)) {
 				session.setAttribute("mobileExists", "uname");
-				response.sendRedirect("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				rd.forward(request, response);
 			}else {
 				userDao.insert(user);
 				
 				response.sendRedirect("index.jsp");
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		
 		

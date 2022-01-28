@@ -22,29 +22,11 @@
     </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 
 
-<% 
-	  UsersDaoImpl user=new UsersDaoImpl();
-	  String user_name=session.getAttribute("user").toString();
-	  Users u3=new Users(user_name);
-	  
-		
-			try {
-				user.walletRecharge(u3);
-			} catch (Exception e) {
-			
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			%>
+
+
 <fieldset id="register">
 <form>			
 <label>Card Number</label><br>
@@ -53,7 +35,7 @@
 <input type="text" id="card2" required pattern="[0-9]{3}" oninvalid="setCustomValidity('cvv contains only three digits')" onchange="try{setCustomValidity('')}catch(e){}"  ><br><br>
 <label>Expiry Date</label><br>
 <input type="month" id="card3" required min="2022-02" max="2030-12" ><br><br>
-<button type="submit"><a href="user.jsp">Pay</a></button>
+<button type="submit"><a href="WalletRecharge">Pay</a></button>
 </form>			
 	</fieldset>	
 </body>

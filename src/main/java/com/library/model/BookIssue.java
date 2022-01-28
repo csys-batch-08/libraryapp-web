@@ -2,6 +2,8 @@ package com.library.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public class BookIssue {
 	
@@ -12,15 +14,17 @@ public class BookIssue {
 	private LocalDate date_return;
 	private LocalDate date_returned;
 	private int fine_range;
+	private Date date_returndate;
+	
+	DateTimeFormatter formatter =
+		     DateTimeFormatter.ofPattern("dd-MM-yyyy");
 //	public Date getDate_issue() {
 //		return date_issue;
 //	}
 //	public void setDate_issue(Date date_issue) {
 //		this.date_issue = date_issue;
 //	}
-//	public Date getDate_return() {
-//		return date_return;
-//	}
+	
 //	public void setDate_return(Date date_return) {
 //		this.date_return = date_return;
 //	}
@@ -68,18 +72,18 @@ public class BookIssue {
 	public void setBook_code(String book_code) {
 		this.book_code = book_code;
 	}
-public LocalDate getDate_issue() {
-		return date_issue;
+public String getDate_issue() {
+		return date_issue.format(formatter);
 	}
 	public void setDate_issue(LocalDate date_issue) {
 		this.date_issue = date_issue;
 	}
-	public LocalDate getDate_return() {
-		return date_return;
+	public String getDate_return() {
+		return date_return.format(formatter);
 	}
 	
-public LocalDate getDate_returned() {
-		return date_returned;
+public String getDate_returned() {
+		return date_returned.format(formatter);
 	}
 	public void setDate_returned(LocalDate date_returned) {
 		this.date_returned = date_returned;

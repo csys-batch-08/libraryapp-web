@@ -48,14 +48,19 @@ table, th, td {
 
 /* Add a color to the active/current link */
 .topnav a {
-  background-color: black;
+  
   color: white;
   float: right;
-}   
+} 
+.topnav{
+background-color: gray;
+overflow:hidden;
+}  
 </style>
 </head>
 <body>
 <div class="topnav" >
+<h1>Library Management</h1>
   <a class="active" href="index.jsp">Home</a>
 </div>
 

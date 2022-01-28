@@ -133,7 +133,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [user_name=" + user_name + ", city=" + city + ", password=" + password + ", mobile_no="
-				+ mobile_no + ", email_id=" + email_id + ", user_id=" + user_id + ", fine_amount=" + fine_amount + "]";
+				+ mobile_no + ", email_id=" + email_id + ", user_id=" + user_id + ", fine_amount=" + fine_amount + ", userwallet=\" + userWallet + \" ]";
 	}
 
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.model.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +89,7 @@ color:white;
 <div class="topnav" >
 <h1 style="float:left;"> Library Management</h1>
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 <div class="container-fluid">
 <table class="table table-hover" style="font-size:larger;">
@@ -97,19 +98,17 @@ color:white;
 <th><b>Category</b></th>
 <th><b>Borrow</b></th>
 
-<%List<Books> book=(List<Books>) session.getAttribute("booksList");for(Books books:book){
-	
-%>
+
 <form action="bookName" method="post">
+<c:forEach var="books" items="${booksList}">
 <tr>
-<td><%=books.getBook_title() %></td>
-<td>  <%=books.getAuthor() %></td>
-<td>  <%=books.getCategory() %></td>
-<td> <a href="bookName?bookname=<%=books.getBook_title() %>">Borrow Book</a> </td>
+<td>${books.book_title}</td>
+<td>${books.author}</td>
+<td>${books.category}</td>
+<td> <a href="bookName?bookname=${books.book_title}">Borrow Book</a> </td>
 </tr>
-<%
-}
-%>
+</c:forEach>
+
 </table>
 </div>
 </form>	

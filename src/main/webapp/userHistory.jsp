@@ -1,6 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.connection.*" import="com.library.dao.impl.*" import="com.library.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,19 +73,13 @@ color:white;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav" >
 <h1 style="float:left;"> Library Management</h1>
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>
+  <a href="logout.jsp">Logout</a>
   
 </div>
-<%!ResultSet rs; %>
 <br><br>
 
 <div class="container">
@@ -95,26 +90,19 @@ color:white;
 <th><b>Actual Return Date</b></th>
 <th><b>Returned Date</b></th>
 <th><b>Fine Range</b></th>
-<%
 
-BookIssueDaoImpl bookIssue=new BookIssueDaoImpl();
-String userName=session.getAttribute("user").toString();
-BookIssue books=new BookIssue(userName);
-				rs = bookIssue.userHistory(books);
-				
-				while(rs.next()){%>
-					
+<c:forEach var="bookIssue" items="${bookIssueList }">					
 			<tr>
 
-<td>  <%=rs.getString(1) %></td>
-<td>  <%=rs.getDate(2) %></td>
-<td><%=rs.getDate(3)%></td>
-<td><%=rs.getDate(4)%></td>
-<td><%=rs.getString(5)%></td>
+<td>  ${bookIssue.book_code }</td>
+<td>${bookIssue.date_issue }  </td>
+<td>${bookIssue.date_return }</td>
+<td>${bookIssue.date_returned }</td>
+<td>${bookIssue.fine_range }</td>
 
 </tr>	
-				
-			<%} %>
+</c:forEach>				
+			
 			
 			</table>
 </div>

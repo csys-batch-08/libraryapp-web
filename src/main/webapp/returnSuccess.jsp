@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,26 +63,11 @@
 	}
 	%>
 <fieldset id="register">
-<%!int userWallet; %>
-<%
-int fineOf=Integer.parseInt(session.getAttribute("fineamount").toString());
-String user_name=session.getAttribute("user").toString();
-Users u3=new Users(fineOf,user_name);
-%><h2 id="para"><%=user_name %></h2><%
-UsersDaoImpl user=new UsersDaoImpl();
-FineHistoryDaoImpl fineHistory=new FineHistoryDaoImpl();
-	try {
-				userWallet=user.setFine(u3);
-				FineHistory fh1 = new FineHistory(user_name, fineOf);
-				fineHistory.insert(fh1);
-				} catch (Exception e) {
-									
-				e.printStackTrace();
-				}%>
-<h3>Your revised Wallet amount is <%=userWallet %></h3>				
+
+<h3>Your revised Wallet amount is "${userWallet }"</h3>				
 <h3>Book Return Success</h3><br><br>
 <h3><a href="user.jsp">Back to User Page</a></h3>&emsp;&emsp;
-<button><a href="Logout.jsp" id="log">Log out</a></button>
+<button><a href="logout.jsp" id="log">Log out</a></button>
 </fieldset>				
 </body>
 </html>

@@ -1,7 +1,9 @@
 <%@page import="com.library.model.Books"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.dao.impl.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -72,46 +74,31 @@ font-style: italic;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav" >
 <h1 style="float:left;">Library Management</h1> 
   <a class="active" href="admin.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 <h2>Book List</h2>
 <table class="table table-hover" style="font-size:larger;">
 <th><b><h3>BookName</h3></b></th>
 <th><b><h3>Category</h3></b></th>
 <th><b><h3>Author</h3></b></th>
-<%List<Books> book=(List<Books>) session.getAttribute("booksList");for(Books books:book){
-	
-%>
+
+
 <div class="container-fluid">
 
 <form action="bookName" method="post">
+<c:forEach var="books" items="${booksList}">
 <tr>
-<td><%=books.getBook_title() %></td>
-<td>  <%=books.getAuthor() %></td>
-<td>  <%=books.getCategory() %></td>
+<td>${books.book_title}</td>
+<td>${books.author}</td>
+<td>${books.category}</td>
 </tr>
-<%
-}
-%>
+</c:forEach>
 </table>
 </div>
 </form>	
-
-
-
-
-
-
-
-
 </body>
 </html>

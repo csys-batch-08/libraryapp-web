@@ -2,6 +2,10 @@ package com.library.model;
 
 public class FineHistory {
 	
+	public FineHistory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	private String user_name;
 	private int fine_amount;
 	private String collected_time;

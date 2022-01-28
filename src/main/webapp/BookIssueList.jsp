@@ -2,8 +2,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.connection.*" import="com.library.dao.impl.*" import="com.library.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Books Issue List</title>
@@ -64,50 +65,46 @@ background-color:white;
 } 
 .topnav{
 background-color:gray;
-overflow:hidden;}  
+overflow:hidden;} 
+#capital{
+text-transform: capitalize;} 
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav" >
 <h1 style="float:left;">Library Management</h1>
   <a class="active" href="admin.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>
+  <a href="logout.jsp">Logout</a>
  
   
 </div>
 
 <h1>Book Issue List</h1>
 <br><br>
-<div class="container">
-<table class="table table-hover" style="font-size:larger;">
-<th><b>Book Issue No</b></th>
-<th><b>Book Name</b></th>
-<th><b>User Name</b></th>
-<th><b>Issued Date</b></th>
-<th><b>Return Date</b></th>
-<th><b>Date Returned</b></th>
-<th><b>Fine Range in Month</b></th>
+<div class="container-fluid">
+<table class="table table-hover" style="font-size:larger;" >
+<caption>Book Issue List</caption>
+<th id="head1"><strong>Issue No</strong></th>
+<th id="head2"><strong>Book Name</strong></th>
+<th id="head3"><strong>User Name</strong></th>
+<th id="head4"><strong>Issued Date</strong></th>
+<th id="head5"><strong>Return Date</strong></th>
+<th id="head6"><strong>Date Returned</strong></th>
+<th id="head7"><strong>Fine Range in Month</strong></th>
 
-<%List<BookIssue> book=(List<BookIssue>) session.getAttribute("BookIssueList");for(BookIssue books:book){%>
-					
+<c:forEach var="books" items="${BookIssueList }">				
 <tr>
-<td>  <%=books.getBook_issue_id() %></td>
-<td>  <%=books.getUser_name() %></td>
-<td>  <%=books.getBook_code() %></td>
-<td>  <%=books.getDate_issue() %></td>
-<td>  <%=books.getDate_return() %></td>
-<td>  <%=books.getDate_returned() %></td>
-<td>  <%=books.getFine_range() %></td>
+<td> ${books.book_issue_id}</td>
+<td> ${books.book_code}</td>
+<td id="capital"> ${books.user_name}</td>
+<td>${books.date_issue}</td>
+<td> ${books.date_return}</td>
+<td> ${books.date_returned}</td>
+<td> ${books.fine_range}</td>
 
 </tr>	
-				
-			<%} %>
+</c:forEach>
 			
 			</table>
 </div>

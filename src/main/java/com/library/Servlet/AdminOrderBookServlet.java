@@ -22,13 +22,13 @@ import com.library.model.OrderBook;
 @WebServlet("/adminOrderBook")
 public class AdminOrderBookServlet extends HttpServlet {
 	
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 				HttpSession session = request.getSession();
 				OrderBookDaoImpl obDao = new OrderBookDaoImpl();
 				String book_name=null;
 				String author=null;
-//				String user_name=session.getAttribute("supplier").toString();
 				List<OrderBook> orderList=new ArrayList();
 				
 				
@@ -46,14 +46,20 @@ public class AdminOrderBookServlet extends HttpServlet {
 						
 						
 				}while (rs.next());
+						if((session.getAttribute("userRole").toString()).equals("admin")){
 						request.setAttribute("adminOrderBook", orderList);
 						RequestDispatcher rd=request.getRequestDispatcher("viewOrderBook.jsp");
 						rd.forward(request, response);
+						}
+						else {
+							request.setAttribute("adminOrderBook", orderList);
+							RequestDispatcher rd=request.getRequestDispatcher("orderBook.jsp");
+							rd.forward(request, response);
+						}
 				
 
 					}
 				}  catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	}

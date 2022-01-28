@@ -1,6 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.dao.impl.*" import="com.library.model.*" import="com.library.exception.*"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,44 +60,24 @@ overflow:hidden;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <div class="topnav" >
 <h1 style="float:left;">Library Management</h1>
   <a class="active" href="user.jsp">Home</a>
-  <a href="Logout.jsp">Logout</a>  
+  <a href="logout.jsp">Logout</a>  
 </div>
 
-<%!ResultSet rs; %>
-<%String categoryName=request.getParameter("category");
 
-String book_title=null;
-String authorName=null;
-String category =null;
-BooksDaoImpl book=new BooksDaoImpl();
-Books b1=new Books(book_title,categoryName,authorName);
-rs = book.categoryFetch(b1); %>
 
-<h2>Book List for category: <%=categoryName %></h1>
+<h2>Book List</h1>
 
 <fieldset id="register" class="container">
 
-<% if(rs.next()){do{ %>
+<c:forEach var="categoryBook" items="${categoryBookList}">
 
-<a href="bookName?bookname=<%=rs.getString(1) %>" style="text-decoration: none;color:white;"><%= rs.getString(1)%></a><br><br>
+<a href="bookName?bookname=${categoryBook.book_title}" style="text-decoration: none;color:white;">${categoryBook.book_title}</a><br><br>
 
-<%}while(rs.next());
-}else{
-	try{
-		throw new InvalidCategoryException();
-	}catch(InvalidCategoryException e){
-		String validate=e.getMessage();
-		response.sendRedirect(validate);
-	}} %>
+</c:forEach>
 
 
 <br><br>

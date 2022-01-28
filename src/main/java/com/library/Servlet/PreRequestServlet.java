@@ -1,10 +1,6 @@
 package com.library.Servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,22 +14,24 @@ import com.library.dao.impl.BooksDaoImpl;
 import com.library.model.Books;
 
 /**
- * Servlet implementation class UnavailableBookServlet
+ * Servlet implementation class PreRequestServlet
  */
-@WebServlet("/unavailableBooks")
-public class UnavailableBookServlet extends HttpServlet {
+@WebServlet("/bookPrerequest")
+public class PreRequestServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-		BooksDaoImpl user = new BooksDaoImpl();
 	
+		
+		BooksDaoImpl book=new BooksDaoImpl(); 
 		HttpSession session=request.getSession();
-
-		List<Books> bookList = user.unavailableBookList();
-		request.setAttribute("unavailableBookList", bookList);
-		RequestDispatcher rd=request.getRequestDispatcher("unavailableBookList.jsp");
-		rd.forward(request, response);			
+		String book_title=session.getAttribute("bookname").toString();
+		String user_name=session.getAttribute("user").toString();
+			Books b1 = new Books(book_title, user_name);
+			String prerequestStatus=book.preRequest(b1);
+			
+			request.setAttribute("preRequestStatus", prerequestStatus);
+			RequestDispatcher rd=request.getRequestDispatcher("bookPreRequest.jsp");
+			rd.forward(request, response);
 	}
 
 }

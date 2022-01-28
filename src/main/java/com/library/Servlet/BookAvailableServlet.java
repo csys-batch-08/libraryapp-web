@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -71,7 +72,7 @@ public class BookAvailableServlet extends HttpServlet {
 			System.out.println("The book is in Rack number " + rackNumber);
 			PrintWriter pw=response.getWriter();
 			pw.write("The book is in Rack number " + rackNumber);
-			session.setAttribute("rack", rackNumber);
+			request.setAttribute("rack", rackNumber);
 			username=session.getAttribute("user").toString();
 			LocalDate date_issue = LocalDate.now();
 			LocalDate date_return = date_issue.plusMonths(3);
@@ -83,7 +84,8 @@ public class BookAvailableServlet extends HttpServlet {
 			int book_issue_no=bookIssue.getBookIssueNo(p1);
 			Books b2 = new Books(book_title, book_issue_no);
 			book.updateBookIssue(b2);
-			response.sendRedirect("bookBorrowSuccess.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("bookBorrowSuccess.jsp");
+			rd.forward(request, response);
 		}else {
 			session.setAttribute("AdminError", "adminWrong");
 			response.sendRedirect("bookAvailable.jsp");

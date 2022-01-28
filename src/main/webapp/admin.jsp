@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width-device-width, inital-scale=1">
 <head>
-<%String admin=session.getAttribute("admin").toString(); %>
-<title>Welcome <%=admin %></title>
+<title>Welcome ${admin}</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script
@@ -91,18 +91,12 @@ i {
 
 </head>
 <body>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+	
 
 	<div class="header container-fluid">
 		<h3>
-			Welcome
-			<%=admin%></h3>
-		<a href="Logout.jsp"><h3
+			Welcome ${admin}</h3>
+		<a href="logout.jsp"><h3
 				style="float: right; position: relative; bottom: 40px; color: white;">Logout</h3></a>
 	</div>
 
@@ -130,12 +124,10 @@ i {
 							<li><a href="addBook.jsp"
 								class="nav-link px-0 text-dark" class="text-md-start"> <span
 									class="d-none d-sm-inline">Add Books</span></a></li>
-							<li><a href="supplier.jsp"
-								class="nav-link px-0 text-dark"> <span
-									class="d-none d-sm-inline">Add Supplier</span></a></li>
+							
 
 
-							<li><a href="FineHistory.jsp"
+							<li><a href="fineHistory.jsp"
 								class="nav-link px-0 text-dark"> <span
 									class="d-none d-sm-inline">Add Fine Details</span>
 							</a></li>
@@ -162,6 +154,10 @@ i {
 									class="fs-4 bi-people"></i> <span
 									class="ms-1 d-none d-sm-inline">View Ordered Book list</span>
 							</a></li>
+							
+							<li><a href="FineHistory"
+								class="nav-link px-0 text-dark"> <span
+									class="d-none d-sm-inline">User Fine History</span></a></li>
 						</ul>
 						<hr>
 					</div>
