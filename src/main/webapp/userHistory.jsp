@@ -88,11 +88,11 @@ color:white;
 <caption>
 </caption>
 <tr>
-<th><strong>Book Name</strong></th>
-<th><strong>Borrowed Date</strong></th>
-<th><strong>Actual Return Date</strong></th>
-<th><strong>Returned Date</strong></th>
-<th><strong>Fine Range</strong></th>
+<th id="head"><strong>Book Name</strong></th>
+<th id="head"><strong>Borrowed Date</strong></th>
+<th id="head"><strong>Actual Return Date</strong></th>
+<th id="head"><strong>Returned Date</strong></th>
+<th id="head"><strong>Fine Range</strong></th>
 </tr>
 <c:forEach var="bookIssue" items="${bookIssueList }">					
 			<tr>

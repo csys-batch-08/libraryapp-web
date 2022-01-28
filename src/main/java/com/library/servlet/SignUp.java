@@ -45,12 +45,12 @@ public class SignUp extends HttpServlet {
 			}
 			
 			else if(userDao.emailCheck(user)) {
-				session.setAttribute("emailExists", "uname");
+				session.setAttribute("emailExists", "email");
 				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
 				rd.forward(request, response);
 			}
 			else if(userDao.mobileCheck(user)) {
-				session.setAttribute("mobileExists", "uname");
+				session.setAttribute("mobileExists", "mobileNo");
 				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
 				rd.forward(request, response);
 			}else {
