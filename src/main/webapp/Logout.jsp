@@ -37,7 +37,7 @@ request.getSession().invalidate(); %>
 </body>
 <script>
 let th = document.getElementById("timehead");
-let time =3;
+let time =2;
 let i;
 window.addEventListener('load', () =>{
 	
