@@ -115,12 +115,12 @@ background-color:white;
 		</tr>
 	<c:forEach var="orderBook" items="${adminOrderBook}">
 			<tr>
-			<td>${orderBook.book_name }</td>
+			<td>${orderBook.bookName }</td>
 			<td>${orderBook.author }</td>
 			<td>${orderBook.status }</td>
 			<c:set var="sent" value="arrived" />
 			<c:if test="${orderBook.status eq sent}">
-			<td><button style="font-size:large;width:100px;" class="button button1"><a href="bookName?bookname=${orderBook.book_name}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Borrow Book</a></button></td>
+			<td><button style="font-size:large;width:100px;" class="button button1"><a href="bookName?bookname=${orderBook.bookName}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Borrow Book</a></button></td>
 			</c:if>
 			</tr>
 	</c:forEach>

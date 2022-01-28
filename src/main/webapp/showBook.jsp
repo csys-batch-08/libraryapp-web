@@ -105,10 +105,10 @@ color:white;
 
 <c:forEach var="books" items="${booksList}">
 <tr>
-<td>${books.book_title}</td>
+<td>${books.bookTitle}</td>
 <td>${books.author}</td>
 <td>${books.category}</td>
-<td> <a href="bookName?bookname=${books.book_title}">Borrow Book</a> </td>
+<td> <a href="bookName?bookname=${books.bookTitle}">Borrow Book</a> </td>
 </tr>
 </c:forEach>
 

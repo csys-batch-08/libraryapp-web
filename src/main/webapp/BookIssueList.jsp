@@ -96,13 +96,13 @@ text-transform: capitalize;}
 </tr>
 <c:forEach var="books" items="${BookIssueList }">				
 <tr>
-<td> ${books.book_issue_id}</td>
-<td> ${books.book_code}</td>
-<td id="capital"> ${books.user_name}</td>
-<td>${books.date_issue}</td>
-<td> ${books.date_return}</td>
-<td> ${books.date_returned}</td>
-<td> ${books.fine_range}</td>
+<td> ${books.bookIssueId}</td>
+<td> ${books.bookCode}</td>
+<td id="capital"> ${books.userName}</td>
+<td>${books.dateIssue}</td>
+<td> ${books.dateReturn}</td>
+<td> ${books.dateReturned}</td>
+<td> ${books.fineRange}</td>
 
 </tr>	
 </c:forEach>
