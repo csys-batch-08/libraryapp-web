@@ -2,6 +2,7 @@ package com.library.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,7 @@ public class ReturnBookServlet extends HttpServlet {
 		String bookTitle=session.getAttribute("bookname").toString();
 		String userName=session.getAttribute("user").toString();
 		Books b1 = new Books(bookTitle, userName);
+		try {
 		boolean returnCheck = book.checkReturn(b1);
 		if (returnCheck) {
 		
@@ -42,6 +44,8 @@ public class ReturnBookServlet extends HttpServlet {
 		else {
 		PrintWriter pw=response.getWriter();
 		pw.write("The book You enter is invalid");
+		}}catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 	}

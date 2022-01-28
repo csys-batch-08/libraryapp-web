@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.library.connection.*;
@@ -12,12 +13,14 @@ import com.library.dao.BooksDao;
 import com.library.model.*;
 
 public class BooksDaoImpl implements BooksDao {
-	public void insert(Books book)  {
+	public void insert(Books book) throws SQLException  {
 		
 		String query="insert into book_details (book_code,book_title,category,author,price,rack_num) values (?,?,?,?,?,?)";
+		Connection con=null;
+		PreparedStatement pstmt =null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,book.getBook_code());
 		pstmt.setString(2, book.getBook_title());
@@ -26,54 +29,33 @@ public class BooksDaoImpl implements BooksDao {
 		pstmt.setInt(5, book.getPrice());
 		pstmt.setInt(6, book.getRack_num());
 		
-		int i = pstmt.executeUpdate();
+		 pstmt.executeUpdate();
 		
-		System.out.println(i+"rows inserted successfully");
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 	}
-//	public ResultSet showBooks(){
-//		String query="Select book_title,author,category from book_details";
-//		Connection con = null;
-//		try {
-//			con = ConnectionUtil.getDBConnect();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		PreparedStatement pstmt = null;
-//		try {
-//			pstmt = con.prepareStatement(query);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		ResultSet rs=null;
-//		try {
-//			rs=pstmt.executeQuery();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return rs;
-//		}
+
 	
-	public List<Books> showBooks() 
+	public List<Books> showBooks() throws SQLException 
 	{
-		//List<Books> productsList=new ArrayList<Books>();
 		
 		String query="Select book_title,category,author from book_details";
-		List<Books> list=new ArrayList();
+		List<Books> list=new ArrayList<>();
 		ResultSet rs=null;
 		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = null;
+		
 			pstmt = con.prepareStatement(query);
 		
 			rs=pstmt.executeQuery();
@@ -88,20 +70,26 @@ public class BooksDaoImpl implements BooksDao {
 			}
 			return list;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
-		return null;
+		return Collections.emptyList();
 	}
 
 	
-	public List<Books> authorFetch(Books books) {
+	public List<Books> authorFetch(Books books) throws SQLException {
 		String query="select book_title from book_details where author in ?";
-		Connection con;
+		Connection con=null;
 		PreparedStatement pstmt=null;  
 		ResultSet rs=null;
-		List<Books> bookList=new ArrayList();
+		List<Books> bookList=new ArrayList<Books>();
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
@@ -119,17 +107,24 @@ public class BooksDaoImpl implements BooksDao {
 				return bookList;
 		}} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		return bookList;
 		
 		
 	}
 	
-	public List<Books> categoryFetch(Books books) {
+	public List<Books> categoryFetch(Books books) throws SQLException {
 		String query="select book_title from book_details where category in ?";
-		Connection con;
+		Connection con=null;
 		PreparedStatement pstmt=null;
-		List<Books> bookList=new ArrayList();
+		List<Books> bookList=new ArrayList<Books>();
 		ResultSet rs=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -148,6 +143,13 @@ public class BooksDaoImpl implements BooksDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return bookList;
@@ -155,55 +157,61 @@ public class BooksDaoImpl implements BooksDao {
 		
 	}
 	
-public void delete(Books book) {
+public void delete(Books book) throws SQLException {
 		
 		String query="delete book_details where book_title=?";
+		Connection con=null;
+		PreparedStatement pstmt=null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		con=ConnectionUtil.getDBConnect();
+		pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,book.getBook_title());
 		
-         int i = pstmt.executeUpdate();
+         pstmt.executeUpdate();
 		
-		System.out.println(i+"rows deleted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 
 
 	
 
-	public void update(Books book) {
-		// TODO Auto-generated method stub
+	public void update(Books book) throws SQLException {
 		String query="update book_details set availability=? where book_code=?";
 		Connection con = null;
-		 int i = 0;
-		try {
-			con = ConnectionUtil.getDBConnect();
 		PreparedStatement pstmt = null;
+		 try {
+			con = ConnectionUtil.getDBConnect();
+		
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,book.getAvailability());
 			pstmt.setString(2, book.getBook_code());
-			i = pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
         
 		
-         
-		
-		System.out.println(i+"rows updated successfully");
-		
 	}
 
-	public String bookBorrow(Books book) {
+	public String bookBorrow(Books book) throws SQLException {
 		
-		// TODO Auto-generated method stub
 		String query="select availability,prerequest from book_details where book_title in ?";
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -215,23 +223,27 @@ public void delete(Books book) {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				if(rs.getString(1).equals("available")&&(rs.getString(2).equals(book.getUser_name())||rs.getString(2).equals("none"))) {
-					System.out.println(book.getBook_title()+" is available");
 					return "available";
 					
 				}
 				
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		return "unavailable";
 		
 		
 	}
 
-	public int getRack(Books book) {
-		// TODO Auto-generated method stub
+	public int getRack(Books book) throws SQLException {
 		String query = "select rack_num from book_details where book_title in ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -246,88 +258,103 @@ public void delete(Books book) {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 
 		return 0;
 	}
 
-	public void bookAvail(Books book) {
-		// TODO Auto-generated method stub
+	public void bookAvail(Books book) throws SQLException {
 		String query="update book_details set availability='unavailable',user_name=? where book_title in ?";
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		int rs=0;
 		try {
 			con = ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
 		    pstmt.setString(1, book.getUser_name());
 		    pstmt.setString(2, book.getBook_title());
-		
-			rs=pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
-		System.out.println(rs+ "update success");
 	
 		
 	}
 	
-	public void updateBookIssue(Books book) {
-		// TODO Auto-generated method stub
+	public void updateBookIssue(Books book) throws SQLException {
 		String query = "update book_details set book_issue_no=? where book_title=?";
 		Connection con = null;
-		int i = 0;
+
+		PreparedStatement pstmt = null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt = null;
 			
 
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, book.getBook_issue_id());
 			pstmt.setString(2, book.getBook_title());
-			i = pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		System.out.println(i + "rows updated successfully");
+		finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
+		}
 
 	}
 
-	public void returnBook(Books book) {
-		// TODO Auto-generated method stub
+	public void returnBook(Books book) throws SQLException {
 		String query = "update book_details set availability='available',user_name=null,book_issue_no=0 where book_title in ? ";
 		Connection con = null;
+		PreparedStatement pstmt = null;
 		try {
 			con = ConnectionUtil.getDBConnect();
 
-			PreparedStatement pstmt = null;
+			
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, book.getBook_title());
-			int rs = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 
 	}
 
-	public String preRequest(Books book)  {
-		// TODO Auto-generated method stub
+	public String preRequest(Books book) throws SQLException  {
 		String query="update book_details set prerequest=? where book_title in ? and prerequest in 'none'";
 		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt=con.prepareStatement(query);
+		pstmt=con.prepareStatement(query);
 		pstmt.setString(1, book.getUser_name());
 		pstmt.setString(2, book.getBook_title());
-		System.out.println(book.getBook_title());
 		int i=pstmt.executeUpdate();
-		System.out.println(i);
 		if(i>0) {
 			return "Pre Request successful";
 		}
@@ -335,20 +362,27 @@ public void delete(Books book) {
 			return "Prerequest un success";
 		}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		return null;
 		
 		
 	}
 
-	public boolean checkReturn(Books book) {
-		// TODO Auto-generated method stub
+	public boolean checkReturn(Books book) throws SQLException {
 		String query="select rack_num from book_details where book_title in ? and user_name in ? and availability='unavailable'";
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con = ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		pstmt.setString(1, book.getBook_title());
 		pstmt.setString(2, book.getUser_name());
 		ResultSet rs=pstmt.executeQuery();
@@ -357,68 +391,88 @@ public void delete(Books book) {
 				return true;
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return false;
 		
 	}
 	
-	public int getBookIssueNo(Books book) {
+	public int getBookIssueNo(Books book) throws SQLException {
 		
 		String query="Select book_issue_no from book_details where book_title in ? ";
-		
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, book.getBook_title());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){
 				return rs.getInt(1);
 			}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return 0;
 		
 	}
 	
-	public List<Books> returnBookList(Books book) {
+	public List<Books> returnBookList(Books book) throws SQLException {
 		String query="select book_title from book_details where user_name in ?";
 		ResultSet rs=null;
-		List<Books> returnBook=new ArrayList();
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		List<Books> returnBook=new ArrayList<Books>();
 		try {
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, book.getUser_name());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				book=new Books();
 				book.setBook_title(rs.getString(1));
-				System.out.println(rs.getString(1));
 				
 				returnBook.add(book);
-				System.out.println(returnBook);
 			}
-			System.out.println(returnBook);
 			return returnBook;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return returnBook;
 	}
-	public List<Books> availableBookList() {
+	public List<Books> availableBookList() throws SQLException {
 		String query="select book_title,category,author,price,rack_num,prerequest from book_details where availability in 'available'";
 		ResultSet rs=null;
-		List<Books> bookList=new ArrayList();
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		List<Books> bookList=new ArrayList<Books>();
 		try {
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
 				while(rs.next()){
 					Books book=new Books();
@@ -433,21 +487,29 @@ public void delete(Books book) {
 				}
 			return bookList;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return bookList;
 	}
 	
-	public List<Books> unavailableBookList() {
+	public List<Books> unavailableBookList() throws SQLException {
 		String query="select book_title,category,author,price,user_name,prerequest from book_details where availability in 'unavailable'";
 		ResultSet rs=null;
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
-			List<Books> bookList=new ArrayList();
+			List<Books> bookList=new ArrayList<Books>();
 			while(rs.next()) {
 				Books book=new Books();
 				book.setBook_title(rs.getString(1));
@@ -461,35 +523,48 @@ public void delete(Books book) {
 			}
 			return bookList;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
-		return null;
+		return Collections.emptyList();
 	}
-	public ResultSet BookList() {
+	public ResultSet bookList() throws SQLException {
 		String query="select book_code,book_title,category,author,price,user_name,availability,user_name,book_issue_no,prerequest from book_details";
 		ResultSet rs=null;
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
 			return rs;
 			
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return rs;
 	}
 
-	public int eligle(Books book) {
+	public int eligle(Books book) throws SQLException {
 		String query="select count(user_name) from book_details where user_name in ?";
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {
-			System.out.println("hisui");
 			con=ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
 		    pstmt.setString(1, book.getUser_name());
@@ -499,8 +574,14 @@ public void delete(Books book) {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		return 0;
 	}

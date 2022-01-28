@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,7 +28,12 @@ public class AdminOrderBookServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				OrderBookDaoImpl obDao = new OrderBookDaoImpl();
 				
-				List<OrderBook> orderList= obDao.adminView();
+				List<OrderBook> orderList=null;
+				try {
+					orderList = obDao.adminView();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 					
 						if((session.getAttribute("userRole").toString()).equals("admin")){
 						request.setAttribute("adminOrderBook", orderList);

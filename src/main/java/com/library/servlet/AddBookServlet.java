@@ -1,6 +1,8 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,11 @@ public class AddBookServlet extends HttpServlet {
 		
 		 OrderBookDaoImpl obDao=new OrderBookDaoImpl();
 	       OrderBook order=new OrderBook("null",bookName,author);
-	       obDao.updateStatus(order);
+	       try {
+			obDao.updateStatus(order);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		BooksDaoImpl book=new BooksDaoImpl();
 		Books p1 = new Books(bookCode, bookName, category, author, price, rackNumber);
 		try {

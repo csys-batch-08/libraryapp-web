@@ -5,21 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.library.connection.ConnectionUtil;
 import com.library.dao.OrderBookDao;
 import com.library.model.OrderBook;
-import com.library.model.Suppliers;
 
 public class OrderBookDaoImpl implements OrderBookDao {
 	
-	public void insert(OrderBook orderBook)  {
-		
+	public void insert(OrderBook orderBook) throws SQLException  {
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		String query="insert into order_book (user_name,book_name,author,supplier_name) values (?,?,?,?)";
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,orderBook.getUser_name());
 		pstmt.setString(2, orderBook.getBook_name());
@@ -27,67 +28,85 @@ public class OrderBookDaoImpl implements OrderBookDao {
 		pstmt.setString(4, orderBook.getSupplier_id());
 	
 		
-		int i = pstmt.executeUpdate();
+		 pstmt.executeUpdate();
 		
-		System.out.println(i+"rows inserted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 	}
 	
-	public void update(OrderBook orderBook)  {
-		
+	public void update(OrderBook orderBook) throws SQLException  {
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		String query="update order_book set supplier_name=? where book_name=?";
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,orderBook.getSupplier_id());
 		pstmt.setString(2,orderBook.getBook_name());
 		
-         int i = pstmt.executeUpdate();
+         pstmt.executeUpdate();
 		
-		System.out.println(i+"rows updated successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 	
-public void delete(OrderBook orderBook)  {
-		
+public void delete(OrderBook orderBook) throws SQLException  {
+	Connection con = null;
+	PreparedStatement pstmt=null;
 		String query="delete order_book where book_name=?";
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,orderBook.getBook_name());
 		
-         int i = pstmt.executeUpdate();
+         pstmt.executeUpdate();
 		
-		System.out.println(i+"rows deleted successfully");
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 
-public List<OrderBook> view(OrderBook order)  {
-	// TODO Auto-generated method stub
+public List<OrderBook> view(OrderBook order) throws SQLException  {
 	String query="select book_name,author from order_book where supplier_name in ? and status in 'pending'";
 	String query1="update order_book set status='sent' where supplier_name in ?";
 	ResultSet rs=null;
+	Connection con = null;
+	PreparedStatement pstmt=null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getUser_name());
-	System.out.println(order.getUser_name());
 	rs=pstmt.executeQuery();
 	PreparedStatement pstmt1=con.prepareStatement(query1);
 	pstmt1.setString(1, order.getUser_name());
 	pstmt1.executeUpdate();
-	List<OrderBook> orderBook=new ArrayList();
+	List<OrderBook> orderBook=new ArrayList<OrderBook>();
 	while(rs.next()) {
 		order=new OrderBook();
 		order.setBook_name(rs.getString(1));
@@ -97,45 +116,57 @@ public List<OrderBook> view(OrderBook order)  {
 	return orderBook;
 	}catch (Exception e) {
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
    return null;
 	
 	
 }
 
-public int updateStatus(OrderBook order)  {
-	// TODO Auto-generated method stub
+public int updateStatus(OrderBook order) throws SQLException  {
 	String query="update order_book set status='arrived' where book_name=?";
-	ResultSet rs=null;
+	Connection con = null;
+	PreparedStatement pstmt=null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
-	System.out.println(order.getBook_name());
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getAuthor());
-	//pstmt.setString(2,order.getAuthor());
-	System.out.println(order.getAuthor());
 	pstmt.executeUpdate();
 
 	return 1;
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
    return 1;
 	
 	
 }
 
-public List adminView()  {
+public List<OrderBook> adminView() throws SQLException  {
 	String query="select book_name,author,status from order_book";
 	ResultSet rs=null;
+	Connection con = null;
+	PreparedStatement pstmt=null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	
 	rs=pstmt.executeQuery();
 	
-	List<OrderBook> orderList=new ArrayList();
+	List<OrderBook> orderList=new ArrayList<OrderBook>();
 	if (rs.next()) {
 		do{ 
 			
@@ -152,23 +183,32 @@ public List adminView()  {
 	return orderList;
 	}catch (Exception e) {
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
-   return null;
+   return Collections.emptyList();
 	
 	
 }
 
 
-public List userView(OrderBook order )  {
+public List<OrderBook> userView(OrderBook order ) throws SQLException  {
 	String query="select user_name,book_name,author,status from order_book where user_name in ?";
 	ResultSet rs=null;
+	Connection con = null;
+	PreparedStatement pstmt=null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getUser_name());
 	rs=pstmt.executeQuery();
 
-	List<OrderBook> orderList=new ArrayList();
+	List<OrderBook> orderList=new ArrayList<OrderBook>();
 	if (rs.next()) {
 		do{ 
 			
@@ -185,8 +225,15 @@ public List userView(OrderBook order )  {
 	return orderList;
 	}catch (Exception e) {
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
-   return null;
+   return Collections.emptyList();
 	
 	
 }

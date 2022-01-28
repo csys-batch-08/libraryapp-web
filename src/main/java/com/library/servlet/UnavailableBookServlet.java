@@ -1,7 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -25,16 +25,21 @@ public class UnavailableBookServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
 		BooksDaoImpl user = new BooksDaoImpl();
 	
 
+		try {
 		List<Books> bookList = user.unavailableBookList();
 		request.setAttribute("unavailableBookList", bookList);
 		RequestDispatcher rd=request.getRequestDispatcher("unavailableBookList.jsp");
-		rd.forward(request, response);			
+		rd.forward(request, response);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

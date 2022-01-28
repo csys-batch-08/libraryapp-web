@@ -2,8 +2,7 @@ package com.library.servlet;
 
 
 import java.io.IOException;
-
-
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -38,7 +37,12 @@ public class AuthorSearch extends HttpServlet {
 		Books books=new Books(bookTitle,category,authorName);
 		
 		session.setAttribute("booksearch", category);
-		List<Books> bookList=book.authorFetch(books);
+		List<Books> bookList=null;
+		try {
+			bookList = book.authorFetch(books);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		
 			if(bookList!=null) {
 				request.setAttribute("authorBookList", bookList);

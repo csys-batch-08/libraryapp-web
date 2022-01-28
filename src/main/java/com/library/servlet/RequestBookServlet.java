@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,11 @@ public class RequestBookServlet extends HttpServlet {
 		String supplierId = null;
 		OrderBook p1 = new OrderBook(userName, bookName, author, supplierId);
 		OrderBookDaoImpl obDao=new OrderBookDaoImpl();
-		obDao.insert(p1);
+		try {
+			obDao.insert(p1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		response.sendRedirect("requestAdmin.jsp");
 		
 	}

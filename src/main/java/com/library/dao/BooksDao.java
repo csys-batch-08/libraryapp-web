@@ -1,25 +1,25 @@
 package com.library.dao;
 
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.library.model.Books;
 
 public interface BooksDao {
 	
-	public void insert(Books book);
-	public List<Books> showBooks();
-	public List<Books> authorFetch(Books books);
-	public List<Books> categoryFetch(Books books);
-	public void delete(Books book);
-	public void update(Books book);
-	public String bookBorrow(Books book);
-	public int getRack(Books book);
-	public void bookAvail(Books book);
-	public void updateBookIssue(Books book);
-	public void returnBook(Books book);
-	public String preRequest(Books book);
-	public boolean checkReturn(Books book);
-	public int getBookIssueNo(Books book);
+	public void insert(Books book) throws SQLException;
+	public List<Books> showBooks() throws SQLException;
+	public List<Books> authorFetch(Books books) throws SQLException;
+	public List<Books> categoryFetch(Books books) throws SQLException;
+	public void delete(Books book) throws SQLException;
+	public void update(Books book) throws SQLException;
+	public String bookBorrow(Books book) throws SQLException;
+	public int getRack(Books book) throws SQLException;
+	public void bookAvail(Books book) throws SQLException;
+	public void updateBookIssue(Books book) throws SQLException;
+	public void returnBook(Books book) throws SQLException;
+	public String preRequest(Books book) throws SQLException;
+	public boolean checkReturn(Books book) throws SQLException;
+	public int getBookIssueNo(Books book) throws SQLException;
 
 }

@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +34,12 @@ public class PreRequestServlet extends HttpServlet {
 		String bookTitle=session.getAttribute("bookname").toString();
 		String userName=session.getAttribute("user").toString();
 			Books b1 = new Books(bookTitle, userName);
-			String prerequestStatus=book.preRequest(b1);
+			String prerequestStatus=null;
+			try {
+				prerequestStatus = book.preRequest(b1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 			request.setAttribute("preRequestStatus", prerequestStatus);
 			RequestDispatcher rd=request.getRequestDispatcher("bookPreRequest.jsp");

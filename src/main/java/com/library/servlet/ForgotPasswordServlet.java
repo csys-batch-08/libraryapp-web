@@ -1,7 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,7 +31,12 @@ public class ForgotPasswordServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		UsersDaoImpl user=new UsersDaoImpl();
 		Users users=new Users(userName,password);
-		boolean valid=user.forgotPassword(users);
+		boolean valid=false;
+		try {
+			valid = user.forgotPassword(users);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		if(valid) {
 			
 				  request.setAttribute("passchange", true);

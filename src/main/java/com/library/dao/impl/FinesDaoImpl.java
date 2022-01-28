@@ -9,32 +9,39 @@ import com.library.dao.FinesDao;
 import com.library.model.*;
 
 public class FinesDaoImpl implements FinesDao {
-	public void insert(Fines fine)  {
-
+	public void insert(Fines fine) throws SQLException  {
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		String query = "insert into fine_details (fine_range_in_month,fine_amount) values (?,?)";
 		try {
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con = ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 
 		pstmt.setInt(1, fine.getFine_range());
 		pstmt.setInt(2, fine.getFine_amount());
 
-		int i = pstmt.executeUpdate();
+		 pstmt.executeUpdate();
 
-		System.out.println(i + "rows inserted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 
 	}
 
-	public void update(Fines fine) {
-
+	public void update(Fines fine) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		String query = "update fine_details set fine_amount=? where fine_range_in_month=?";
 		try {
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con = ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 
 		pstmt.setInt(1, fine.getFine_amount());
 		pstmt.setInt(2, fine.getFine_range());
@@ -43,35 +50,48 @@ public class FinesDaoImpl implements FinesDao {
 
 		System.out.println(i + "rows updated successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 
-	public void delete(Fines fine)  {
-
+	public void delete(Fines fine) throws SQLException  {
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		String query = "delete fine_details where fine_range_in_month=?";
 		try {
-		Connection con = ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con = ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 
 		pstmt.setInt(1, fine.getFine_range());
 
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 
-		System.out.println(i + "rows deleted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 
-	public int fineCalculation(Fines fine) {
+	public int fineCalculation(Fines fine) throws SQLException {
 		String query = "select fine_amount from fine_details where fine_range_in_month in ?";
 		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt = null;
+			 
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, fine.getFine_range());
 			ResultSet rs = pstmt.executeQuery();
@@ -80,6 +100,13 @@ public class FinesDaoImpl implements FinesDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		return 0;
 	}

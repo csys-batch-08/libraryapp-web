@@ -30,11 +30,11 @@ public class UserShowBookServlet extends HttpServlet {
 
 		BooksDaoImpl book = new BooksDaoImpl();
 		
-		List<Books> list=book.showBooks();
-		HttpSession session=request.getSession();
+		
 		
 		try {
-			
+			List<Books> list=book.showBooks();
+			HttpSession session=request.getSession();
 			request.setAttribute("booksList", list);
 			if((session.getAttribute("user") != null)) {
 				RequestDispatcher rd=request.getRequestDispatcher("showBook.jsp");

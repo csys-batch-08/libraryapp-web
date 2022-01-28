@@ -1,8 +1,6 @@
 package com.library.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class BookIssue {
@@ -14,26 +12,10 @@ public class BookIssue {
 	private LocalDate date_return;
 	private LocalDate date_returned;
 	private int fine_range;
-	private Date date_returndate;
 	
 	DateTimeFormatter formatter =
 		     DateTimeFormatter.ofPattern("dd-MM-yyyy");
-//	public Date getDate_issue() {
-//		return date_issue;
-//	}
-//	public void setDate_issue(Date date_issue) {
-//		this.date_issue = date_issue;
-//	}
-	
-//	public void setDate_return(Date date_return) {
-//		this.date_return = date_return;
-//	}
-//	public Date getDate_returned() {
-//		return date_returned;
-//	}
-//	public void setDate_returned(Date date_returned) {
-//		this.date_returned = date_returned;
-//	}
+
 	
 	public BookIssue(int book_issue_id, String user_name, String book_code, LocalDate date_issue, LocalDate date_return,
 			LocalDate date_returned, int fine_range) {
@@ -51,7 +33,6 @@ public class BookIssue {
 	}
 	public BookIssue() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public int getBook_issue_id() {
 		return book_issue_id;
@@ -88,27 +69,6 @@ public String getDate_returned() {
 	public void setDate_returned(LocalDate date_returned) {
 		this.date_returned = date_returned;
 	}
-	//	public void setDate_returned(LocalDate date_returned) {
-//		this.date_returned = date_returned;
-//	}
-	//	public String getDate_issue() {
-//		return date_issue;
-//	}
-//	public void setDate_issue(String date_issue) {
-//		this.date_issue = date_issue;
-//	}
-//	public String getDate_return() {
-//		return date_return;
-//	}
-//	public void setDate_return(String date_return) {
-//		this.date_return = date_return;
-//	}
-//	public String getDate_returned() {
-//		return date_returned;
-//	}
-//	public void setDate_returned(String date_returned) {
-//		this.date_returned = date_returned;
-//	}
 	public int getFine_range() {
 		return fine_range;
 	}
@@ -131,11 +91,9 @@ public String getDate_returned() {
 		this.fine_range = fine_range;
 	}
 	public BookIssue(int book_issue_no) {
-		// TODO Auto-generated constructor stub
 		this.book_issue_id=book_issue_no;
 	}
 	public BookIssue(int book_issue_no, LocalDate date_returned, String book_title) {
-		// TODO Auto-generated constructor stub
 
 		this.book_issue_id=book_issue_no;
 		this.date_returned = date_returned;
@@ -143,7 +101,6 @@ public String getDate_returned() {
 		
 	}
 	public BookIssue(int book_issue_no, String user_name2, String book_title) {
-		// TODO Auto-generated constructor stub
 	}
 	public String toString() {
 		return "BookIssue [book_issue_id=" + book_issue_id + ", user_name=" + user_name+ ", book_code=" + book_code

@@ -32,14 +32,11 @@ public class Suppliers {
 	}
 	public Suppliers() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Suppliers(String supplier_name) {
-		// TODO Auto-generated constructor stub
 		this.supplier_name=supplier_name;
 	}
 	public Suppliers(String supplier_name, long contact) {
-		// TODO Auto-generated constructor stub
 		this.supplier_name = supplier_name;
 		this.contact = contact;
 	}

@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.library.connection.*;
@@ -11,12 +12,14 @@ import com.library.dao.UsersDao;
 import com.library.model.*;
 
 public class UsersDaoImpl implements UsersDao{
-	public boolean insert(Users user)  {
+	public boolean insert(Users user) throws SQLException  {
 		
 		String query="insert into user_details (user_name,city,password,mobile_no,email_id) values (?,?,?,?,?)";
+		Connection con=null;
+		PreparedStatement pstmt =null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,user.getUser_name());
 		pstmt.setString(2, user.getCity());
@@ -29,19 +32,27 @@ public class UsersDaoImpl implements UsersDao{
 			return true;
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return false;
 		
-		//System.out.println(i+"rows inserted successfully");
 		
 	}
-public boolean adminInsert(Users user)  {
+public boolean adminInsert(Users user) throws SQLException  {
 		
 		String query="insert into user_details (user_name,city,user_role,password,mobile_no,email_id) values (?,?,?,?,?,?)";
+		Connection con=null;
+		PreparedStatement pstmt =null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,user.getUser_name());
 		pstmt.setString(2, user.getCity());
@@ -49,28 +60,34 @@ public boolean adminInsert(Users user)  {
 		pstmt.setString(4,user.getPassword());
 		pstmt.setLong(5, user.getMobile_no());
 		pstmt.setString(6, user.getEmail_id());
-		System.out.println(user.getCity()+user.getEmail_id()+user.getMobile_no()+user.getPassword()+user.getUser_name()+user.getUser_role());
-		int i = pstmt.executeUpdate();
+		int i=pstmt.executeUpdate();
 		if(i>0)
 			return true;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 		return false;
 		
-		//System.out.println(i+"rows inserted successfully");
 		
 	}
 	
 	
-public String fetch(Users user) {
+public String fetch(Users user) throws SQLException {
 	
 	String query="select user_name,password from user_details where user_name in ? and password in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt = con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt = con.prepareStatement(query);
 	pstmt.setString(1, user.getUser_name());
 	pstmt.setString(2, user.getPassword());
 	ResultSet rs = pstmt.executeQuery();
@@ -83,198 +100,228 @@ public String fetch(Users user) {
 		return rs1.getString(1);
 	}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return "invalid";
 	
 }
 
-//public void update(int fineAmount,String user_name) throws SQLException, ClassNotFoundException {
-//	
-//	String query="update user_details set fine_amount=? where user_name=?";
-//	Connection con = null;
-//
-//
-//			
-//		con = ConnectionUtil.getDBConnect();
-//	    PreparedStatement pstmt1 = con.prepareStatement(query);
-//		
-//		pstmt1.setInt(1,fineAmount);
-//		pstmt1.setString(2,user_name);
-//		int i=pstmt1.executeUpdate();
-//		System.out.println(fineAmount);
-//		
-//
-//	
-//	
-//	System.out.println("rows inserted successfully");
-//}
 
-public void delete(Users user)  {
+
+public void delete(Users user) throws SQLException  {
 	
 	String query="update user_details set user_role='invalid' where user_name in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt = con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt = con.prepareStatement(query);
 	
 	pstmt.setString(1,user.getUser_name());
 	
-     int i = pstmt.executeUpdate();
+     pstmt.executeUpdate();
 	
-	System.out.println(i+"rows deleted successfully");
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 }
 
 
-public void update(Users user)  {
-	// TODO Auto-generated method stub
+public void update(Users user) throws SQLException  {
 	String query="update user_details set fine_amount=? where user_name=?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setInt(1, user.getFine_amount());
 	pstmt.setString(2, user.getUser_name());
-	int i=pstmt.executeUpdate();
-	System.out.println(i);
+	pstmt.executeUpdate();
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	
 	
 }
-public int getUserWallet(Users user)  {
-	// TODO Auto-generated method stub
+public int getUserWallet(Users user) throws SQLException  {
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	String query="Select userwallet from user_details where user_name in ?";
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, user.getUser_name());
 	ResultSet rs=pstmt.executeQuery();
-	System.out.println(user.getUser_name());
 	
 	while(rs.next()) {
-		System.out.println(rs.getInt(1));
 		return rs.getInt(1);
 	}
 	
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
+	
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return 0;
 }
 
-public int getFine(Users user)  {
-	// TODO Auto-generated method stub
+public int getFine(Users user) throws SQLException  {
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	String query="Select fine_amount from user_details where user_name in ?";
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, user.getUser_name());
 	ResultSet rs=pstmt.executeQuery();
-	System.out.println(user.getUser_name());
 	
 	while(rs.next()) {
-		System.out.println(rs.getInt(1));
 		return rs.getInt(1);
 	}
 	
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return 0;
 }
-public int setFine(Users user)  {
-	// TODO Auto-generated method stub
+public int setFine(Users user) throws SQLException  {
 	String query1="select userwallet,fine_amount from user_details where user_name in ?";
 	String query="update user_details set userwallet =?,fine_amount=0 where user_name in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
+
+	PreparedStatement pstmt1 =null;
 	int userWallet=0;
 	try {
-	Connection con=ConnectionUtil.getDBConnect();
-	PreparedStatement pstmt=con.prepareStatement(query1);
+	 con=ConnectionUtil.getDBConnect();
+	 pstmt=con.prepareStatement(query1);
 	
 	pstmt.setString(1, user.getUser_name());
 	ResultSet rs=pstmt.executeQuery();
 	
 	while(rs.next()) {
 		userWallet=rs.getInt(1)-user.getFine_amount();
-		System.out.println(user.getFine_amount());
-		
-		System.out.println(rs.getInt(1));
-		System.out.println(rs.getInt(2));
-	
 	}
 	
-	PreparedStatement pstmt1=con.prepareStatement(query);
-	System.out.println(userWallet);
+	 pstmt1=con.prepareStatement(query);
 	pstmt1.setInt(1, userWallet);
-	//pstmt1.setInt(2, u3.getFine_amount());
 	pstmt1.setString(2, user.getUser_name());
 	pstmt1.executeUpdate();
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(pstmt1!=null) {
+			pstmt1.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return userWallet;
 	
 	
 }
-public boolean forgotPassword(Users users) {
-	// TODO Auto-generated method stub
+public boolean forgotPassword(Users users) throws SQLException {
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	String query="update user_details set password=? where user_name=?";
 	try {
 		
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt=con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt=con.prepareStatement(query);
 		pstmt.setString(1, users.getPassword());
 		pstmt.setString(2, users.getUser_name());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
-			System.out.println("password updated");
 			return true;
 		}
 		
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return false;
 	
 }
 
-public int walletRecharge(Users user) {
+public int walletRecharge(Users user) throws SQLException {
 	
 	String query="update user_details set userwallet=(userwallet+500) where user_name in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 try {
-		
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt=con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt=con.prepareStatement(query);
 		pstmt.setString(1, user.getUser_name());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
-			System.out.println("wallet updated");
 		}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}finally {
+		if(pstmt!=null) {
+			pstmt.close();
+		}
+		if(con!=null) {
+			con.close();
+		}
 	}
 	return 1;
 }
 
-public List<Users> userList() {
+public List<Users> userList() throws SQLException {
 	String query="select USER_NAME,CITY,MOBILE_NO,EMAIL_ID,USERWALLET from user_details where user_role in 'user'";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
 			
-			Connection con=ConnectionUtil.getDBConnect();
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 con=ConnectionUtil.getDBConnect();
+			 pstmt=con.prepareStatement(query);
 			ResultSet rs=pstmt.executeQuery();
-			List<Users> userList=new ArrayList();
+			List<Users> userList=new ArrayList<Users>();
 			while(rs.next()) {
 				Users user=new Users();
 				user.setUser_name(rs.getString(1));
@@ -286,67 +333,95 @@ public List<Users> userList() {
 			}
 			return userList;
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
-		return null;
+		return Collections.emptyList();
 	
 }
-public boolean unameCheck(Users user) {
-	// TODO Auto-generated method stub
+public boolean unameCheck(Users user) throws SQLException {
 	String query="select user_name from user_details where user_name in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
 			
-			Connection con=ConnectionUtil.getDBConnect();
+			 con=ConnectionUtil.getDBConnect();
 			
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getUser_name());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;
 			}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	
 	return false;
 }
-public boolean emailCheck(Users user) {
-	// TODO Auto-generated method stub
+public boolean emailCheck(Users user) throws SQLException {
+
 	String query="select email_id from user_details where email_id in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
 			
-			Connection con=ConnectionUtil.getDBConnect();
+			 con=ConnectionUtil.getDBConnect();
 			
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getEmail_id());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;
 			}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	return false;
 }
-public boolean mobileCheck(Users user) {
-	// TODO Auto-generated method stub
+public boolean mobileCheck(Users user) throws SQLException {
 	String query="select mobile_no from user_details where mobile_no in ?";
+	Connection con=null;
+	PreparedStatement pstmt =null;
 	try {
 			
-			Connection con=ConnectionUtil.getDBConnect();
+			 con=ConnectionUtil.getDBConnect();
 			
-			PreparedStatement pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(query);
 			pstmt.setLong(1, user.getMobile_no());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;
 			}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	return false;
 }

@@ -1,9 +1,8 @@
 package com.library.servlet;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.model.Books;
@@ -29,7 +27,12 @@ public class AdminBookListServlet extends HttpServlet {
 
 		BooksDaoImpl user = new BooksDaoImpl();
 
-		List<Books> bookList = user.availableBookList();
+		List<Books> bookList=null;
+		try {
+			bookList = user.availableBookList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		request.setAttribute("availableBookList", bookList);
 		RequestDispatcher rd = request.getRequestDispatcher("availableBookList.jsp");

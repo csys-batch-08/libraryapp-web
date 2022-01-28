@@ -30,6 +30,7 @@ public class BookReturnAdmin extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		HttpSession session = request.getSession();
 		String userName=request.getParameter("uname1");
 		String password=request.getParameter("password1");
@@ -92,7 +93,9 @@ public class BookReturnAdmin extends HttpServlet {
 	session.setAttribute("AdminError", "adminWrong");
 	response.sendRedirect("bookReturnAdmin.jsp");
 }
+}catch (Exception e) {
+	e.printStackTrace();
 }
 	
 	
-}
+}}

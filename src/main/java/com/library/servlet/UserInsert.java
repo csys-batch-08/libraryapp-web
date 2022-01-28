@@ -1,6 +1,8 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +33,11 @@ public class UserInsert extends HttpServlet {
 		
 		Users user=new Users(userName,city,role,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
-		userDao.adminInsert(user);
+		try {
+			userDao.adminInsert(user);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		response.sendRedirect("admin.jsp");
 	}

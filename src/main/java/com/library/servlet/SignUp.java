@@ -1,7 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +37,7 @@ public class SignUp extends HttpServlet {
 		UsersDaoImpl userDao=new UsersDaoImpl();
 		
 		
-			
+			try {
 			if(userDao.unameCheck(user)) {
 				request.setAttribute("unameExists", "uname");
 				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
@@ -58,7 +58,9 @@ public class SignUp extends HttpServlet {
 				
 				response.sendRedirect("index.jsp");
 			}
-		
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
 		
 		
 		

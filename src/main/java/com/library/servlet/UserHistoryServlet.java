@@ -1,7 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,10 +32,13 @@ public class UserHistoryServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		String userName=session.getAttribute("user").toString();
 		BookIssue books=new BookIssue(userName);
+		try {
 						List<BookIssue> bookIssueList = bookIssue.userHistory(books);
 						request.setAttribute("bookIssueList", bookIssueList);
 						RequestDispatcher rd=request.getRequestDispatcher("userHistory.jsp");
 						rd.forward(request, response);
-	}
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}}
 
 }

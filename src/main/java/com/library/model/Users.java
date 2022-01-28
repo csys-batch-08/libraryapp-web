@@ -56,7 +56,6 @@ public class Users {
 
 	public Users() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Users(String user_name, String city, String password, long mobile_no,String email_id) {
@@ -109,24 +108,20 @@ public class Users {
 	}
 
 	public Users(int user_id) {
-		// TODO Auto-generated constructor stub
 		this.user_id=user_id;
 	}
 
 	public Users(String user_name, String password) {
-		// TODO Auto-generated constructor stub
 		this.user_name=user_name;
 		this.password=password;
 	}
 
 	public Users(int fineAmount, String user_name2) {
-		// TODO Auto-generated constructor stub
 		this.fine_amount=fineAmount;
 		this.user_name=user_name2;
 	}
 
 	public Users(String user_name2) {
-		// TODO Auto-generated constructor stub
 		this.user_name=user_name2;
 	}
 

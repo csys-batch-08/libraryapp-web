@@ -1,7 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -34,7 +34,12 @@ public class BookReturnServlet extends HttpServlet {
 		String bookName=null;
 		Books books=new Books(bookName,userName);
 
-		List<Books> returnBooks=book.returnBookList(books);
+		List<Books> returnBooks=null;
+		try {
+			returnBooks = book.returnBookList(books);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		request.setAttribute("returnBookList", returnBooks);
 		RequestDispatcher rd=request.getRequestDispatcher("returnBook.jsp");
 		rd.forward(request, response);

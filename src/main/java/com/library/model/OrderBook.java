@@ -47,16 +47,13 @@ public class OrderBook {
 		this.status = status;
 	}
 	public OrderBook(String supplier_id, String book_name) {
-		// TODO Auto-generated constructor stub
 		this.supplier_id = supplier_id;
 		this.book_name = book_name;
 	}
 	public OrderBook(String book_name) {
-		// TODO Auto-generated constructor stub
 		this.book_name = book_name;
 	}
 	public OrderBook(String user_name, String author, String book_name) {
-		// TODO Auto-generated constructor stub
 		this.user_name=user_name;
 		this.book_name = book_name;
 		this.author = author;
@@ -64,7 +61,6 @@ public class OrderBook {
 	
 	public OrderBook() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

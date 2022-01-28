@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -36,7 +37,12 @@ public class SupplierLoginServlet extends HttpServlet {
 				OrderBook order=new OrderBook(userName,author,bookName);
 				
 				
-					List<OrderBook> orderBook = obDao.view(order);
+					List<OrderBook> orderBook=null;
+					try {
+						orderBook = obDao.view(order);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				if (orderBook!=null) {
 					request.setAttribute("OrderBookList", orderBook);
 					RequestDispatcher rd=request.getRequestDispatcher("supplierLogin.jsp");

@@ -1,6 +1,8 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,20 +32,26 @@ public class RequestAdminServlet extends HttpServlet {
 		String bookName=session.getAttribute("newbook").toString();
 		Users u1 = new Users(uname, password);
 		UsersDaoImpl user=new UsersDaoImpl();
-		String adminCheck = user.fetch(u1);
-		if (adminCheck.equals("admin")) {
-			OrderBook order=new OrderBook(supplierName, bookName);
-			OrderBookDaoImpl obDao=new OrderBookDaoImpl();
-			obDao.update(order);
-			response.sendRedirect("user.jsp");
-
+		
+		String adminCheck;
+		try {
+			adminCheck = user.fetch(u1);
+			if (adminCheck.equals("admin")) {
+				OrderBook order=new OrderBook(supplierName, bookName);
+				OrderBookDaoImpl obDao=new OrderBookDaoImpl();
+				obDao.update(order);
+				response.sendRedirect("user.jsp");
 		}else {
 			session.setAttribute("AdminError", "adminWrong");
 			response.sendRedirect("requestAdmin.jsp");
-		}
+		}} catch (SQLException e) {
+			e.printStackTrace();
+		}}
+		
+
+		
 		
 		
 
 	}
 
-}

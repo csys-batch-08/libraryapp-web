@@ -1,12 +1,14 @@
 package com.library.dao;
 
+import java.sql.SQLException;
+
 import com.library.model.BookIssue;
 
 public interface BookIssueDao {
-	public void insert(BookIssue bookIssue);
-	public void update(BookIssue bookIssue);
-	public void delete(BookIssue bookIssue);
-	public int getBookIssueNo(BookIssue book);
-	public int returnBookIssue(BookIssue bookIssue);
+	public int insert(BookIssue bookIssue) throws SQLException;
+	public void update(BookIssue bookIssue) throws SQLException;
+	public void delete(BookIssue bookIssue) throws SQLException;
+	public int getBookIssueNo(BookIssue book) throws SQLException;
+	public int returnBookIssue(BookIssue bookIssue) throws SQLException;
 
 }

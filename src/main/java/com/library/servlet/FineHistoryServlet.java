@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -29,7 +30,12 @@ public class FineHistoryServlet extends HttpServlet {
 		
 		FineHistoryDaoImpl fineHist = new FineHistoryDaoImpl();
 
-		List<FineHistory> fineList= fineHist.view();
+		List<FineHistory> fineList=null;
+		try {
+			fineList = fineHist.view();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		request.setAttribute("fineList", fineList);
 		RequestDispatcher rd=request.getRequestDispatcher("showFineHistory.jsp");

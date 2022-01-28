@@ -8,61 +8,85 @@ import com.library.dao.SuppliersDao;
 import com.library.model.*;
 
 public class SuppliersDaoImpl implements SuppliersDao{
-	public void insert(Suppliers supply)  {
+	public void insert(Suppliers supply) throws SQLException  {
 		
 		 String   query="insert into supplier_details (supplier_name,address,contact) values (?,?,?)";
+		 Connection con = null;
+			PreparedStatement pstmt=null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1, supply.getSupplier_name());
 		pstmt.setString(2, supply.getAddress());
 		pstmt.setLong(3, supply.getContact());
 	
 		
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		
-		System.out.println(i+"rows inserted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 		
 	}
 	
-	public void update(Suppliers supply)  {
+	public void update(Suppliers supply) throws SQLException  {
 	    String query="update supplier_details set contact=? where supplier_name=?";
+	    Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		
+			con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(2,supply.getSupplier_name());
 		pstmt.setLong(1,supply.getContact());
 		
-         int i = pstmt.executeUpdate();
+         pstmt.executeUpdate();
 		
-		System.out.println(i+"rows updated successfully");
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 	
-public void delete(Suppliers supply)  {
+public void delete(Suppliers supply) throws SQLException  {
 		
 		String query="delete supplier_details where supplier_name=?";
+		Connection con = null;
+		PreparedStatement pstmt=null;
 		try {
-		Connection con=ConnectionUtil.getDBConnect();
-		PreparedStatement pstmt = con.prepareStatement(query);
+		 con=ConnectionUtil.getDBConnect();
+		 pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1,supply.getSupplier_name());
 		
-         int i = pstmt.executeUpdate();
+        pstmt.executeUpdate();
 		
-		System.out.println(i+"rows deleted successfully");
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+			if(con!=null) {
+				con.close();
+			}
 		}
 	}
 

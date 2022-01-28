@@ -2,6 +2,7 @@ package com.library.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,7 @@ public class BookAvailableServlet extends HttpServlet {
    
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 
 		HttpSession session = request.getSession();
 		String userName=request.getParameter("uname");
@@ -64,6 +66,8 @@ public class BookAvailableServlet extends HttpServlet {
 			session.setAttribute("AdminError", "adminWrong");
 			response.sendRedirect("bookAvailable.jsp");
 		}
-	}
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}}
 
 }

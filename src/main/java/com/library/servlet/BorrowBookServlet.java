@@ -1,8 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
-
-
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,18 +29,25 @@ public class BorrowBookServlet extends HttpServlet {
 		session.setAttribute("bookname", bookName);
 		BooksDaoImpl book=new BooksDaoImpl();
 		Books b1 = new Books(bookName, userName);
-		String availability = book.bookBorrow(b1);
-		int count=book.eligle(b1);
+		String availability=null;
+		int count=0;
+		try {
+			availability = book.bookBorrow(b1);
+			count=book.eligle(b1);
+			if(count>=2) {
+				session.setAttribute("eligible", "hi");
+				response.sendRedirect("user.jsp");
+			}else if (availability.equals("available")) {
+				response.sendRedirect("bookAvailable.jsp");
+			}else {
+				response.sendRedirect("bookUnavailable.jsp");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 			
-				if(count>=2) {
-					session.setAttribute("eligible", "hi");
-					response.sendRedirect("user.jsp");
-				}else if (availability.equals("available")) {
-					response.sendRedirect("bookAvailable.jsp");
-				}else {
-					response.sendRedirect("bookUnavailable.jsp");
-				}
+				
 			}
 		
 	

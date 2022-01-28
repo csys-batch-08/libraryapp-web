@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,7 +27,12 @@ public class BookIssueServlet extends HttpServlet {
 		
 
 		BookIssueDaoImpl user = new BookIssueDaoImpl();
-		List<BookIssue> bookIssue= user.bookIssueList();
+		List<BookIssue> bookIssue=null;
+		try {
+			bookIssue = user.bookIssueList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		request.setAttribute("BookIssueList", bookIssue);
 		RequestDispatcher rd=request.getRequestDispatcher("bookIssueList.jsp");
 		rd.forward(request, response);

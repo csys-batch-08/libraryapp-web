@@ -51,16 +51,13 @@ public class Books {
 	}
 	public Books() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Books(String book_title) {
-		// TODO Auto-generated constructor stub
 		this.book_title=book_title;
 	}
 	public Books(String book_title, String user_name) {
 		this.book_title=book_title;
 		this.user_name=user_name;
-		// TODO Auto-generated constructor stub
 	}
 	public String getBook_code() {
 		return book_code;
@@ -107,13 +104,11 @@ public class Books {
 		this.author = author;
 	}
 	public Books(String book_title2, int book_issue_no) {
-		// TODO Auto-generated constructor stub
 		this.book_title=book_title2;
 		this.book_issue_id=book_issue_no;
 		
 	}
 	public Books(int book_issue_no) {
-		// TODO Auto-generated constructor stub
 		this.book_issue_id=book_issue_no;
 	}
 	@Override

@@ -38,7 +38,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	UsersDaoImpl user = new UsersDaoImpl();
 	Users u1 = new Users(userName, password);
 	
-	
+	try {
 	String val = user.fetch(u1);
 	session.setAttribute("userRole", val);
 	
@@ -106,5 +106,8 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		
 	}
-}
+}catch(Exception e) {
+	e.printStackTrace();
+	
+}}
 }
