@@ -46,7 +46,7 @@ public class FinesDaoImpl implements FinesDao {
 		pstmt.setInt(1, fine.getFineAmount());
 		pstmt.setInt(2, fine.getFineRange());
 
-		int i = pstmt.executeUpdate();
+		 pstmt.executeUpdate();
 
 		}catch (Exception e) {
 			e.getMessage();
