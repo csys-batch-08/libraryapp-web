@@ -23,7 +23,7 @@ public class ReturnBookServlet extends HttpServlet {
     
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
 		String bookName=request.getParameter("bookreturn");
