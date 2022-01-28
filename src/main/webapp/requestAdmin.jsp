@@ -23,6 +23,7 @@
 <body>
 
 <fieldset id="register">
+<legend></legend>
 <h3>Here After admin will takeover</h3>
 <h3>Hi admin Enter your user_name</h3>
 <form action="requestadmin" method="post">

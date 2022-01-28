@@ -71,11 +71,12 @@ overflow:hidden;
 </div>
 <h1>The Books To be Returned</h1>
 <fieldset id="register">
+<legend></legend>
 <form action="bookReturn">
 
 
 <c:forEach var="returnBook" items="${returnBookList}">
-${returnBook.book_title}&emsp;&ensp;<a href="bookReturn?bookreturn=${returnBook.book_title}">Return Book</a><br><br>
+${returnBook.bookTitle}&emsp;&ensp;<a href="bookReturn?bookreturn=${returnBook.bookTitle}">Return Book</a><br><br>
 
 </c:forEach>
 

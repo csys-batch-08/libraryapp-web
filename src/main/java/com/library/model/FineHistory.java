@@ -5,43 +5,44 @@ public class FineHistory {
 	public FineHistory() {
 		super();
 	}
-	private String user_name;
-	private int fine_amount;
-	private String collected_time;
+	private String userName;
+	private int fineAmount;
+	private String collectedTime;
+	
 	public String getUser_name() {
-		return user_name;
+		return userName;
 	}
 	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+		this.userName = user_name;
 	}
 	public int getFine_amount() {
-		return fine_amount;
+		return fineAmount;
 	}
 	public void setFine_amount(int fine_amount) {
-		this.fine_amount = fine_amount;
+		this.fineAmount = fine_amount;
 	}
 	
-	public String getCollected_time() {
-		return collected_time;
+	public String getCollectedTime() {
+		return collectedTime;
 	}
-	public void setCollected_time(String collected_time) {
-		this.collected_time = collected_time;
+	public void setCollectedTime(String collected_time) {
+		this.collectedTime = collected_time;
 	}
 	public FineHistory(String user_name, int fine_amount) {
 		super();
-		this.user_name = user_name;
-		this.fine_amount = fine_amount;
+		this.userName = user_name;
+		this.fineAmount = fine_amount;
 	}
 	public FineHistory(String user_name, int fine_amount, String collected_time) {
 		super();
-		this.user_name = user_name;
-		this.fine_amount = fine_amount;
-		this.collected_time = collected_time;
+		this.userName = user_name;
+		this.fineAmount = fine_amount;
+		this.collectedTime = collected_time;
 	}
 	@Override
 	public String toString() {
-		return "FineHistory [user_name=" + user_name + ", fine_amount=" + fine_amount + ", collected_time="
-				+ collected_time + "]";
+		return "FineHistory [user_name=" + userName + ", fine_amount=" + fineAmount + ", collectedTime="
+				+ collectedTime + "]";
 	}
 	
 	

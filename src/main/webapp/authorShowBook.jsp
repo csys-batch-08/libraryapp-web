@@ -81,24 +81,26 @@ font-style: italic;
   <a href="logout.jsp">Logout</a>  
 </div>
 <h2>Book List</h2>
-<table class="table table-hover" style="font-size:larger;">
-<th><b><h3>BookName</h3></b></th>
-<th><b><h3>Category</h3></b></th>
-<th><b><h3>Author</h3></b></th>
-
-
 <div class="container-fluid">
+<table class="table table-hover" style="font-size:larger;">
+<caption></caption>
+<tr>
+<th id="head1"><h3>BookName</h3></th>
+<th id="head2"><h3>Category</h3></th>
+<th id="head3"><h3>Author</h3></th>
+</tr>
 
-<form action="bookName" method="post">
+
+
 <c:forEach var="books" items="${booksList}">
 <tr>
-<td>${books.book_title}</td>
+<td>${books.bookTitle}</td>
 <td>${books.author}</td>
 <td>${books.category}</td>
 </tr>
 </c:forEach>
 </table>
 </div>
-</form>	
+
 </body>
 </html>

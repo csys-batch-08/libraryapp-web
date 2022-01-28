@@ -31,7 +31,7 @@
 <body>
 
 <fieldset id="register">
-
+<legend></legend>
 	<p id="para">${userName }</p><p>you have fine of rs</p>${fineamount}
 	<p>	You have to pay now</p>
 	<button type="submit"><a href="returnSuccess">Pay now</a></button>

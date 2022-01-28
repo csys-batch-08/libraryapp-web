@@ -75,7 +75,7 @@ overflow:hidden;
 <br>
 <c:forEach var="authorBook" items="${authorBookList}">
 
-<a href="bookName?bookname=${authorBook.book_title }" style="text-decoration: none;color:white;">${authorBook.book_title}</a><br>
+<a href="bookName?bookname=${authorBook.bookTitle }" style="text-decoration: none;color:white;">${authorBook.bookTitle}</a><br>
 
 
 </c:forEach>

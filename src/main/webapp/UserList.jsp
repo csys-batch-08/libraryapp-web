@@ -79,18 +79,21 @@ overflow:hidden;}
 <h1>User List</h1>
 <div class="container-fluid">
 <table class="table table-hover" style="font-size:larger;">
-<th><b>User Name</b></th>
-<th><b>City</b></th>
-<th><b>Contact No</b></th>
-<th><b>Email</b></th>
-<th><b>User Wallet</b></th>
+<caption></caption>
+<tr>
+<th id="head"><strong>User Name</strong></th>
+<th id="head"><strong>City</strong></th>
+<th id="head"><strong>Contact No</strong></th>
+<th id="head"><strong>Email</strong></th>
+<th id="head"><strong>User Wallet</strong></th>
+</tr>
 <c:forEach var="users" items="${adminUserList }">
 
 <tr>
-<td>${users.user_name }</td>
+<td>${users.userName }</td>
 <td>${users.city }</td>
-<td>${users.mobile_no }</td>
-<td> ${users.email_id }</td>
+<td>${users.mobileNo }</td>
+<td> ${users.emailId }</td>
 <td> ${users.userWallet }</td>
 </tr>	
 </c:forEach>			

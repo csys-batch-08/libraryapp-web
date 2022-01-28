@@ -35,6 +35,7 @@ text-decoration:none;
 <body>
 
 <fieldset id="register">
+<legend></legend>
 <h3>The Book is not available</h3>
 
 <a href="bookPrerequest">Prerequest Book</a><br><br>

@@ -28,6 +28,7 @@
 
 
 <fieldset id="register">
+<legend></legend>
 <form>			
 <label>Card Number</label><br>
 <input type="text" id="card1" required pattern="[0-9]{16}" oninvalid="setCustomValidity('Card number must have 16 digits')" onchange="try{setCustomValidity('')}catch(e){}"  ><br><br>

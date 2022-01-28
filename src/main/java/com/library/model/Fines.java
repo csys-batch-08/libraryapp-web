@@ -2,30 +2,30 @@ package com.library.model;
 
 public class Fines {
 	
-	private int fine_range;
-	private int fine_amount;
-	public int getFine_range() {
-		return fine_range;
+	private int fineRange;
+	private int fineAmount;
+	public int getFineRange() {
+		return fineRange;
 	}
-	public void setFine_range(int fine_range) {
-		this.fine_range = fine_range;
+	public void setFineRange(int fine_range) {
+		this.fineRange = fine_range;
 	}
-	public int getFine_amount() {
-		return fine_amount;
+	public int getFineAmount() {
+		return fineAmount;
 	}
-	public void setFine_amount(int fine_amount) {
-		this.fine_amount = fine_amount;
+	public void setFineAmount(int fine_amount) {
+		this.fineAmount = fine_amount;
 	}
 	public Fines(int fine_range, int fine_amount) {
 		super();
-		this.fine_range = fine_range;
-		this.fine_amount = fine_amount;
+		this.fineRange = fine_range;
+		this.fineAmount = fine_amount;
 	}
 	public Fines() {
 		super();
 	}
 	public Fines(int fine_range) {
-		this.fine_range=fine_range;
+		this.fineRange=fine_range;
 	}
 	
 

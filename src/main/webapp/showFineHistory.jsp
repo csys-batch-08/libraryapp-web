@@ -71,15 +71,17 @@ overflow:hidden;
 <div class="container">
 <h1>Fine History</h1>
 <table class="table table-hover" style="color:white;">
-<th><b>User Name</b></th>
-<th><b>Fine Amount</b></th>
-<th><b>Collected Time</b></th>
-
+<caption></caption>
+<tr>
+<th id="head"><b>User Name</b></th>
+<th id="head"><b>Fine Amount</b></th>
+<th id="head"><b>Collected Time</b></th>
+</tr>
 	<c:forEach var="fine" items="${fineList}">				
 			<tr>
 <td>${fine.user_name}</td>
 <td>${fine.fine_amount}</td>
-<td>${fine.collected_time}</td>
+<td>${fine.collectedTime}</td>
 </tr>	
 				
 			</c:forEach>

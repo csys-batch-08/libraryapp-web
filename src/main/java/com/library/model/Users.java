@@ -2,14 +2,14 @@ package com.library.model;
 
 public class Users {
 	
-	private String user_name;
+	private String userName;
 	private String city;
 	private String password;
-	private long mobile_no;
-	private String email_id;
-	private int user_id;
-	private int fine_amount;
-	private String user_role;
+	private long mobileNo;
+	private String emailId;
+	private int userId;
+	private int fineAmount;
+	private String userRole;
 	private int userWallet;
 	
 	public int getUserWallet() {
@@ -22,36 +22,36 @@ public class Users {
 
 	public Users(String user_name, String city, String user_role, String password, long mobile_no, String email_id) {
 		super();
-		this.user_name = user_name;
+		this.userName = user_name;
 		this.city = city;
 		this.password = password;
-		this.mobile_no = mobile_no;
-		this.email_id = email_id;
-		this.user_role = user_role;
+		this.mobileNo = mobile_no;
+		this.emailId = email_id;
+		this.userRole = user_role;
 	}
 
-	public String getUser_role() {
-		return user_role;
+	public String getUserRole() {
+		return userRole;
 	}
 
-	public void setUser_role(String user_role) {
-		this.user_role = user_role;
+	public void setUserRole(String user_role) {
+		this.userRole = user_role;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int user_id) {
+		this.userId = user_id;
 	}
 
-	public int getFine_amount() {
-		return fine_amount;
+	public int getFineAmount() {
+		return fineAmount;
 	}
 
-	public void setFine_amount(int fine_amount) {
-		this.fine_amount = fine_amount;
+	public void setFineAmount(int fine_amount) {
+		this.fineAmount = fine_amount;
 	}
 
 	public Users() {
@@ -60,19 +60,19 @@ public class Users {
 
 	public Users(String user_name, String city, String password, long mobile_no,String email_id) {
 		super();
-		this.user_name = user_name;
+		this.userName = user_name;
 		this.city = city;
 		this.password = password;
-		this.mobile_no = mobile_no;
-		this.email_id = email_id;
+		this.mobileNo = mobile_no;
+		this.emailId = email_id;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String user_name) {
+		this.userName = user_name;
 	}
 
 	public String getCity() {
@@ -91,44 +91,44 @@ public class Users {
 		this.password = password;
 	}
 
-	public long getMobile_no() {
-		return mobile_no;
+	public long getMobileNo() {
+		return mobileNo;
 	}
 
-	public void setMobile_no(long mobile_no) {
-		this.mobile_no = mobile_no;
+	public void setMobileNo(long mobile_no) {
+		this.mobileNo = mobile_no;
 	}
 
-	public String getEmail_id() {
-		return email_id;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	public void setEmailId(String email_id) {
+		this.emailId = email_id;
 	}
 
 	public Users(int user_id) {
-		this.user_id=user_id;
+		this.userId=user_id;
 	}
 
 	public Users(String user_name, String password) {
-		this.user_name=user_name;
+		this.userName=user_name;
 		this.password=password;
 	}
 
 	public Users(int fineAmount, String user_name2) {
-		this.fine_amount=fineAmount;
-		this.user_name=user_name2;
+		this.fineAmount=fineAmount;
+		this.userName=user_name2;
 	}
 
 	public Users(String user_name2) {
-		this.user_name=user_name2;
+		this.userName=user_name2;
 	}
 
 	@Override
 	public String toString() {
-		return "Users [user_name=" + user_name + ", city=" + city + ", password=" + password + ", mobile_no="
-				+ mobile_no + ", email_id=" + email_id + ", user_id=" + user_id + ", fine_amount=" + fine_amount + ", userwallet=\" + userWallet + \" ]";
+		return "Users [userName=" + userName + ", city=" + city + ", password=" + password + ", mobileNo="
+				+ mobileNo + ", emailId=" + emailId + ", userId=" + userId + ", fineAmount=" + fineAmount + ", userwallet=\" + userWallet + \" ]";
 	}
 
 	

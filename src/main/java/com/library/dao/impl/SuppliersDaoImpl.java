@@ -18,7 +18,7 @@ public class SuppliersDaoImpl implements SuppliersDao{
 		
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1, supply.getSupplier_name());
+		pstmt.setString(1, supply.getSupplierName());
 		pstmt.setString(2, supply.getAddress());
 		pstmt.setLong(3, supply.getContact());
 	
@@ -47,7 +47,7 @@ public class SuppliersDaoImpl implements SuppliersDao{
 			con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(2,supply.getSupplier_name());
+		pstmt.setString(2,supply.getSupplierName());
 		pstmt.setLong(1,supply.getContact());
 		
          pstmt.executeUpdate();
@@ -74,7 +74,7 @@ public void delete(Suppliers supply) throws SQLException  {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,supply.getSupplier_name());
+		pstmt.setString(1,supply.getSupplierName());
 		
         pstmt.executeUpdate();
 		

@@ -85,20 +85,23 @@ color:white;
 <div class="container">
 <h1 style="float:left;">Book Borrow History</h1>
 <table class="table table-hover" style="color:white;">
-<th><b>Book Name</b></th>
-<th><b>Borrowed Date</b></th>
-<th><b>Actual Return Date</b></th>
-<th><b>Returned Date</b></th>
-<th><b>Fine Range</b></th>
-
+<caption>
+</caption>
+<tr>
+<th><strong>Book Name</strong></th>
+<th><strong>Borrowed Date</strong></th>
+<th><strong>Actual Return Date</strong></th>
+<th><strong>Returned Date</strong></th>
+<th><strong>Fine Range</strong></th>
+</tr>
 <c:forEach var="bookIssue" items="${bookIssueList }">					
 			<tr>
 
-<td>  ${bookIssue.book_code }</td>
-<td>${bookIssue.date_issue }  </td>
-<td>${bookIssue.date_return }</td>
-<td>${bookIssue.date_returned }</td>
-<td>${bookIssue.fine_range }</td>
+<td>  ${bookIssue.bookCode }</td>
+<td>${bookIssue.dateIssue }  </td>
+<td>${bookIssue.dateReturn }</td>
+<td>${bookIssue.dateReturned }</td>
+<td>${bookIssue.fineRange }</td>
 
 </tr>	
 </c:forEach>				

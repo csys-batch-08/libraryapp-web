@@ -1,10 +1,10 @@
 package com.library.model;
 
 public class OrderBook {
-	private String user_name;
-	private String book_name;
+	private String userName;
+	private String bookName;
 	private String author;
-	private String supplier_id;
+	private String supplierId;
 	private String status;
 	
 	
@@ -15,17 +15,17 @@ public class OrderBook {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String user_name) {
+		this.userName = user_name;
 	}
-	public String getBook_name() {
-		return book_name;
+	public String getBookName() {
+		return bookName;
 	}
-	public void setBook_name(String book_name) {
-		this.book_name = book_name;
+	public void setBookName(String book_name) {
+		this.bookName = book_name;
 	}
 	public String getAuthor() {
 		return author;
@@ -33,29 +33,29 @@ public class OrderBook {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getSupplier_id() {
-		return supplier_id;
+	public String getSupplierId() {
+		return supplierId;
 	}
-	public void setSupplier_id(String supplier_id) {
-		this.supplier_id = supplier_id;
+	public void setSupplierId(String supplier_id) {
+		this.supplierId = supplier_id;
 	}
 	public OrderBook(String user_name,String book_name, String author, String status) {
 		super();
-		this.user_name=user_name;
-		this.book_name = book_name;
+		this.userName=user_name;
+		this.bookName = book_name;
 		this.author = author;
 		this.status = status;
 	}
 	public OrderBook(String supplier_id, String book_name) {
-		this.supplier_id = supplier_id;
-		this.book_name = book_name;
+		this.supplierId = supplier_id;
+		this.bookName = book_name;
 	}
 	public OrderBook(String book_name) {
-		this.book_name = book_name;
+		this.bookName = book_name;
 	}
 	public OrderBook(String user_name, String author, String book_name) {
-		this.user_name=user_name;
-		this.book_name = book_name;
+		this.userName=user_name;
+		this.bookName = book_name;
 		this.author = author;
 	}
 	
@@ -64,7 +64,7 @@ public class OrderBook {
 	}
 	@Override
 	public String toString() {
-		return "OrderBookPojo [user_name=" + book_name +",book_name=" + book_name + ", author=" + author + ", supplier_id=" + supplier_id + "]";
+		return "OrderBookPojo [userName=" + bookName +",bookName=" + bookName + ", author=" + author + ", supplierId=" + supplierId + "]";
 	}
 	
 	

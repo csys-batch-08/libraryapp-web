@@ -17,8 +17,8 @@ public class FinesDaoImpl implements FinesDao {
 		 con = ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 
-		pstmt.setInt(1, fine.getFine_range());
-		pstmt.setInt(2, fine.getFine_amount());
+		pstmt.setInt(1, fine.getFineRange());
+		pstmt.setInt(2, fine.getFineAmount());
 
 		 pstmt.executeUpdate();
 
@@ -43,8 +43,8 @@ public class FinesDaoImpl implements FinesDao {
 		 con = ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 
-		pstmt.setInt(1, fine.getFine_amount());
-		pstmt.setInt(2, fine.getFine_range());
+		pstmt.setInt(1, fine.getFineAmount());
+		pstmt.setInt(2, fine.getFineRange());
 
 		int i = pstmt.executeUpdate();
 
@@ -69,7 +69,7 @@ public class FinesDaoImpl implements FinesDao {
 		 con = ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 
-		pstmt.setInt(1, fine.getFine_range());
+		pstmt.setInt(1, fine.getFineRange());
 
 		pstmt.executeUpdate();
 
@@ -93,7 +93,7 @@ public class FinesDaoImpl implements FinesDao {
 			con = ConnectionUtil.getDBConnect();
 			 
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, fine.getFine_range());
+			pstmt.setInt(1, fine.getFineRange());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				return rs.getInt(1);

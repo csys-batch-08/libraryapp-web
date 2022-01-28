@@ -92,14 +92,17 @@ color:white;
   <a href="logout.jsp">Logout</a>  
 </div>
 <div class="container-fluid">
-<table class="table table-hover" style="font-size:larger;">
-<th><b>BookName</b></th>
-<th><b>Author</b></th>
-<th><b>Category</b></th>
-<th><b>Borrow</b></th>
-
-
 <form action="bookName" method="post">
+<table class="table table-hover" style="font-size:larger;">
+<caption></caption>
+<tr>
+<th id="head">BookName</th>
+<th id="head">Author</th>
+<th id="head">Category</th>
+<th id="head">Borrow</th>
+
+</tr>
+
 <c:forEach var="books" items="${booksList}">
 <tr>
 <td>${books.book_title}</td>
@@ -110,8 +113,9 @@ color:white;
 </c:forEach>
 
 </table>
-</div>
 </form>	
+</div>
+
 
 
 

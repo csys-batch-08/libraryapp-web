@@ -58,7 +58,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 			FineHistory fine=new FineHistory();
 			fine.setUser_name(rs.getString(1));
 			fine.setFine_amount(rs.getInt(2));
-			fine.setCollected_time(rs.getString(3));
+			fine.setCollectedTime(rs.getString(3));
 			fineList.add(fine);
 			
 			}

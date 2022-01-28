@@ -52,6 +52,7 @@ overflow:hidden;
   <a href="logout.jsp">Logout</a>  
 </div>
 <fieldset id="register">
+<legend></legend>
 <h1>New Book Request</h1>
 <form action="requestBook" method="post" >
 <label>Book Name</label><br>

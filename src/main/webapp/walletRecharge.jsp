@@ -38,9 +38,10 @@ h3 {
 <body>
 
 <fieldset id="register">
+<legend></legend>
 <h1>Welcome</h1>
 
-	<p><h3>${user}</h3> your walletamount is ${userWalletLogin }.It is very low</p>
+	<p>${user} your walletamount is ${userWalletLogin }.It is very low</p>
 	<p>You have to recharge your wallet with rs.500 to enter in to library</p>
 	<p>Are you ready to pay </p>
 	<button type="submit"><a href="loginwallet.jsp">Pay now</a></button>&emsp;

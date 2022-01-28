@@ -29,6 +29,7 @@
 <body>
 
 <fieldset id="register">
+<legend></legend>
 
 	
 	<h3><c:out value="${preRequestStatus}" /></h3>

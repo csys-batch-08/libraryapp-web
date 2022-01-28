@@ -21,11 +21,11 @@ public class UsersDaoImpl implements UsersDao{
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,user.getUser_name());
+		pstmt.setString(1,user.getUserName());
 		pstmt.setString(2, user.getCity());
 		pstmt.setString(3,user.getPassword());
-		pstmt.setLong(4, user.getMobile_no());
-		pstmt.setString(5, user.getEmail_id());
+		pstmt.setLong(4, user.getMobileNo());
+		pstmt.setString(5, user.getEmailId());
 		
 		int i = pstmt.executeUpdate();
 		if(i>0)
@@ -54,12 +54,12 @@ public boolean adminInsert(Users user) throws SQLException  {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,user.getUser_name());
+		pstmt.setString(1,user.getUserName());
 		pstmt.setString(2, user.getCity());
-		pstmt.setString(3, user.getUser_role());
+		pstmt.setString(3, user.getUserRole());
 		pstmt.setString(4,user.getPassword());
-		pstmt.setLong(5, user.getMobile_no());
-		pstmt.setString(6, user.getEmail_id());
+		pstmt.setLong(5, user.getMobileNo());
+		pstmt.setString(6, user.getEmailId());
 		int i=pstmt.executeUpdate();
 		if(i>0)
 			return true;
@@ -89,13 +89,13 @@ public String fetch(Users user) throws SQLException {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt = con.prepareStatement(query);
-	pstmt.setString(1, user.getUser_name());
+	pstmt.setString(1, user.getUserName());
 	pstmt.setString(2, user.getPassword());
 	ResultSet rs = pstmt.executeQuery();
 	if(rs.next()) {
 		String query1="select user_role from user_details where user_name in ?";
 		pstmt = con.prepareStatement(query1);
-		pstmt.setString(1, user.getUser_name());
+		pstmt.setString(1, user.getUserName());
 		ResultSet rs1 = pstmt.executeQuery();
 		rs1.next();
 		return rs1.getString(1);
@@ -125,7 +125,7 @@ public void delete(Users user) throws SQLException  {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt = con.prepareStatement(query);
 	
-	pstmt.setString(1,user.getUser_name());
+	pstmt.setString(1,user.getUserName());
 	
      pstmt.executeUpdate();
 	
@@ -149,8 +149,8 @@ public void update(Users user) throws SQLException  {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
-	pstmt.setInt(1, user.getFine_amount());
-	pstmt.setString(2, user.getUser_name());
+	pstmt.setInt(1, user.getFineAmount());
+	pstmt.setString(2, user.getUserName());
 	pstmt.executeUpdate();
 	}catch (Exception e) {
 		e.printStackTrace();
@@ -172,7 +172,7 @@ public int getUserWallet(Users user) throws SQLException  {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
-	pstmt.setString(1, user.getUser_name());
+	pstmt.setString(1, user.getUserName());
 	ResultSet rs=pstmt.executeQuery();
 	
 	while(rs.next()) {
@@ -200,7 +200,7 @@ public int getFine(Users user) throws SQLException  {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
-	pstmt.setString(1, user.getUser_name());
+	pstmt.setString(1, user.getUserName());
 	ResultSet rs=pstmt.executeQuery();
 	
 	while(rs.next()) {
@@ -231,16 +231,16 @@ public int setFine(Users user) throws SQLException  {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query1);
 	
-	pstmt.setString(1, user.getUser_name());
+	pstmt.setString(1, user.getUserName());
 	ResultSet rs=pstmt.executeQuery();
 	
 	while(rs.next()) {
-		userWallet=rs.getInt(1)-user.getFine_amount();
+		userWallet=rs.getInt(1)-user.getFineAmount();
 	}
 	
 	 pstmt=con.prepareStatement(query);
 	pstmt.setInt(1, userWallet);
-	pstmt.setString(2, user.getUser_name());
+	pstmt.setString(2, user.getUserName());
 	pstmt.executeUpdate();
 	}catch (Exception e) {
 		e.printStackTrace();
@@ -266,7 +266,7 @@ public boolean forgotPassword(Users users) throws SQLException {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt=con.prepareStatement(query);
 		pstmt.setString(1, users.getPassword());
-		pstmt.setString(2, users.getUser_name());
+		pstmt.setString(2, users.getUserName());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
 			return true;
@@ -294,7 +294,7 @@ public int walletRecharge(Users user) throws SQLException {
 try {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt=con.prepareStatement(query);
-		pstmt.setString(1, user.getUser_name());
+		pstmt.setString(1, user.getUserName());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
 		}
@@ -323,10 +323,10 @@ public List<Users> userList() throws SQLException {
 			List<Users> userList=new ArrayList<Users>();
 			while(rs.next()) {
 				Users user=new Users();
-				user.setUser_name(rs.getString(1));
+				user.setUserName(rs.getString(1));
 				user.setCity(rs.getString(2));
-				user.setMobile_no(rs.getLong(3));
-				user.setEmail_id(rs.getString(4));
+				user.setMobileNo(rs.getLong(3));
+				user.setEmailId(rs.getString(4));
 				user.setUserWallet(rs.getInt(5));
 				userList.add(user);
 			}
@@ -353,7 +353,7 @@ public boolean unameCheck(Users user) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			
 			 pstmt=con.prepareStatement(query);
-			pstmt.setString(1, user.getUser_name());
+			pstmt.setString(1, user.getUserName());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;
@@ -381,7 +381,7 @@ public boolean emailCheck(Users user) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			
 			 pstmt=con.prepareStatement(query);
-			pstmt.setString(1, user.getEmail_id());
+			pstmt.setString(1, user.getEmailId());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;
@@ -407,7 +407,7 @@ public boolean mobileCheck(Users user) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			
 			 pstmt=con.prepareStatement(query);
-			pstmt.setLong(1, user.getMobile_no());
+			pstmt.setLong(1, user.getMobileNo());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				return true;

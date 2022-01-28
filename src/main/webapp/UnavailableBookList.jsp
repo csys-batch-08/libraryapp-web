@@ -84,21 +84,24 @@ background-color:gray;
 <br><br>
 <div class="container">
 <table class="table table-hover" style="font-size:larger;">
-<th><b>Book Name</b></th>
-<th><b>Category</b></th>
-<th><b>Author</b></th>
-<th><b>User Name</b></th>
-<th><b>Price</b></th>
-<th><b>Pre Request</b></th>
-
+<caption>
+</caption>
+<tr>
+<th id="head">Book Name</th>
+<th id="head"> Category </th>
+<th id="head"> Author </th>
+<th id="head"> User Name </th>
+<th id="head"> Price </th>
+<th id="head"> PreRequest</th>
+</tr>
 <c:forEach var="availableBooks" items="${unavailableBookList }">
 					
 			<tr>
 
-<td>${availableBooks.book_title }</td>
+<td>${availableBooks.bookTitle }</td>
 <td>${availableBooks.category }</td>
 <td>${availableBooks.author }</td>
-<td id="capital">${availableBooks.user_name }</td>
+<td id="capital">${availableBooks.userName }</td>
 <td>${availableBooks.price }</td>
 <td>${availableBooks.prerequest }</td>
 </tr>	

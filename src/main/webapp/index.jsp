@@ -71,7 +71,6 @@
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
    </c:if>
-   <c:remove var="invalidUser" scope="request" />
     <input type="checkbox" onclick="myFunction()" style="color:red;">Show Password<br><br>
      
     <button type="submit">Log In</button>

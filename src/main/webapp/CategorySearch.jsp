@@ -69,13 +69,14 @@ overflow:hidden;
 
 
 
-<h2>Book List</h1>
+<h2>Book List</h2>
 
 <fieldset id="register" class="container">
+<legend></legend>
 
 <c:forEach var="categoryBook" items="${categoryBookList}">
 
-<a href="bookName?bookname=${categoryBook.book_title}" style="text-decoration: none;color:white;">${categoryBook.book_title}</a><br><br>
+<a href="bookName?bookname=${categoryBook.bookTitle}" style="text-decoration: none;color:white;">${categoryBook.bookTitle}</a><br><br>
 
 </c:forEach>
 

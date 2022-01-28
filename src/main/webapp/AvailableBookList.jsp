@@ -84,20 +84,24 @@ overflow:hidden;
 <h2>Available Book List</h2>
 <div class="container-fluid">
 <table class="table table-hover" style="font-size:larger;">
-<th><b>Book Name</b></th>
-<th><b>Category</b></th>
-<th><b>Author</b></th>
-<th><b>Rack Number</b></th>
-<th><b>Price</b></th>
-<th><b>Pre Request</b></th>
+<caption></caption>
+<tr>
+<th id="head">Book Name</th>
 
+<th id="head1">Category</th>
+<th id="head2">Author</th>
+<th id="head3">Rack Number</th>
+<th id="head4">Price</th>
+<th id="head5">PreRequest</th>
+
+</tr>
 
 <c:forEach var="books" items="${availableBookList }">					
 			<tr>
-<td>${books.book_title}</td>
+<td>${books.bookTitle}</td>
 <td>${books.category}</td>
 <td>${books.author}</td>
-<td>${books.rack_num}</td>
+<td>${books.rackNum}</td>
 <td> ${books.price}</td>
 <td> ${books.prerequest}</td>
 </tr>	
@@ -105,6 +109,7 @@ overflow:hidden;
 </c:forEach>		
 		
 			</table>
+			</div>
 
 </body>
 </html>

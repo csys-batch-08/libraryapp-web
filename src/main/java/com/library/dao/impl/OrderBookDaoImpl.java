@@ -22,10 +22,10 @@ public class OrderBookDaoImpl implements OrderBookDao {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,orderBook.getUser_name());
-		pstmt.setString(2, orderBook.getBook_name());
+		pstmt.setString(1,orderBook.getUserName());
+		pstmt.setString(2, orderBook.getBookName());
 		pstmt.setString(3, orderBook.getAuthor());
-		pstmt.setString(4, orderBook.getSupplier_id());
+		pstmt.setString(4, orderBook.getSupplierId());
 	
 		
 		 pstmt.executeUpdate();
@@ -51,8 +51,8 @@ public class OrderBookDaoImpl implements OrderBookDao {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,orderBook.getSupplier_id());
-		pstmt.setString(2,orderBook.getBook_name());
+		pstmt.setString(1,orderBook.getSupplierId());
+		pstmt.setString(2,orderBook.getBookName());
 		
          pstmt.executeUpdate();
 		
@@ -76,7 +76,7 @@ public void delete(OrderBook orderBook) throws SQLException  {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,orderBook.getBook_name());
+		pstmt.setString(1,orderBook.getBookName());
 		
          pstmt.executeUpdate();
 		
@@ -102,15 +102,15 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
-	pstmt.setString(1, order.getUser_name());
+	pstmt.setString(1, order.getUserName());
 	rs=pstmt.executeQuery();
 	pstmt=con.prepareStatement(query1);
-	pstmt.setString(1, order.getUser_name());
+	pstmt.setString(1, order.getUserName());
 	pstmt.executeUpdate();
-	List<OrderBook> orderBook=new ArrayList<OrderBook>();
+	List<OrderBook> orderBook=new ArrayList<>();
 	while(rs.next()) {
 		order=new OrderBook();
-		order.setBook_name(rs.getString(1));
+		order.setBookName(rs.getString(1));
 		order.setAuthor(rs.getString(2));
 		orderBook.add(order);
 	}
@@ -125,7 +125,7 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 			con.close();
 		}
 	}
-   return null;
+   return Collections.emptyList();
 	
 	
 }
@@ -172,7 +172,7 @@ public List<OrderBook> adminView() throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBook_name(rs.getString(1));
+			orderBook.setBookName(rs.getString(1));
 			orderBook.setAuthor(rs.getString(2));
 			orderBook.setStatus(rs.getString(3));
 			orderList.add(orderBook);
@@ -199,14 +199,14 @@ public List<OrderBook> adminView() throws SQLException  {
 
 
 public List<OrderBook> userView(OrderBook order ) throws SQLException  {
-	String query="select user_name,book_name,author,status from order_book where user_name in ?";
+	String query="select book_name,author,status from order_book where user_name in ?";
 	ResultSet rs=null;
 	Connection con = null;
 	PreparedStatement pstmt=null;
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
-	pstmt.setString(1, order.getUser_name());
+	pstmt.setString(1, order.getUserName());
 	rs=pstmt.executeQuery();
 
 	List<OrderBook> orderList=new ArrayList<OrderBook>();
@@ -214,7 +214,7 @@ public List<OrderBook> userView(OrderBook order ) throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBook_name(rs.getString(1));
+			orderBook.setBookName(rs.getString(1));
 			orderBook.setAuthor(rs.getString(2));
 			orderBook.setStatus(rs.getString(3));
 			orderList.add(orderBook);

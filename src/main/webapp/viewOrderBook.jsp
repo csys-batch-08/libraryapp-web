@@ -79,20 +79,22 @@ overflow:hidden;
 <h3>Ordered Book List</h3>
 
 		<table class="container">
+		<caption>
+		</caption>
 		<tr>
-		<th><b>BookName</b></th>
-		<th><b>Author</b></th>
-		<th><b>Status</b></th>
-		<th><b>Add Book</b></th>
+		<th id="head"><strong>BookName</strong></th>
+		<th id="head"><strong>Author</strong></th>
+		<th id="head"><strong>Status</strong></th>
+		<th id="head"><strong>Add Book</strong></th>
 		</tr>
 	<c:forEach var="orderBook" items="${adminOrderBook}">
 			<tr>
-			<td>${orderBook.book_name }</td>
+			<td>${orderBook.bookName }</td>
 			<td>${orderBook.author }</td>
 			<td>${orderBook.status }</td>
 			<c:set var="sent" value="sent" />
 			<c:if test="${orderBook.status eq sent}">
-			<td><button style="font-size:large;width:100px;"><a href="addOrderBook?orderBookName=${orderBook.book_name}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Add Book</a></button></td>
+			<td><button style="font-size:large;width:100px;"><a href="addOrderBook?orderBookName=${orderBook.bookName}&orderAuthorName=${orderBook.author}" style="text-decoration:none;">Add Book</a></button></td>
 			</c:if>
 			</tr>
 	</c:forEach>

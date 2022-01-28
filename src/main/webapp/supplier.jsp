@@ -72,7 +72,7 @@ background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
 </div>
     
         <fieldset id="register">
-          <legend><h3>Supplier register</h3></legend>  
+          <legend>Supplier register</legend>  
             
         <form action="adminjsp" method="post">
         <div class="container-mt-1" >

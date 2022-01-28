@@ -63,7 +63,7 @@
 	}
 	%>
 <fieldset id="register">
-
+<legend></legend>
 <h3>Your revised Wallet amount is "${userWallet }"</h3>				
 <h3>Book Return Success</h3><br><br>
 <h3><a href="user.jsp">Back to User Page</a></h3>&emsp;&emsp;

@@ -34,13 +34,14 @@ table, th, td {
 <body>
 
 		<table>
+		<caption></caption>
 		<tr>
-		<th><b>BookName</b></th>
-		<th><b>Author</b></th>
+		<th id="head"><b>BookName</b></th>
+		<th id="part"><b>Author</b></th>
 		</tr>
 	<c:forEach var="orderBook" items="${OrderBookList}">
 			<tr>
-			<td>${orderBook.book_name }</td>
+			<td>${orderBook.bookName }</td>
 			<td>${orderBook.author}</td>
 			
 			</tr>

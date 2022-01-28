@@ -64,6 +64,7 @@ table, th, td {
    <%session.removeAttribute("eligible"); }
    %>
 <fieldset id="register">
+<legend></legend>
 <form action="bookName" method="post">
 <label>Enter the Book Name</label>
 <input type="text" name="bookname" required pattern="[a-zA-Z\s]{3,}"><br>

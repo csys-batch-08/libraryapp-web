@@ -60,7 +60,7 @@ table, th, td {
 
     <div >
         <fieldset id="register">
-            <legend><h3>User register</h3></legend>
+            <legend>User register</legend>
         <form action="indexrole" method="post" >
         <label for="user name">User name</label><br>
         <input type="text" id="text" name="text" required pattern="[A-Za-z]{3,}" ><br><br>

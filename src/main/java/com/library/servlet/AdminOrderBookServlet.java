@@ -30,25 +30,30 @@ public class AdminOrderBookServlet extends HttpServlet {
 				
 				List<OrderBook> orderList=null;
 				try {
-					orderList = obDao.adminView();
-				} catch (SQLException e) {
-					e.getMessage();
-				}
+					
+				
 					
 						if((session.getAttribute("userRole").toString()).equals("admin")){
+							orderList = obDao.adminView();
 						request.setAttribute("adminOrderBook", orderList);
 						RequestDispatcher rd=request.getRequestDispatcher("viewOrderBook.jsp");
 						rd.forward(request, response);
 						}
 						else {
+							String user=session.getAttribute("user").toString();
+							OrderBook order=new OrderBook(user,null,null);
+							orderList = obDao.userView(order);
 							request.setAttribute("adminOrderBook", orderList);
+							
 							RequestDispatcher rd=request.getRequestDispatcher("orderBook.jsp");
 							rd.forward(request, response);
 						}
 				
 
-					}
-				
+				} catch (SQLException e) {
+		e.getMessage();
+	}
+	}			
 	}
 
 

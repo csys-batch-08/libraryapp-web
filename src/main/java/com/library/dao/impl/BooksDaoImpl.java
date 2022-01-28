@@ -22,12 +22,12 @@ public class BooksDaoImpl implements BooksDao {
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,book.getBook_code());
-		pstmt.setString(2, book.getBook_title());
+		pstmt.setString(1,book.getBookCode());
+		pstmt.setString(2, book.getBookTitle());
 		pstmt.setString(3, book.getCategory());
 		pstmt.setString(4, book.getAuthor());
 		pstmt.setInt(5, book.getPrice());
-		pstmt.setInt(6, book.getRack_num());
+		pstmt.setInt(6, book.getRackNum());
 		
 		 pstmt.executeUpdate();
 		
@@ -61,7 +61,7 @@ public class BooksDaoImpl implements BooksDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				Books books=new Books();
-				books.setBook_title(rs.getString(1));
+				books.setBookTitle(rs.getString(1));
 				books.setAuthor(rs.getString(3));
 				books.setCategory(rs.getString(2));
 				list.add(books);
@@ -100,7 +100,7 @@ public class BooksDaoImpl implements BooksDao {
 			if (rs.next()){
 				do {
 				Books authorBookList=new Books();
-				authorBookList.setBook_title(rs.getString(1));
+				authorBookList.setBookTitle(rs.getString(1));
 				bookList.add(authorBookList);
 				}while(rs.next());
 				
@@ -133,7 +133,7 @@ public class BooksDaoImpl implements BooksDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				books=new Books();
-				books.setBook_title(rs.getString(1));
+				books.setBookTitle(rs.getString(1));
 				bookList.add(books);
 
 			}
@@ -166,7 +166,7 @@ public void delete(Books book) throws SQLException {
 		con=ConnectionUtil.getDBConnect();
 		pstmt = con.prepareStatement(query);
 		
-		pstmt.setString(1,book.getBook_title());
+		pstmt.setString(1,book.getBookTitle());
 		
          pstmt.executeUpdate();
 		
@@ -194,7 +194,7 @@ public void delete(Books book) throws SQLException {
 		
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,book.getAvailability());
-			pstmt.setString(2, book.getBook_code());
+			pstmt.setString(2, book.getBookCode());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -219,11 +219,11 @@ public void delete(Books book) throws SQLException {
 		try {
 			con=ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
-		    pstmt.setString(1, book.getBook_title());
+		    pstmt.setString(1, book.getBookTitle());
 		    ResultSet rs=null;
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				if(rs.getString(1).equals("available")&&(rs.getString(2).equals(book.getUser_name())||rs.getString(2).equals("none"))) {
+				if(rs.getString(1).equals("available")&&(rs.getString(2).equals(book.getUserName())||rs.getString(2).equals("none"))) {
 					return "available";
 					
 				}
@@ -251,7 +251,7 @@ public void delete(Books book) throws SQLException {
 		try {
 			con=ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, book.getBook_title());
+			pstmt.setString(1, book.getBookTitle());
 			ResultSet rs = null;
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -279,8 +279,8 @@ public void delete(Books book) throws SQLException {
 		try {
 			con = ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
-		    pstmt.setString(1, book.getUser_name());
-		    pstmt.setString(2, book.getBook_title());
+		    pstmt.setString(1, book.getUserName());
+		    pstmt.setString(2, book.getBookTitle());
 		    pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -307,7 +307,7 @@ public void delete(Books book) throws SQLException {
 
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, book.getBook_issue_id());
-			pstmt.setString(2, book.getBook_title());
+			pstmt.setString(2, book.getBookTitle());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -332,7 +332,7 @@ public void delete(Books book) throws SQLException {
 
 			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, book.getBook_title());
+			pstmt.setString(1, book.getBookTitle());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -355,8 +355,8 @@ public void delete(Books book) throws SQLException {
 		try {
 			con = ConnectionUtil.getDBConnect();
 		pstmt=con.prepareStatement(query);
-		pstmt.setString(1, book.getUser_name());
-		pstmt.setString(2, book.getBook_title());
+		pstmt.setString(1, book.getUserName());
+		pstmt.setString(2, book.getBookTitle());
 		int i=pstmt.executeUpdate();
 		if(i>0) {
 			return "Pre Request successful";
@@ -386,8 +386,8 @@ public void delete(Books book) throws SQLException {
 		try {
 		 con = ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
-		pstmt.setString(1, book.getBook_title());
-		pstmt.setString(2, book.getUser_name());
+		pstmt.setString(1, book.getBookTitle());
+		pstmt.setString(2, book.getUserName());
 		ResultSet rs=pstmt.executeQuery();
 		
 			while(rs.next()) {
@@ -416,7 +416,7 @@ public void delete(Books book) throws SQLException {
 		try {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
-			pstmt.setString(1, book.getBook_title());
+			pstmt.setString(1, book.getBookTitle());
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){
 				return rs.getInt(1);
@@ -445,11 +445,11 @@ public void delete(Books book) throws SQLException {
 		try {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
-			pstmt.setString(1, book.getUser_name());
+			pstmt.setString(1, book.getUserName());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				book=new Books();
-				book.setBook_title(rs.getString(1));
+				book.setBookTitle(rs.getString(1));
 				
 				returnBook.add(book);
 			}
@@ -479,11 +479,11 @@ public void delete(Books book) throws SQLException {
 			rs=pstmt.executeQuery();
 				while(rs.next()){
 					Books book=new Books();
-					book.setBook_title(rs.getString(1));
+					book.setBookTitle(rs.getString(1));
 					book.setCategory(rs.getString(2));
 					book.setAuthor(rs.getString(3));
 					book.setPrice(rs.getInt(4));
-					book.setRack_num(rs.getInt(5));
+					book.setRackNum(rs.getInt(5));
 					book.setPrerequest(rs.getString(6));
 					bookList.add(book);
 					
@@ -515,11 +515,11 @@ public void delete(Books book) throws SQLException {
 			List<Books> bookList=new ArrayList<>();
 			while(rs.next()) {
 				Books book=new Books();
-				book.setBook_title(rs.getString(1));
+				book.setBookTitle(rs.getString(1));
 				book.setCategory(rs.getString(2));
 				book.setAuthor(rs.getString(3));
 				book.setPrice(rs.getInt(4));
-				book.setUser_name(rs.getString(5));
+				book.setUserName(rs.getString(5));
 				book.setPrerequest(rs.getString(6));
 				bookList.add(book);
 				
@@ -570,7 +570,7 @@ public void delete(Books book) throws SQLException {
 		try {
 			con=ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
-		    pstmt.setString(1, book.getUser_name());
+		    pstmt.setString(1, book.getUserName());
 		    ResultSet rs=null;
 			rs=pstmt.executeQuery();
 			while(rs.next()) {

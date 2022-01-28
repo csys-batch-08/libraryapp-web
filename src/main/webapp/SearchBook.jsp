@@ -100,6 +100,7 @@ overflow:hidden;}
 </div>
 
 <fieldset id="register" class="alignment">
+<legend></legend>
 <form action="authorSearch" method="post">
 <label >Search By Author Name</label><br>
 <input type="text" name="author" pattern="[A-Za-z\s]{3,}" required>

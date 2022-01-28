@@ -195,6 +195,7 @@ text-shadow: 2px 2px #ff0000;
   <BR><BR><BR>
    
   <fieldset id="about">
+  <legend></legend>
   <h2 id="award" >About Us:</h2> 
   
   <p> &emsp;&emsp;The Anna Centenary Library (ACL), a state-of the-art library was inaugurated on September 15, 2010 on the occasion of the 102nd birth anniversary of the former Chief Minister of Tamil Nadu Dr. C N Annadurai popularly called ANNA. By reason of his great interest towards the books and library, this library is named as Anna Centenary Library. The foundation stone laid on August 16, 2008, completed in a short span and declared open to the public from 20th September 2010.
@@ -237,6 +238,7 @@ Capacity minimum 30 people
 <br><br><br>
     <h3 id="contact">Contact Us</h3>
     <fieldset>
+    <legend></legend>
       <pre>The Chief Librarian & Information Officer
         Anna Centenary Library 
         Kotturpuram 

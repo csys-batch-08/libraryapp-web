@@ -106,11 +106,12 @@ background-color:white;
 </div>
 <h2>Ordered Books</h2>
 
-		<table class = "container">
+		<table class = "container" aria-describedby="Show All home places">
 		<tr>
-		<th><b>BookName</b></th>
-		<th><b>Author</b></th>
-		<th><b>Status</b></th>
+		<th id="head"><strong>BookName</strong></th>
+		<th id="head"><strong>Author</strong></th>
+		<th id="head"><strong>Status</strong></th>
+		<th id="head"><strong>Borrow</strong></th>
 		</tr>
 	<c:forEach var="orderBook" items="${adminOrderBook}">
 			<tr>
@@ -123,7 +124,7 @@ background-color:white;
 			</c:if>
 			</tr>
 	</c:forEach>
-			
+			</table>
 
 </body>
 </html>

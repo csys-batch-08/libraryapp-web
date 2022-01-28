@@ -2,15 +2,15 @@ package com.library.model;
 
 public class Books {
 	
-	private String book_code;
-	private String book_title;
+	private String bookCode;
+	private String bookTitle;
 	private String category;
 	private String author;
 	private int price;
-	private int rack_num;
+	private int rackNum;
 	private String availability;
-	private String user_name;
-	private int book_issue_id;
+	private String userName;
+	private int bookIssueId;
 	private String prerequest;
 	
 	
@@ -22,16 +22,16 @@ public class Books {
 		this.prerequest = prerequest;
 	}
 	public int getBook_issue_id() {
-		return book_issue_id;
+		return bookIssueId;
 	}
 	public void setBook_issue_id(int book_issue_id) {
-		this.book_issue_id = book_issue_id;
+		this.bookIssueId = book_issue_id;
 	}
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String user_name) {
+		this.userName = user_name;
 	}
 	public String getAvailability() {
 		return availability;
@@ -42,34 +42,34 @@ public class Books {
 	public Books(String book_code, String book_title, String category, String author, int price,
 			int rack_num) {
 		super();
-		this.book_code = book_code;
-		this.book_title = book_title;
+		this.bookCode = book_code;
+		this.bookTitle = book_title;
 		this.category = category;
 		this.author = author;
 		this.price = price;
-		this.rack_num = rack_num;
+		this.rackNum = rack_num;
 	}
 	public Books() {
 		super();
 	}
 	public Books(String book_title) {
-		this.book_title=book_title;
+		this.bookTitle=book_title;
 	}
 	public Books(String book_title, String user_name) {
-		this.book_title=book_title;
-		this.user_name=user_name;
+		this.bookTitle=book_title;
+		this.userName=user_name;
 	}
-	public String getBook_code() {
-		return book_code;
+	public String getBookCode() {
+		return bookCode;
 	}
-	public void setBook_code(String book_code) {
-		this.book_code = book_code;
+	public void setBookCode(String book_code) {
+		this.bookCode = book_code;
 	}
-	public String getBook_title() {
-		return book_title;
+	public String getBookTitle() {
+		return bookTitle;
 	}
-	public void setBook_title(String book_title) {
-		this.book_title = book_title;
+	public void setBookTitle(String book_title) {
+		this.bookTitle = book_title;
 	}
 	public String getCategory() {
 		return category;
@@ -89,31 +89,31 @@ public class Books {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRack_num() {
-		return rack_num;
+	public int getRackNum() {
+		return rackNum;
 	}
-	public void setRack_num(int rack_num) {
-		this.rack_num = rack_num;
+	public void setRackNum(int rack_num) {
+		this.rackNum = rack_num;
 	}
 
 	
 	
 	public Books( String book_title, String category,String author) {
-		this.book_title = book_title;
+		this.bookTitle = book_title;
 		this.category = category;
 		this.author = author;
 	}
 	public Books(String book_title2, int book_issue_no) {
-		this.book_title=book_title2;
-		this.book_issue_id=book_issue_no;
+		this.bookTitle=book_title2;
+		this.bookIssueId=book_issue_no;
 		
 	}
 	public Books(int book_issue_no) {
-		this.book_issue_id=book_issue_no;
+		this.bookIssueId=book_issue_no;
 	}
 	@Override
 	public String toString() {
-		return "\nBook_title=" + book_title + "\nCategory=" + category + "\nAuthor=" + author;
+		return "\nBook_title=" + bookTitle + "\nCategory=" + category + "\nAuthor=" + author;
 	}
 	
 	

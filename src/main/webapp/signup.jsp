@@ -73,7 +73,7 @@
 
     <div >
         <fieldset id="register">
-            <legend><h2>User register</h2></legend>
+            <legend>User register</legend>
             <hr>
         <form action="signUp" method="post" class="was-validated">
         <div class="container mt-1">

@@ -26,9 +26,9 @@ public class BookIssueDaoImpl implements BookIssueDao {
 		pstmt = con.prepareStatement(query);
 		
 		pstmt.setString(1, bookIssue.getUser_name());
-		pstmt.setString(2, bookIssue.getBook_code());
+		pstmt.setString(2, bookIssue.getBookCode());
 		pstmt.setString(3, bookIssue.getDate_issue());
-		pstmt.setString(4,bookIssue.getDate_return());
+		pstmt.setString(4,bookIssue.getDateReturn());
 		pstmt.setString(5,bookIssue.getDate_returned());
 		 pstmt.executeUpdate();
 		
@@ -108,9 +108,9 @@ public int getBookIssueNo(BookIssue book) throws SQLException {
 		con=ConnectionUtil.getDBConnect();
 		pstmt=con.prepareStatement(query);
 		pstmt.setString(1, book.getUser_name());
-		pstmt.setString(2, book.getBook_code());
+		pstmt.setString(2, book.getBookCode());
 		pstmt.setString(3, book.getDate_issue());
-		pstmt.setString(4, book.getDate_return());
+		pstmt.setString(4, book.getDateReturn());
 		
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()){
@@ -188,9 +188,9 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
      ResultSet rs = pstmt.executeQuery();
      while(rs.next()) {
     	 book=new BookIssue();
-    	 book.setBook_code(rs.getString(1));
+    	 book.setBookCode(rs.getString(1));
     	 book.setDate_issue(rs.getDate(2).toLocalDate());
-    	 book.setDate_return(rs.getDate(3).toLocalDate());
+    	 book.setDateReturn(rs.getDate(3).toLocalDate());
     	 book.setDate_returned(rs.getDate(4).toLocalDate());
     	 book.setFine_range(rs.getInt(5));
     	 bookIssue.add(book);
@@ -230,10 +230,10 @@ public List<BookIssue> bookIssueList() throws SQLException {
      
      while(rs.next()){
 			BookIssue books=new BookIssue();
-			books.setBook_code(rs.getString(2));
+			books.setBookCode(rs.getString(2));
 			books.setUser_name(rs.getString(1));
 			books.setDate_issue(rs.getDate(3).toLocalDate());
-			books.setDate_return(rs.getDate(4).toLocalDate());
+			books.setDateReturn(rs.getDate(4).toLocalDate());
 			books.setDate_returned(rs.getDate(5).toLocalDate());
 			books.setFine_range(rs.getInt(6));
 			books.setBook_issue_id(rs.getInt(7));

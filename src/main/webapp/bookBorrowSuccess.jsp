@@ -32,7 +32,7 @@
 <fieldset id="register">
 <legend></legend>
 <h2>The Book is in Rack number : <c:out value="${rack }" /></h2>
-<p><h3>Book Borrowed Success</h3></p>
+<h3>Book Borrowed Success</h3>
 
 <button><a href="user.jsp">Back To User</a></button>
 

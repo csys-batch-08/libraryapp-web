@@ -85,6 +85,7 @@ text-transform: capitalize;}
 <div class="container-fluid">
 <table class="table table-hover" style="font-size:larger;" >
 <caption>Book Issue List</caption>
+<tr>
 <th id="head1"><strong>Issue No</strong></th>
 <th id="head2"><strong>Book Name</strong></th>
 <th id="head3"><strong>User Name</strong></th>
@@ -92,7 +93,7 @@ text-transform: capitalize;}
 <th id="head5"><strong>Return Date</strong></th>
 <th id="head6"><strong>Date Returned</strong></th>
 <th id="head7"><strong>Fine Range in Month</strong></th>
-
+</tr>
 <c:forEach var="books" items="${BookIssueList }">				
 <tr>
 <td> ${books.book_issue_id}</td>

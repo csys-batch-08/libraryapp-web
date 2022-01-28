@@ -2,15 +2,15 @@ package com.library.model;
 
 public class Suppliers {
 	
-	private String supplier_name;
+	private String supplierName;
 	private String address;
 	private long contact;
 	
-	public String getSupplier_name() {
-		return supplier_name;
+	public String getSupplierName() {
+		return supplierName;
 	}
-	public void setSupplier_name(String supplier_name) {
-		this.supplier_name = supplier_name;
+	public void setSupplierName(String supplier_name) {
+		this.supplierName = supplier_name;
 	}
 	public String getAddress() {
 		return address;
@@ -26,7 +26,7 @@ public class Suppliers {
 	}
 	public Suppliers(String supplier_name, String address, long contact) {
 		super();
-		this.supplier_name = supplier_name;
+		this.supplierName = supplier_name;
 		this.address = address;
 		this.contact = contact;
 	}
@@ -34,10 +34,10 @@ public class Suppliers {
 		super();
 	}
 	public Suppliers(String supplier_name) {
-		this.supplier_name=supplier_name;
+		this.supplierName=supplier_name;
 	}
 	public Suppliers(String supplier_name, long contact) {
-		this.supplier_name = supplier_name;
+		this.supplierName = supplier_name;
 		this.contact = contact;
 	}
 	
