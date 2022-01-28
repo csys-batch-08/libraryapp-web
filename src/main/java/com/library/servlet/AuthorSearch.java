@@ -41,7 +41,7 @@ public class AuthorSearch extends HttpServlet {
 		try {
 			bookList = book.authorFetch(books);
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 		
 			if(bookList!=null) {

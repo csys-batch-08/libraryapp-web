@@ -42,7 +42,7 @@ public class AddBookServlet extends HttpServlet {
 		try {
 			book.insert(p1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		response.sendRedirect("admin.jsp");
 	}
