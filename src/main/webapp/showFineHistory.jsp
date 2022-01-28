@@ -73,9 +73,9 @@ overflow:hidden;
 <table class="table table-hover" style="color:white;">
 <caption></caption>
 <tr>
-<th id="head"><b>User Name</b></th>
-<th id="head"><b>Fine Amount</b></th>
-<th id="head"><b>Collected Time</b></th>
+<th id="head"><strong>User Name</strong></th>
+<th id="head"><strong>Fine Amount</strong></th>
+<th id="head"><strong>Collected Time</strong></th>
 </tr>
 	<c:forEach var="fine" items="${fineList}">				
 			<tr>

@@ -36,8 +36,8 @@ table, th, td {
 		<table>
 		<caption></caption>
 		<tr>
-		<th id="head"><b>BookName</b></th>
-		<th id="part"><b>Author</b></th>
+		<th id="head">BookName</th>
+		<th id="part">Author</th>
 		</tr>
 	<c:forEach var="orderBook" items="${OrderBookList}">
 			<tr>
