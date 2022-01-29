@@ -73,17 +73,17 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		
 		session.setAttribute("oldwallet", userwallet);
 		session.setAttribute("loginfine", fineamount);
-		
+		String userWalletLogin="userWalletLogin";
 		if(userWallet>500) {
-			session.setAttribute("userWalletLogin", userWallet);
-			req.setAttribute("userWalletLogin", userWallet);
+			session.setAttribute(userWalletLogin, userWallet);
+			req.setAttribute(userWalletLogin, userWallet);
 			req.setAttribute("user", userName);
 			RequestDispatcher rd= req.getRequestDispatcher("user.jsp");
 			rd.forward(req, resp);
 			}
 		else if(userWallet<=500) {
-			session.setAttribute("userWalletLogin", userWallet);
-			req.setAttribute("userWalletLogin", userWallet);
+			session.setAttribute(userWalletLogin, userWallet);
+			req.setAttribute(userWalletLogin, userWallet);
 			req.setAttribute("user", userName);
 			RequestDispatcher rd= req.getRequestDispatcher("walletRecharge.jsp");
 			rd.forward(req, resp);
