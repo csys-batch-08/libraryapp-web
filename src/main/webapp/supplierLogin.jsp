@@ -7,12 +7,15 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Supplier Page</title>
+<title>Welcome ${supplier}</title>
 <style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 20px;
+}
+#capital{
+text-transform: capitalize;
 }
 
         table{
@@ -32,7 +35,7 @@ table, th, td {
 </style>
 </head>
 <body>
-
+<h1 id="capital">Welcome ${supplier}</h1>
 		<table>
 		<caption></caption>
 		<tr>

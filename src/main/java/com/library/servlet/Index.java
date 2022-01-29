@@ -43,19 +43,19 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	session.setAttribute("userRole", val);
 	
 	if (val.equals("admin")) {
-        session.setAttribute("admin", userName);
-		req.setAttribute("admin", userName);
+        session.setAttribute(val, userName);
+		req.setAttribute(val, userName);
 		RequestDispatcher rd= req.getRequestDispatcher("admin.jsp");
 		rd.forward(req, resp);
 	}
 	else if (val.equals("supplier")) {
-		session.setAttribute("supplier", userName);
+		session.setAttribute(val, userName);
 				
 						session = req.getSession();
 						OrderBookDaoImpl obDao = new OrderBookDaoImpl();
 						String bookName=null;
 						String author=null;
-						userName=session.getAttribute("supplier").toString();
+						userName=session.getAttribute(val).toString();
 						OrderBook order=new OrderBook(userName,author,bookName);
 						List<OrderBook> orderBook = obDao.view(order);
 						req.setAttribute("OrderBookList", orderBook);
