@@ -93,19 +93,19 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 		}
 	
 	else {
-		try {
+		
 			throw new InvalidUserException();
-		}catch(InvalidUserException e) {
-			req.setAttribute("invalidUser", "invalid");
-			String validate=e.getMessage();
-			RequestDispatcher rd=req.getRequestDispatcher(validate);
-			rd.forward(req, resp);
-			
-		}
+		
 		
 		
 		
 	}
+}catch(InvalidUserException e) {
+	req.setAttribute("invalidUser", "invalid");
+	String validate=e.getMessage();
+	RequestDispatcher rd=req.getRequestDispatcher(validate);
+	rd.forward(req, resp);
+	
 }catch(Exception e) {
 	e.getMessage();
 	

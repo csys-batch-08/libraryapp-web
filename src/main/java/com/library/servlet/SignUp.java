@@ -35,23 +35,23 @@ public class SignUp extends HttpServlet {
 		
 		Users user=new Users(userName,city,password,phone,email);
 		UsersDaoImpl userDao=new UsersDaoImpl();
-		
+		String redirect="signup.jsp";
 		
 			try {
 			if(userDao.unameCheck(user)) {
 				request.setAttribute("unameExists", "uname");
-				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher(redirect);
 				rd.forward(request, response);
 			}
 			
 			else if(userDao.emailCheck(user)) {
 				session.setAttribute("emailExists", "email");
-				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher(redirect);
 				rd.forward(request, response);
 			}
 			else if(userDao.mobileCheck(user)) {
 				session.setAttribute("mobileExists", "mobileNo");
-				RequestDispatcher rd=request.getRequestDispatcher("signup.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher(redirect);
 				rd.forward(request, response);
 			}else {
 				userDao.insert(user);
