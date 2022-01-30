@@ -15,7 +15,7 @@ import com.library.model.*;
 
 
 public class BookIssueDaoImpl implements BookIssueDao {
-	
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	public int insert(BookIssue bookIssue) throws SQLException  {
 		
 		String query="insert into book_issue_details (user_name,book_title,date_issue,date_return,date_returned) values (?,?,?,?,?)";
