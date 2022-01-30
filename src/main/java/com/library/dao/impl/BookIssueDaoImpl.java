@@ -112,9 +112,9 @@ public int getBookIssueNo(BookIssue book) throws SQLException {
 		pstmt.setString(3, book.getdateIssue());
 		pstmt.setString(4, book.getDateReturn());
 		
-		ResultSet resultSet=pstmt.executeQuery();
-		while(resultSet.next()){
-			return resultSet.getInt(1);
+		ResultSet issueSet=pstmt.executeQuery();
+		while(issueSet.next()){
+			return issueSet.getInt(1);
 		}
 	}catch (Exception e) {
 		e.getMessage();
