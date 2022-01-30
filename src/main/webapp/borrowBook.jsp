@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,22 +48,14 @@ table, th, td {
 }   
 </style>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 <div class="topnav" >
   <a class="active" href="user.jsp">Home</a>
   <a href="logout.jsp">Logout</a>  
 </div>
-<%
-   if(session.getAttribute("eligible") != null){%>
+<c:if test="${not empty eligible}">
 	   <h1>You are not eligible to borrow Book</h1>
 	   
-   <%session.removeAttribute("eligible"); }
-   %>
+   </c:if>
 <fieldset id="register">
 <legend></legend>
 <form action="bookName" method="post">

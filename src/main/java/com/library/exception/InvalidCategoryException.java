@@ -9,7 +9,7 @@ public class InvalidCategoryException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "invalidCategory.jsp";
+		return "searchBook.jsp";
 	}
 
 }

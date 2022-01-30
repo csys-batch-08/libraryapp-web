@@ -174,12 +174,9 @@ button {
 		Your User Wallet Amount is
 		${userWalletLogin}</h1>
 		<br><br>
-<%
-   if(session.getAttribute("eligible") != null){%>
-	   <h1>You are not eligible to borrow Book</h1>
-	   
-   <%session.removeAttribute("eligible"); }
-   %>
+<c:if test="${not empty eligible}">   
+<h1 style="color:red;background-color:white;font-size:25px;float:left;">You are not eligible to borrow Book</h1>
+	   </c:if>
 
 </body>
 </html>

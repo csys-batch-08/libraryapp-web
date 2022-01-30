@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +36,10 @@
     <input type="text" name="supplier" required pattern="[A-Za-z]{2,}" oninvalid="setCustomValidity('Supplier Name must contains only alphabets')" onchange="try{setCustomValidity('')}catch(e){}"  >
     <button type="submit">Log in</button>
     
-     <%
-   if(session.getAttribute("AdminError") != null){%>
+    <c:if test="${not empty AdminError}">
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
-   <%session.removeAttribute("AdminError"); }
-   %>
+  </c:if>
     
     </form>
   </fieldset>  

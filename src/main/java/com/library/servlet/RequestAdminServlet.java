@@ -3,6 +3,7 @@ package com.library.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +43,9 @@ public class RequestAdminServlet extends HttpServlet {
 				obDao.update(order);
 				response.sendRedirect("user.jsp");
 		}else {
-			session.setAttribute("AdminError", "adminWrong");
-			response.sendRedirect("requestAdmin.jsp");
+			request.setAttribute("AdminError", "adminWrong");
+			RequestDispatcher rd=request.getRequestDispatcher("requestAdmin.jsp");
+			rd.forward(request, response);
 		}} catch (SQLException e) {
 			e.getMessage();
 		}}

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.library.connection.*;
 import com.library.dao.BooksDao;
+import com.library.exception.InvalidReturnException;
 import com.library.model.*;
 
 public class BooksDaoImpl implements BooksDao {
@@ -105,7 +106,12 @@ public class BooksDaoImpl implements BooksDao {
 				}while(rs.next());
 				
 				return bookList;
-		}} catch (Exception e) {
+		}else {
+			return Collections.emptyList();
+		}
+			
+		
+		} catch (Exception e) {
 			e.getMessage();
 		}finally {
 			if(pstmt!=null) {
@@ -131,13 +137,19 @@ public class BooksDaoImpl implements BooksDao {
 			pstmt = con.prepareStatement(categoryQuery);
 			pstmt.setString(1, books.getCategory());
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
+				do {
 				books=new Books();
 				books.setBookTitle(rs.getString(1));
 				bookList.add(books);
 
+			}while (rs.next());
+				return bookList;
 			}
-			return bookList;
+			else {
+				return Collections.emptyList();
+			}
+			
 		
 			
 
@@ -152,7 +164,7 @@ public class BooksDaoImpl implements BooksDao {
 			}
 		}
 		
-		return bookList;
+		return Collections.emptyList();
 		
 		
 	}
@@ -448,13 +460,20 @@ public void delete(Books book) throws SQLException {
 			 pstmt=con.prepareStatement(returnBookQuery);
 			pstmt.setString(1, book.getUserName());
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
+			if(rs.next()) {
+				do {
 				book=new Books();
 				book.setBookTitle(rs.getString(1));
 				
 				returnBook.add(book);
+				}while(rs.next());
+			}
+			else {
+				throw new InvalidReturnException();
 			}
 			return returnBook;
+		}catch (InvalidReturnException e) {
+			return Collections.emptyList();
 		}catch (Exception e) {
 			e.getMessage();
 		}finally {

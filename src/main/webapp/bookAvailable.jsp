@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,12 +38,10 @@
     <input type="password" id="password" name="password" required pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" ><br><br>
     <button type="submit">Log In</button>
     
-    <%
-   if(session.getAttribute("AdminError") != null){%>
+    <c:if test="${not empty AdminError}">
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
-   <%session.removeAttribute("AdminError"); }
-   %>
+ </c:if>
    </div>
     </form>
     </fieldset>

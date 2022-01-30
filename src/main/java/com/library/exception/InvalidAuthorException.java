@@ -9,6 +9,6 @@ public class InvalidAuthorException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "invalidAuthor.jsp";
+		return "searchBook.jsp";
 	}
 }

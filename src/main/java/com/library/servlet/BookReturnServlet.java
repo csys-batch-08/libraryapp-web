@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
+import com.library.exception.InvalidReturnException;
 import com.library.model.Books;
 
 /**
@@ -37,12 +38,20 @@ public class BookReturnServlet extends HttpServlet {
 		List<Books> returnBooks=null;
 		try {
 			returnBooks = book.returnBookList(books);
-		} catch (SQLException e) {
-			e.getMessage();
-		}
+			if(returnBooks.isEmpty()) {
+				throw new InvalidReturnException();
+			}
+			else {
 		request.setAttribute("returnBookList", returnBooks);
 		RequestDispatcher rd=request.getRequestDispatcher("returnBook.jsp");
 		rd.forward(request, response);
+			}
+		} catch (InvalidReturnException e) {
+			String validate=e.getMessage();
+			response.sendRedirect(validate);
+		} catch (SQLException e) {
+			e.getMessage();
+		}
 	}
 
 }

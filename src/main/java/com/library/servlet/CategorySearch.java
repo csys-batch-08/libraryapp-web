@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.library.dao.impl.BooksDaoImpl;
+import com.library.exception.InvalidCategoryException;
+import com.library.exception.InvalidReturnException;
 import com.library.model.Books;
 
 /**
@@ -39,14 +41,26 @@ public class CategorySearch extends HttpServlet {
 		List<Books> bookList=null;
 		try {
 			bookList = book.categoryFetch(b1);
-		} catch (SQLException e) {
+			if(bookList.isEmpty()) {
+				throw new InvalidCategoryException();
+			}
+			else {
+			request.setAttribute("categoryBookList", bookList);
+			RequestDispatcher rd=request.getRequestDispatcher("categorySearch.jsp");
+			rd.forward(request, response);
+		}
+		} catch (InvalidCategoryException e) {
+			String validate=e.getMessage();
+			request.setAttribute("categoryNotFound", "category");
+			RequestDispatcher rd=request.getRequestDispatcher(validate);
+			rd.forward(request, response);
+			
+		}catch (SQLException e) {
 			e.getMessage();
 		}
 		
 		
-			request.setAttribute("categoryBookList", bookList);
-			RequestDispatcher rd=request.getRequestDispatcher("categorySearch.jsp");
-			rd.forward(request, response);
+			
 			
 		 
 		

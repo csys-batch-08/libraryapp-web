@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.exception.InvalidAuthorException;
+import com.library.exception.InvalidCategoryException;
 import com.library.model.Books;
 
 
@@ -40,24 +41,26 @@ public class AuthorSearch extends HttpServlet {
 		List<Books> bookList=null;
 		try {
 			bookList = book.authorFetch(books);
-		} catch (SQLException e1) {
-			e1.getMessage();
-		}
 		
-			if(bookList!=null) {
+		
+			if(!bookList.isEmpty()) {
 				request.setAttribute("authorBookList", bookList);
 				RequestDispatcher rd=request.getRequestDispatcher("authorSearch.jsp");
 				rd.forward(request, response);
 			}
 			else {
-			try {
 					throw new InvalidAuthorException();
-				}catch(InvalidAuthorException e){
-					String validate=e.getMessage();
-					response.sendRedirect(validate);
 				}
 			
-		} 
+		}catch (InvalidAuthorException e) {
+			String validate=e.getMessage();
+			request.setAttribute("authorNotFound", "category");
+			RequestDispatcher rd=request.getRequestDispatcher(validate);
+			rd.forward(request, response);
+			
+		}  catch (SQLException e1) {
+			e1.getMessage();
+		}
 		
 		
 	}

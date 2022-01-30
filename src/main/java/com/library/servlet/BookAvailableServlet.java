@@ -63,8 +63,9 @@ public class BookAvailableServlet extends HttpServlet {
 			RequestDispatcher rd=request.getRequestDispatcher("bookBorrowSuccess.jsp");
 			rd.forward(request, response);
 		}else {
-			session.setAttribute("AdminError", "adminWrong");
-			response.sendRedirect("bookAvailable.jsp");
+			request.setAttribute("AdminError", "adminWrong");
+			RequestDispatcher rd=request.getRequestDispatcher("bookAvailable.jsp");
+			rd.forward(request, response);
 		}
 	}catch(SQLException e) {
 		e.getMessage();

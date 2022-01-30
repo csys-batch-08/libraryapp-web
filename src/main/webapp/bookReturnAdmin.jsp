@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,12 +36,10 @@
     <label for"returndate" name="returndate">Date Returned</label>
     <input type="date" id="datefield" name="returndate" required><br><br>
     <button type="submit">Log In</button>
-    <%
-   if(session.getAttribute("AdminError") != null){%>
+   <c:if test="${not empty AdminError}">
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
-   <%session.removeAttribute("AdminError"); }
-   %>
+ </c:if>
     </form>
     </fieldset>
 </body>

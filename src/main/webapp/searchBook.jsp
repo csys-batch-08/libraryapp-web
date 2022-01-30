@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  import="com.library.connection.*" import ="java.util.List" import ="com.library.test.*" import="java.sql.*" import="com.library.dao.impl.*" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,19 +114,15 @@ overflow:hidden;}
 </form>
 </fieldset>
 
-<%
-   if(session.getAttribute("authorNotFound") != null){%>
+	<c:if test="${not empty authorNotFound}">
 	   <h1>Invalid Author</h1>
 	   
-   <%session.removeAttribute("authorNotFound"); }
-   %>
+  </c:if>
 	
-	<%
-   if(session.getAttribute("categoryNotFound") != null){%>
+	<c:if test="${not empty categoryNotFound}">
 	   <h1>Invalid Category</h1>
 	   
-   <%session.removeAttribute("categoryNotFound"); }
-   %>
+   </c:if>
 
 </body>
 </html>

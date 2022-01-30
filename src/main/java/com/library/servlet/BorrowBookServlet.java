@@ -3,6 +3,7 @@ package com.library.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +36,9 @@ public class BorrowBookServlet extends HttpServlet {
 			availability = book.bookBorrow(b1);
 			count=book.eligle(b1);
 			if(count>=2) {
-				session.setAttribute("eligible", "hi");
-				response.sendRedirect("user.jsp");
+				request.setAttribute("eligible", "adminWrong");
+				RequestDispatcher rd=request.getRequestDispatcher("user.jsp");
+				rd.forward(request, response);
 			}else if (availability.equals("available")) {
 				response.sendRedirect("bookAvailable.jsp");
 			}else {

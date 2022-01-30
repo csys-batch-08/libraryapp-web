@@ -71,18 +71,7 @@ color:white;
 </style>
 </head>
 <body>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
-	<%
-   if(session.getAttribute("eligible") != null){%>
-	   <h1>You are not eligible to borrow Book</h1>
-	   
-   <%session.removeAttribute("eligible"); }
-   %>
+
 
 
 <div class="topnav" >
