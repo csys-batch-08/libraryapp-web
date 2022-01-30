@@ -10,6 +10,7 @@ import com.library.dao.FinesDao;
 import com.library.model.*;
 
 public class FinesDaoImpl implements FinesDao {
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	public void insert(Fines fine) throws SQLException  {
 		Connection con = null;
 		PreparedStatement pstmt=null;

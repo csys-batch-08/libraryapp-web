@@ -13,6 +13,7 @@ import com.library.dao.BooksDao;
 import com.library.model.*;
 
 public class BooksDaoImpl implements BooksDao {
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	public void insert(Books book) throws SQLException  {
 		
 		String query="insert into book_details (book_code,book_title,category,author,price,rack_num) values (?,?,?,?,?,?)";

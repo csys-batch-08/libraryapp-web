@@ -12,6 +12,7 @@ import com.library.dao.UsersDao;
 import com.library.model.*;
 
 public class UsersDaoImpl implements UsersDao{
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	public boolean insert(Users user) throws SQLException  {
 		
 		String query="insert into user_details (user_name,city,password,mobile_no,email_id) values (?,?,?,?,?)";

@@ -13,6 +13,7 @@ import com.library.dao.FineHistoryDao;
 import com.library.model.FineHistory;
 
 public class FineHistoryDaoImpl implements FineHistoryDao {
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 
 	public void insert(FineHistory fineHistory) throws SQLException {
 		Connection con = null;

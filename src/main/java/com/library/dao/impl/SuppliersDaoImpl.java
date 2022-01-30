@@ -8,6 +8,7 @@ import com.library.dao.SuppliersDao;
 import com.library.model.*;
 
 public class SuppliersDaoImpl implements SuppliersDao{
+	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	public void insert(Suppliers supply) throws SQLException  {
 		
 		 String   query="insert into supplier_details (supplier_name,address,contact) values (?,?,?)";
