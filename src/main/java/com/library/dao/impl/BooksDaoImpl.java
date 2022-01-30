@@ -15,12 +15,12 @@ import com.library.model.*;
 public class BooksDaoImpl implements BooksDao {
 	public void insert(Books book) throws SQLException  {
 		
-		String query="insert into book_details (book_code,book_title,category,author,price,rack_num) values (?,?,?,?,?,?)";
+		String insertQuery="insert into book_details (book_code,book_title,category,author,price,rack_num) values (?,?,?,?,?,?)";
 		Connection con=null;
 		PreparedStatement pstmt =null;
 		try {
 		 con=ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
+		 pstmt = con.prepareStatement(insertQuery);
 		
 		pstmt.setString(1,book.getBookCode());
 		pstmt.setString(2, book.getBookTitle());
@@ -48,7 +48,7 @@ public class BooksDaoImpl implements BooksDao {
 	public List<Books> showBooks() throws SQLException 
 	{
 		
-		String query="Select book_title,category,author from book_details";
+		String showQuery="Select book_title,category,author from book_details";
 		List<Books> list=new ArrayList<>();
 		ResultSet rs=null;
 		Connection con = null;
@@ -56,7 +56,7 @@ public class BooksDaoImpl implements BooksDao {
 		try {
 			con = ConnectionUtil.getDBConnect();
 		
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(showQuery);
 		
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -85,14 +85,14 @@ public class BooksDaoImpl implements BooksDao {
 
 	
 	public List<Books> authorFetch(Books books) throws SQLException {
-		String query="select book_title from book_details where author in ?";
+		String authorFetchQuery="select book_title from book_details where author in ?";
 		Connection con=null;
 		PreparedStatement pstmt=null;  
 		ResultSet rs=null;
 		List<Books> bookList=new ArrayList<>();
 		try {
 			con = ConnectionUtil.getDBConnect();
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(authorFetchQuery);
 			pstmt.setString(1, books.getAuthor());
 		
 		
@@ -121,14 +121,14 @@ public class BooksDaoImpl implements BooksDao {
 	}
 	
 	public List<Books> categoryFetch(Books books) throws SQLException {
-		String query="select book_title from book_details where category in ?";
+		String categoryQuery="select book_title from book_details where category in ?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		List<Books> bookList=new ArrayList<>();
 		ResultSet rs=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(categoryQuery);
 			pstmt.setString(1, books.getCategory());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -159,12 +159,12 @@ public class BooksDaoImpl implements BooksDao {
 	
 public void delete(Books book) throws SQLException {
 		
-		String query="delete book_details where book_title=?";
+		String deleteQuery="delete book_details where book_title=?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 		con=ConnectionUtil.getDBConnect();
-		pstmt = con.prepareStatement(query);
+		pstmt = con.prepareStatement(deleteQuery);
 		
 		pstmt.setString(1,book.getBookTitle());
 		
@@ -512,7 +512,7 @@ public void delete(Books book) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
-			List<Books> bookList=new ArrayList<>();
+			List<Books> unavailableBookList=new ArrayList<>();
 			while(rs.next()) {
 				Books book=new Books();
 				book.setBookTitle(rs.getString(1));
@@ -521,10 +521,10 @@ public void delete(Books book) throws SQLException {
 				book.setPrice(rs.getInt(4));
 				book.setUserName(rs.getString(5));
 				book.setPrerequest(rs.getString(6));
-				bookList.add(book);
+				unavailableBookList.add(book);
 				
 			}
-			return bookList;
+			return unavailableBookList;
 		}catch (Exception e) {
 			e.getMessage();
 		}finally {
@@ -571,10 +571,10 @@ public void delete(Books book) throws SQLException {
 			con=ConnectionUtil.getDBConnect();
 		    pstmt=con.prepareStatement(query);
 		    pstmt.setString(1, book.getUserName());
-		    ResultSet rs=null;
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				return rs.getInt(1);
+		    ResultSet eligibleResultSet=null;
+			eligibleResultSet=pstmt.executeQuery();
+			while(eligibleResultSet.next()) {
+				return eligibleResultSet.getInt(1);
 			}
 		} catch (Exception e) {
 			e.getMessage();
