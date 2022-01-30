@@ -64,10 +64,10 @@ public class FinesDaoImpl implements FinesDao {
 	public void delete(Fines fine) throws SQLException  {
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		String query = "delete fine_details where fine_range_in_month=?";
+		String deleteQuery = "delete fine_details where fine_range_in_month=?";
 		try {
 		 con = ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
+		 pstmt = con.prepareStatement(deleteQuery);
 
 		pstmt.setInt(1, fine.getFineRange());
 
@@ -86,17 +86,17 @@ public class FinesDaoImpl implements FinesDao {
 	}
 
 	public int fineCalculation(Fines fine) throws SQLException {
-		String query = "select fine_amount from fine_details where fine_range_in_month in ?";
+		String fineQuery = "select fine_amount from fine_details where fine_range_in_month in ?";
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
 			 
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(fineQuery);
 			pstmt.setInt(1, fine.getFineRange());
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				return rs.getInt(1);
+			ResultSet resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+				return resultSet.getInt(1);
 			}
 		} catch (Exception e) {
 			e.getMessage();

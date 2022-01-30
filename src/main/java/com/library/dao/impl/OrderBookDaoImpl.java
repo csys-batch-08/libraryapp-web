@@ -198,32 +198,32 @@ public List<OrderBook> adminView() throws SQLException  {
 }
 
 
-public List<OrderBook> userView(OrderBook order ) throws SQLException  {
+public List<OrderBook> userView(OrderBook order) throws SQLException  {
 	String query="select book_name,author,status from order_book where user_name in ?";
-	ResultSet rs=null;
+	ResultSet resultSet=null;
 	Connection con = null;
 	PreparedStatement pstmt=null;
 	try {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(query);
 	pstmt.setString(1, order.getUserName());
-	rs=pstmt.executeQuery();
+	resultSet=pstmt.executeQuery();
 
-	List<OrderBook> orderList=new ArrayList<>();
-	if (rs.next()) {
+	List<OrderBook> userOrderList=new ArrayList<>();
+	if (resultSet.next()) {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBookName(rs.getString(1));
-			orderBook.setAuthor(rs.getString(2));
-			orderBook.setStatus(rs.getString(3));
-			orderList.add(orderBook);
+			orderBook.setBookName(resultSet.getString(1));
+			orderBook.setAuthor(resultSet.getString(2));
+			orderBook.setStatus(resultSet.getString(3));
+			userOrderList.add(orderBook);
 			
 		
 		
-}while (rs.next());
+}while (resultSet.next());
 	}
-	return orderList;
+	return userOrderList;
 	}catch (Exception e) {
 		e.getMessage();
 	}finally {
