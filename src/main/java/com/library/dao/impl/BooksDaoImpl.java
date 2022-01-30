@@ -107,7 +107,9 @@ public class BooksDaoImpl implements BooksDao {
 				
 				return bookList;
 		}else {
+			if(books.getAuthor()!=null) {
 			return Collections.emptyList();
+			}
 		}
 			
 		
