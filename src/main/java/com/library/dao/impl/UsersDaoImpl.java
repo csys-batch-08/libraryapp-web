@@ -14,12 +14,12 @@ import com.library.model.*;
 public class UsersDaoImpl implements UsersDao{
 	public boolean insert(Users user) throws SQLException  {
 		
-		String query="insert into user_details (user_name,city,password,mobile_no,email_id) values (?,?,?,?,?)";
+		String insertQuery="insert into user_details (user_name,city,password,mobile_no,email_id) values (?,?,?,?,?)";
 		Connection con=null;
 		PreparedStatement pstmt =null;
 		try {
 		 con=ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
+		 pstmt = con.prepareStatement(insertQuery);
 		
 		pstmt.setString(1,user.getUserName());
 		pstmt.setString(2, user.getCity());
@@ -27,8 +27,8 @@ public class UsersDaoImpl implements UsersDao{
 		pstmt.setLong(4, user.getMobileNo());
 		pstmt.setString(5, user.getEmailId());
 		
-		int i = pstmt.executeUpdate();
-		if(i>0)
+		int insertCheck = pstmt.executeUpdate();
+		if(insertCheck>0)
 			return true;
 		}catch (Exception e) {
 			e.getMessage();
@@ -47,12 +47,12 @@ public class UsersDaoImpl implements UsersDao{
 	}
 public boolean adminInsert(Users user) throws SQLException  {
 		
-		String query="insert into user_details (user_name,city,user_role,password,mobile_no,email_id) values (?,?,?,?,?,?)";
+		String adminInsertQuery="insert into user_details (user_name,city,user_role,password,mobile_no,email_id) values (?,?,?,?,?,?)";
 		Connection con=null;
 		PreparedStatement pstmt =null;
 		try {
 		 con=ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
+		 pstmt = con.prepareStatement(adminInsertQuery);
 		
 		pstmt.setString(1,user.getUserName());
 		pstmt.setString(2, user.getCity());
@@ -60,8 +60,8 @@ public boolean adminInsert(Users user) throws SQLException  {
 		pstmt.setString(4,user.getPassword());
 		pstmt.setLong(5, user.getMobileNo());
 		pstmt.setString(6, user.getEmailId());
-		int i=pstmt.executeUpdate();
-		if(i>0)
+		int adminInsertCheck=pstmt.executeUpdate();
+		if(adminInsertCheck>0)
 			return true;
 		}catch (Exception e) {
 			e.getMessage();
@@ -83,12 +83,12 @@ public boolean adminInsert(Users user) throws SQLException  {
 @SuppressWarnings("resource")
 public String fetch(Users user) throws SQLException {
 	
-	String query="select user_name,password from user_details where user_name in ? and password in ?";
+	String fetchQuery="select user_name,password from user_details where user_name in ? and password in ?";
 	Connection con=null;
 	PreparedStatement pstmt =null;
 	try {
 	 con=ConnectionUtil.getDBConnect();
-	 pstmt = con.prepareStatement(query);
+	 pstmt = con.prepareStatement(fetchQuery);
 	pstmt.setString(1, user.getUserName());
 	pstmt.setString(2, user.getPassword());
 	ResultSet rs = pstmt.executeQuery();
@@ -118,12 +118,12 @@ public String fetch(Users user) throws SQLException {
 
 public void delete(Users user) throws SQLException  {
 	
-	String query="update user_details set user_role='invalid' where user_name in ?";
+	String deleteQuery="update user_details set user_role='invalid' where user_name in ?";
 	Connection con=null;
 	PreparedStatement pstmt =null;
 	try {
 	 con=ConnectionUtil.getDBConnect();
-	 pstmt = con.prepareStatement(query);
+	 pstmt = con.prepareStatement(deleteQuery);
 	
 	pstmt.setString(1,user.getUserName());
 	
@@ -168,10 +168,10 @@ public void update(Users user) throws SQLException  {
 public int getUserWallet(Users user) throws SQLException  {
 	Connection con=null;
 	PreparedStatement pstmt =null;
-	String query="Select userwallet from user_details where user_name in ?";
+	String userWalletQuery="Select userwallet from user_details where user_name in ?";
 	try {
 	 con=ConnectionUtil.getDBConnect();
-	 pstmt=con.prepareStatement(query);
+	 pstmt=con.prepareStatement(userWalletQuery);
 	pstmt.setString(1, user.getUserName());
 	ResultSet rs=pstmt.executeQuery();
 	
@@ -196,10 +196,10 @@ public int getUserWallet(Users user) throws SQLException  {
 public int getFine(Users user) throws SQLException  {
 	Connection con=null;
 	PreparedStatement pstmt =null;
-	String query="Select fine_amount from user_details where user_name in ?";
+	String userFineQuery="Select fine_amount from user_details where user_name in ?";
 	try {
 	 con=ConnectionUtil.getDBConnect();
-	 pstmt=con.prepareStatement(query);
+	 pstmt=con.prepareStatement(userFineQuery);
 	pstmt.setString(1, user.getUserName());
 	ResultSet rs=pstmt.executeQuery();
 	
@@ -267,8 +267,8 @@ public boolean forgotPassword(Users users) throws SQLException {
 		 pstmt=con.prepareStatement(query);
 		pstmt.setString(1, users.getPassword());
 		pstmt.setString(2, users.getUserName());
-		int i=pstmt.executeUpdate();
-		if(i>0) {
+		int forgotCheck=pstmt.executeUpdate();
+		if(forgotCheck>0) {
 			return true;
 		}
 		
@@ -288,12 +288,12 @@ public boolean forgotPassword(Users users) throws SQLException {
 
 public int walletRecharge(Users user) throws SQLException {
 	
-	String query="update user_details set userwallet=(userwallet+500) where user_name in ?";
+	String walletRechargeQuery="update user_details set userwallet=(userwallet+500) where user_name in ?";
 	Connection con=null;
 	PreparedStatement pstmt =null;
 try {
 		 con=ConnectionUtil.getDBConnect();
-		 pstmt=con.prepareStatement(query);
+		 pstmt=con.prepareStatement(walletRechargeQuery);
 		pstmt.setString(1, user.getUserName());
 		pstmt.executeUpdate();
 		
@@ -318,15 +318,15 @@ public List<Users> userList() throws SQLException {
 			
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
-			ResultSet rs=pstmt.executeQuery();
+			ResultSet userResultSet=pstmt.executeQuery();
 			List<Users> userList=new ArrayList<>();
-			while(rs.next()) {
+			while(userResultSet.next()) {
 				Users user=new Users();
-				user.setUserName(rs.getString(1));
-				user.setCity(rs.getString(2));
-				user.setMobileNo(rs.getLong(3));
-				user.setEmailId(rs.getString(4));
-				user.setUserWallet(rs.getInt(5));
+				user.setUserName(userResultSet.getString(1));
+				user.setCity(userResultSet.getString(2));
+				user.setMobileNo(userResultSet.getLong(3));
+				user.setEmailId(userResultSet.getString(4));
+				user.setUserWallet(userResultSet.getInt(5));
 				userList.add(user);
 			}
 			return userList;
@@ -353,8 +353,8 @@ public boolean unameCheck(Users user) throws SQLException {
 			
 			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getUserName());
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
+			ResultSet checkUserResultSet=pstmt.executeQuery();
+			while(checkUserResultSet.next()) {
 				return true;
 			}
 		}catch (Exception e) {
@@ -381,8 +381,8 @@ public boolean emailCheck(Users user) throws SQLException {
 			
 			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, user.getEmailId());
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
+			ResultSet checkEmailResultSet=pstmt.executeQuery();
+			while(checkEmailResultSet.next()) {
 				return true;
 			}
 		}catch (Exception e) {
@@ -407,8 +407,8 @@ public boolean mobileCheck(Users user) throws SQLException {
 			
 			 pstmt=con.prepareStatement(query);
 			pstmt.setLong(1, user.getMobileNo());
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()) {
+			ResultSet checkMobileResultSet=pstmt.executeQuery();
+			while(checkMobileResultSet.next()) {
 				return true;
 			}
 		}catch (Exception e) {
