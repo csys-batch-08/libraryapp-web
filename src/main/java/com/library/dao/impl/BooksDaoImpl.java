@@ -213,12 +213,12 @@ public void delete(Books book) throws SQLException {
 
 	public String bookBorrow(Books book) throws SQLException {
 		
-		String query="select availability,prerequest from book_details where book_title in ?";
+		String bookBorrowQuery="select availability,prerequest from book_details where book_title in ?";
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {
 			con=ConnectionUtil.getDBConnect();
-		    pstmt=con.prepareStatement(query);
+		    pstmt=con.prepareStatement(bookBorrowQuery);
 		    pstmt.setString(1, book.getBookTitle());
 		    ResultSet rs=null;
 			rs=pstmt.executeQuery();
@@ -245,17 +245,17 @@ public void delete(Books book) throws SQLException {
 	}
 
 	public int getRack(Books book) throws SQLException {
-		String query = "select rack_num from book_details where book_title in ?";
+		String getRackQuery = "select rack_num from book_details where book_title in ?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con=ConnectionUtil.getDBConnect();
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(getRackQuery);
 			pstmt.setString(1, book.getBookTitle());
-			ResultSet rs = null;
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				return rs.getInt(1);
+			ResultSet rackResultSet = null;
+			rackResultSet = pstmt.executeQuery();
+			while (rackResultSet.next()) {
+				return rackResultSet.getInt(1);
 			}
 
 		} catch (Exception e) {
@@ -388,9 +388,9 @@ public void delete(Books book) throws SQLException {
 		 pstmt = con.prepareStatement(query);
 		pstmt.setString(1, book.getBookTitle());
 		pstmt.setString(2, book.getUserName());
-		ResultSet rs=pstmt.executeQuery();
+		ResultSet rackResultSet=pstmt.executeQuery();
 		
-			while(rs.next()) {
+			while(rackResultSet.next()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -417,9 +417,9 @@ public void delete(Books book) throws SQLException {
 			 con=ConnectionUtil.getDBConnect();
 			 pstmt=con.prepareStatement(query);
 			pstmt.setString(1, book.getBookTitle());
-			ResultSet rs=pstmt.executeQuery();
-			while(rs.next()){
-				return rs.getInt(1);
+			ResultSet bookIssueNoRs=pstmt.executeQuery();
+			while(bookIssueNoRs.next()){
+				return bookIssueNoRs.getInt(1);
 			}
 		}catch (Exception e) {
 			e.getMessage();
@@ -436,15 +436,16 @@ public void delete(Books book) throws SQLException {
 		
 	}
 	
+	
 	public List<Books> returnBookList(Books book) throws SQLException {
-		String query="select book_title from book_details where user_name in ?";
+		String returnBookQuery="select book_title from book_details where user_name in ?";
 		ResultSet rs=null;
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		List<Books> returnBook=new ArrayList<>();
 		try {
 			 con=ConnectionUtil.getDBConnect();
-			 pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(returnBookQuery);
 			pstmt.setString(1, book.getUserName());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -468,14 +469,14 @@ public void delete(Books book) throws SQLException {
 		return returnBook;
 	}
 	public List<Books> availableBookList() throws SQLException {
-		String query="select book_title,category,author,price,rack_num,prerequest from book_details where availability in 'available'";
+		String availableBookQuery="select book_title,category,author,price,rack_num,prerequest from book_details where availability in 'available'";
 		ResultSet rs=null;
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		List<Books> bookList=new ArrayList<>();
 		try {
 			 con=ConnectionUtil.getDBConnect();
-			 pstmt=con.prepareStatement(query);
+			 pstmt=con.prepareStatement(availableBookQuery);
 			rs=pstmt.executeQuery();
 				while(rs.next()){
 					Books book=new Books();
