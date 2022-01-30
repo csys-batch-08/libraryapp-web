@@ -89,7 +89,7 @@ public class BooksDaoImpl implements BooksDao {
 		String authorFetchQuery="select book_title from book_details where author in ?";
 		Connection con=null;
 		PreparedStatement pstmt=null;  
-		ResultSet rs=null;
+		ResultSet authorResultSet=null;
 		List<Books> bookList=new ArrayList<>();
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -97,13 +97,13 @@ public class BooksDaoImpl implements BooksDao {
 			pstmt.setString(1, books.getAuthor());
 		
 		
-			rs = pstmt.executeQuery();
-			if (rs.next()){
+			authorResultSet = pstmt.executeQuery();
+			if (authorResultSet.next()){
 				do {
 				Books authorBookList=new Books();
-				authorBookList.setBookTitle(rs.getString(1));
+				authorBookList.setBookTitle(authorResultSet.getString(1));
 				bookList.add(authorBookList);
-				}while(rs.next());
+				}while(authorResultSet.next());
 				
 				return bookList;
 		}else {
@@ -131,19 +131,19 @@ public class BooksDaoImpl implements BooksDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		List<Books> bookList=new ArrayList<>();
-		ResultSet rs=null;
+		ResultSet catergoryResultSet=null;
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(categoryQuery);
 			pstmt.setString(1, books.getCategory());
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			catergoryResultSet = pstmt.executeQuery();
+			if (catergoryResultSet.next()) {
 				do {
 				books=new Books();
-				books.setBookTitle(rs.getString(1));
+				books.setBookTitle(catergoryResultSet.getString(1));
 				bookList.add(books);
 
-			}while (rs.next());
+			}while (catergoryResultSet.next());
 				return bookList;
 			}
 			else {

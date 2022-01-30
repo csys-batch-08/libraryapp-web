@@ -1,6 +1,7 @@
 package com.library.servlet;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.library.dao.impl.BooksDaoImpl;
 import com.library.exception.InvalidCategoryException;
-import com.library.exception.InvalidReturnException;
 import com.library.model.Books;
 
 /**
