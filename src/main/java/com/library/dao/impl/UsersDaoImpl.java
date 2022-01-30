@@ -173,10 +173,10 @@ public int getUserWallet(Users user) throws SQLException  {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(userWalletQuery);
 	pstmt.setString(1, user.getUserName());
-	ResultSet rs=pstmt.executeQuery();
+	ResultSet userWalletResultSet=pstmt.executeQuery();
 	
-	while(rs.next()) {
-		return rs.getInt(1);
+	while(userWalletResultSet.next()) {
+		return userWalletResultSet.getInt(1);
 	}
 	
 	}catch (Exception e) {
@@ -201,10 +201,10 @@ public int getFine(Users user) throws SQLException  {
 	 con=ConnectionUtil.getDBConnect();
 	 pstmt=con.prepareStatement(userFineQuery);
 	pstmt.setString(1, user.getUserName());
-	ResultSet rs=pstmt.executeQuery();
+	ResultSet fineResultSet=pstmt.executeQuery();
 	
-	while(rs.next()) {
-		return rs.getInt(1);
+	while(fineResultSet.next()) {
+		return fineResultSet.getInt(1);
 	}
 	
 	}catch (Exception e) {
