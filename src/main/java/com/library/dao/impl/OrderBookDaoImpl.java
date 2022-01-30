@@ -13,7 +13,6 @@ import com.library.dao.OrderBookDao;
 import com.library.model.OrderBook;
 
 public class OrderBookDaoImpl implements OrderBookDao {
-	ConnectionUtil ConnectionUtil=new ConnectionUtil();
 	
 	public void insert(OrderBook orderBook) throws SQLException  {
 		Connection con = null;

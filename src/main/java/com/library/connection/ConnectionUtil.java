@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-	String password="oracle";
-	public Connection getDBConnect() throws ClassNotFoundException, SQLException {
+	
+	public static Connection getDBConnect() throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.OracleDriver");
-		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system",this.password);
+		return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		
 	}
 
-	public ConnectionUtil() {
+	private ConnectionUtil() {
 		super();
 	}
 
