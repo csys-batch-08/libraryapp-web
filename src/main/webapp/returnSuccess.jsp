@@ -56,12 +56,7 @@
   <a class="active" href="index.jsp">Home</a>
   <a class="active" href="user.jsp">User</a>
 </div>
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("user") == null)&&(session.getAttribute("admin")==null)&&(session.getAttribute("supplier")==null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 <fieldset id="register">
 <legend></legend>
 <h3>Your revised Wallet amount is "${userWallet }"</h3>				
