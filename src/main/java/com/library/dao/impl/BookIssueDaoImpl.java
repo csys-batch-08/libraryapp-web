@@ -114,7 +114,7 @@ public int getBookIssueNo(BookIssue book) throws SQLException {
 		
 		ResultSet issueSet=pstmt.executeQuery();
 		while(issueSet.next()){
-			return issueSet.getInt(1);
+			return issueSet.getInt("book_issue_no");
 		}
 	}catch (Exception e) {
 		e.getMessage();
@@ -154,7 +154,7 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 		ResultSet rs2=pstmt1.executeQuery();
 		
 		while(rs2.next()) {
-			return rs2.getInt(1);
+			return rs2.getInt("fine_range_in_month");
 		}
 	} catch (Exception e) {
 		e.getMessage();
@@ -188,11 +188,11 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
      ResultSet rs = pstmt.executeQuery();
      while(rs.next()) {
     	 book=new BookIssue();
-    	 book.setBookCode(rs.getString(1));
-    	 book.setdateIssue(rs.getDate(2).toLocalDate());
-    	 book.setDateReturn(rs.getDate(3).toLocalDate());
-    	 book.setdateReturned(rs.getDate(4).toLocalDate());
-    	 book.setfineRange(rs.getInt(5));
+    	 book.setBookCode(rs.getString("book_title"));
+    	 book.setdateIssue(rs.getDate("date_issue").toLocalDate());
+    	 book.setDateReturn(rs.getDate("date_return").toLocalDate());
+    	 book.setdateReturned(rs.getDate("date_returned").toLocalDate());
+    	 book.setfineRange(rs.getInt("fine_range_in_month"));
     	 bookIssue.add(book);
      }
      
@@ -230,13 +230,13 @@ public List<BookIssue> bookIssueList() throws SQLException {
      
      while(rs.next()){
 			BookIssue books=new BookIssue();
-			books.setBookCode(rs.getString(2));
-			books.setuserName(rs.getString(1));
-			books.setdateIssue(rs.getDate(3).toLocalDate());
-			books.setDateReturn(rs.getDate(4).toLocalDate());
-			books.setdateReturned(rs.getDate(5).toLocalDate());
-			books.setfineRange(rs.getInt(6));
-			books.setbookIssueId(rs.getInt(7));
+			books.setBookCode(rs.getString("book_title"));
+			books.setuserName(rs.getString("user_name"));
+			books.setdateIssue(rs.getDate("date_issue").toLocalDate());
+			books.setDateReturn(rs.getDate("date_return").toLocalDate());
+			books.setdateReturned(rs.getDate("date_returned").toLocalDate());
+			books.setfineRange(rs.getInt("fine_range_in_month"));
+			books.setbookIssueId(rs.getInt("book_issue_no"));
 			bookIssue.add(books);
 			
      }

@@ -79,7 +79,7 @@ overflow:hidden;
 	<c:forEach var="fine" items="${fineList}">				
 			<tr>
 <td>${fine.userName}</td>
-<td>${fine.fineAmount}</td>
+<td>Rs. ${fine.fineAmount}</td>
 <td>${fine.collectedTime}</td>
 </tr>	
 				

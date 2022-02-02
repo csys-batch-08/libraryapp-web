@@ -110,8 +110,8 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 	List<OrderBook> orderBook=new ArrayList<>();
 	while(rs.next()) {
 		order=new OrderBook();
-		order.setBookName(rs.getString(1));
-		order.setAuthor(rs.getString(2));
+		order.setBookName(rs.getString("book_name"));
+		order.setAuthor(rs.getString("author"));
 		orderBook.add(order);
 	}
 	return orderBook;
@@ -172,9 +172,9 @@ public List<OrderBook> adminView() throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBookName(rs.getString(1));
-			orderBook.setAuthor(rs.getString(2));
-			orderBook.setStatus(rs.getString(3));
+			orderBook.setBookName(rs.getString("book_name"));
+			orderBook.setAuthor(rs.getString("author"));
+			orderBook.setStatus(rs.getString("status"));
 			orderList.add(orderBook);
 			
 		
@@ -214,9 +214,9 @@ public List<OrderBook> userView(OrderBook order) throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBookName(resultSet.getString(1));
-			orderBook.setAuthor(resultSet.getString(2));
-			orderBook.setStatus(resultSet.getString(3));
+			orderBook.setBookName(resultSet.getString("book_name"));
+			orderBook.setAuthor(resultSet.getString("author"));
+			orderBook.setStatus(resultSet.getString("status"));
 			userOrderList.add(orderBook);
 			
 		

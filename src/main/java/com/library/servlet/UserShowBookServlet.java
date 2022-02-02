@@ -36,10 +36,10 @@ public class UserShowBookServlet extends HttpServlet {
 			List<Books> list=book.showBooks();
 			HttpSession session=request.getSession();
 			request.setAttribute("booksList", list);
-			if((session.getAttribute("user") != null)) {
+			if((session.getAttribute("userRole").equals("user"))) {
 				RequestDispatcher rd=request.getRequestDispatcher("showBook.jsp");
 				rd.forward(request, response);
-			}else if((session.getAttribute("admin") != null)) {
+			}else if((session.getAttribute("userRole").equals("admin"))) {
 				RequestDispatcher rd=request.getRequestDispatcher("authorShowBook.jsp");
 				rd.forward(request, response);
 			}

@@ -59,9 +59,9 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
 			FineHistory fine=new FineHistory();
-			fine.setuserName(rs.getString(1));
-			fine.setfineAmount(rs.getInt(2));
-			fine.setCollectedTime(rs.getTimestamp(3).toLocalDateTime().format(formatter));
+			fine.setuserName(rs.getString("user_name"));
+			fine.setfineAmount(rs.getInt("fine_amount"));
+			fine.setCollectedTime(rs.getTimestamp("collected_time").toLocalDateTime().format(formatter));
 			fineList.add(fine);
 			
 			}

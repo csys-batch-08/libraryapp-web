@@ -98,7 +98,7 @@ public String fetch(Users user) throws SQLException {
 		pstmt.setString(1, user.getUserName());
 		ResultSet rs1 = pstmt.executeQuery();
 		rs1.next();
-		return rs1.getString(1);
+		return rs1.getString("user_role");
 	}
 	}catch (Exception e) {
 		e.getMessage();
@@ -176,7 +176,7 @@ public int getUserWallet(Users user) throws SQLException  {
 	ResultSet userWalletResultSet=pstmt.executeQuery();
 	
 	while(userWalletResultSet.next()) {
-		return userWalletResultSet.getInt(1);
+		return userWalletResultSet.getInt("userwallet");
 	}
 	
 	}catch (Exception e) {
@@ -204,7 +204,7 @@ public int getFine(Users user) throws SQLException  {
 	ResultSet fineResultSet=pstmt.executeQuery();
 	
 	while(fineResultSet.next()) {
-		return fineResultSet.getInt(1);
+		return fineResultSet.getInt("fine_amount");
 	}
 	
 	}catch (Exception e) {
@@ -322,11 +322,11 @@ public List<Users> userList() throws SQLException {
 			List<Users> userList=new ArrayList<>();
 			while(userResultSet.next()) {
 				Users user=new Users();
-				user.setUserName(userResultSet.getString(1));
-				user.setCity(userResultSet.getString(2));
-				user.setMobileNo(userResultSet.getLong(3));
-				user.setEmailId(userResultSet.getString(4));
-				user.setUserWallet(userResultSet.getInt(5));
+				user.setUserName(userResultSet.getString("USER_NAME"));
+				user.setCity(userResultSet.getString("CITY"));
+				user.setMobileNo(userResultSet.getLong("MOBILE_NO"));
+				user.setEmailId(userResultSet.getString("EMAIL_ID"));
+				user.setUserWallet(userResultSet.getInt("USERWALLET"));
 				userList.add(user);
 			}
 			return userList;
