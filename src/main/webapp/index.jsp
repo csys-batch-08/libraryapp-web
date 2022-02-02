@@ -8,44 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Login</title>
+    <link rel="stylesheet" href="Assets/css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        #field1{
-         background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-            width: 500px;
-            color: white;
-            float:left;
-            font-size:20px;
-            margin-left:465px;
-            border-radius:20px;
-            margin-top:80px;
-            
-
-        }
-        body{
-            background-image: url(Assets/login.jpg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color: springgreen;
-          
-        }
-        
-        #forgot, a{
-            width: 100px;
-            text-decoration:none;
-            color:white;
-        }
-        #forgot{
-        color:black;
-        }
-       button{
-        width: 150px;
-            text-decoration:none;
-        }
-        #forgot{
-        width:150px;
-        }
-    </style>
+    
 </head>
 <body>
  <c:if test="${not empty passchange}">

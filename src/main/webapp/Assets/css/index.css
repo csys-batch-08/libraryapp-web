@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+
+  #field1{
+         background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+            width: 500px;
+            color: white;
+            float:left;
+            font-size:20px;
+            margin-left:465px;
+            border-radius:20px;
+            margin-top:80px;
+            
+
+        }
+        body{
+            background-image: url(../login.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            color: springgreen;
+          
+        }
+        
+        #forgot, a{
+            width: 100px;
+            text-decoration:none;
+            color:white;
+        }
+        #forgot{
+        color:black;
+        }
+       button{
+        width: 150px;
+            text-decoration:none;
+        }
+        #forgot{
+        width:150px;
+        }
