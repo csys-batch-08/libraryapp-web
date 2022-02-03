@@ -30,16 +30,18 @@
 <th id="head"><strong>Borrowed Date</strong></th>
 <th id="head"><strong>Actual Return Date</strong></th>
 <th id="head"><strong>Returned Date</strong></th>
-<th id="head"><strong>Fine Range</strong></th>
+<th id="head"><strong>Fine Range in Month</strong></th>
+<th id="head"><strong>Fine amount</strong></th>
 </tr>
-<c:forEach var="bookIssue" items="${bookIssueList }">					
+<c:forEach var="bookIssue" items="${bookIssueList}">					
 			<tr>
 
-<td>  ${bookIssue.bookCode }</td>
+<td>${bookIssue.bookCode }</td>
 <td>${bookIssue.dateIssue }  </td>
 <td>${bookIssue.dateReturn }</td>
 <td>${bookIssue.dateReturned }</td>
 <td>${bookIssue.fineRange }</td>
+<td>Rs ${bookIssue.fine }</td>
 
 </tr>	
 </c:forEach>				

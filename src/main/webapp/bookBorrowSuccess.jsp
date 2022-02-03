@@ -21,6 +21,7 @@
 <legend></legend>
 <h2>The Book is in Rack number : <c:out value="${rack }" /></h2>
 <span class="badge bg-success">Book Borrowed Success</span><br>
+<p> You have to return the book within three months otherwise you will be fined...</p>
 
 
 </fieldset>

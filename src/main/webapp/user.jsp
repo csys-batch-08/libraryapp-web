@@ -65,7 +65,7 @@
 		${userWalletLogin}</h1>
 		<br><br>
 <c:if test="${not empty eligible}">   
-<h1 style="color:red;background-color:white;font-size:25px;float:left;">You are not eligible to borrow Book</h1>
+<h1 style="color:red;background-color:white;font-size:25px;float:left;">You Reached the maximum limit to Borrow Book</h1>
 	   </c:if>
 
 </body>

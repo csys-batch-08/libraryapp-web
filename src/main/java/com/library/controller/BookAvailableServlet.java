@@ -52,9 +52,8 @@ public class BookAvailableServlet extends HttpServlet {
 			username=session.getAttribute("user").toString();
 			LocalDate dateIssue = LocalDate.now();
 			LocalDate dateReturn = dateIssue.plusMonths(3);
-			LocalDate dateReturned = dateReturn;
 			int fineRangeInMonth = 0;
-			BookIssue p1 = new BookIssue(username, bookTitle, dateIssue, dateReturn,dateReturned, fineRangeInMonth);
+			BookIssue p1 = new BookIssue(username, bookTitle, dateIssue, dateReturn, fineRangeInMonth);
 			BookIssueDaoImpl bookIssue=new BookIssueDaoImpl();
 			bookIssue.insert(p1);
 			int bookIssueNo=bookIssue.getBookIssueNo(p1);

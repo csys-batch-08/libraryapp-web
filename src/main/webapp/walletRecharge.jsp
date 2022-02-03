@@ -23,11 +23,8 @@
 			
 </fieldset>
 </body>
-<script>
+<script src="assets/js/walletrecharge.js">
 
-function fieldhid(){
-let field = document.getElementById("card");
-field.style.visibility = "visibile";
-}
+
 </script>
 </html>

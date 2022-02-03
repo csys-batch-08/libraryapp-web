@@ -17,6 +17,7 @@ import com.library.util.*;
 
 public class BookIssueDaoImpl implements BookIssueDao {
 	
+	String fineRange="fine_range_in_month";
 	public int insert(BookIssue bookIssue) throws SQLException  {
 		
 		String query="insert into book_issue_details (user_name,book_title,date_issue,date_return,date_returned) values (?,?,?,?,?)";
@@ -30,7 +31,7 @@ public class BookIssueDaoImpl implements BookIssueDao {
 		pstmt.setString(2, bookIssue.getBookCode());
 		pstmt.setString(3, bookIssue.getdateIssue());
 		pstmt.setString(4,bookIssue.getDateReturn());
-		pstmt.setString(5,bookIssue.getdateReturned());
+		pstmt.setString(5,"01-01-2000");
 		 pstmt.executeUpdate();
 		
 		}catch (Exception e) {
@@ -155,7 +156,7 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 		ResultSet rs2=pstmt1.executeQuery();
 		
 		while(rs2.next()) {
-			return rs2.getInt("fine_range_in_month");
+			return rs2.getInt(fineRange);
 		}
 	} catch (Exception e) {
 		e.getMessage();
@@ -174,10 +175,12 @@ public int returnBookIssue(BookIssue bookIssue) throws SQLException {
 	
 	
 }
-
+@Override
 public List<BookIssue> userHistory(BookIssue book) throws SQLException {
 	Connection con=null;
+	Connection connection=null;
 	PreparedStatement pstmt = null;
+	PreparedStatement pst=null;
 
 	String query="select book_title,date_issue,date_return,date_returned,fine_range_in_month from book_issue_details where user_name in ?";
 	try {
@@ -189,26 +192,42 @@ public List<BookIssue> userHistory(BookIssue book) throws SQLException {
      ResultSet rs = pstmt.executeQuery();
      while(rs.next()) {
     	 book=new BookIssue();
+    	
+    	
     	 book.setBookCode(rs.getString("book_title"));
     	 book.setdateIssue(rs.getDate("date_issue").toLocalDate());
     	 book.setDateReturn(rs.getDate("date_return").toLocalDate());
     	 book.setdateReturned(rs.getDate("date_returned").toLocalDate());
-    	 book.setfineRange(rs.getInt("fine_range_in_month"));
+    	 book.setfineRange(rs.getInt(fineRange));
+    	 System.out.println((rs.getInt(fineRange)));
+    	 
+    	 String fineQuery="select fine_amount from fine_details where fine_range_in_month in ?";
+    	 connection=ConnectionUtil.getDBConnect();
+    	 pst=connection.prepareStatement(fineQuery);
+    	 pst.setInt(1, rs.getInt(5));
+    	 ResultSet result=pst.executeQuery();
+    	 int fine=0;
+    	 if(result.next()) {
+    	  System.out.println(result.getString(1)); 
+    	  fine=result.getInt(1);
+    	 }
+    	 book.setFine(fine);
     	 bookIssue.add(book);
+    	 
+    	 System.out.println(rs.getInt(5));
+    	 ConnectionUtil.closePreparedStatement(pst, connection);
+    	
      }
      
      return bookIssue;
 
 
 	}catch (Exception e) {
-		e.getMessage();
+		e.printStackTrace();;
 	}finally {
-		if(pstmt!=null) {
-			pstmt.close();
-		}
-		if(con!=null) {
-			con.close();
-		}
+		ConnectionUtil.closePreparedStatement(pst, connection);
+		ConnectionUtil.closePreparedStatement(pstmt, con);
+		
 	}
 	
 	

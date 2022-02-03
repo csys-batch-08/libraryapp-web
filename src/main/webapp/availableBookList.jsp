@@ -42,7 +42,7 @@
 <td>${books.category}</td>
 <td>${books.author}</td>
 <td>${books.rackNum}</td>
-<td> ${books.price}</td>
+<td>Rs ${books.price}</td>
 <td> ${books.prerequest}</td>
 </tr>	
 				

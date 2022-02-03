@@ -12,20 +12,25 @@ public class BookIssue {
 	private LocalDate dateReturn;
 	private LocalDate dateReturned;
 	private int fineRange;
+	private int fine;
 	
+	public int getFine() {
+		return fine;
+	}
+	public void setFine(int fine) {
+		this.fine = fine;
+	}
 	DateTimeFormatter formatter =
 		     DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 	
-	public BookIssue(int bookIssueId, String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn,
-			LocalDate dateReturned, int fineRange) {
+	public BookIssue(int bookIssueId, String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn,int fineRange) {
 		super();
 		this.bookIssueId = bookIssueId;
 		this.userName = userName;
 		this.bookCode = bookCode;
 		this.dateIssue = dateIssue;
 		this.dateReturn = dateReturn;
-		this.dateReturned = dateReturned;
 		this.fineRange = fineRange;
 	}
 	public void setDateReturn(LocalDate dateReturn) {
@@ -80,14 +85,12 @@ public String getdateReturned() {
 		this.fineRange = fineRange;
 	}
 	
-	public BookIssue(String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn,
-			LocalDate dateReturned, int fineRange) {
+	public BookIssue(String userName, String bookCode, LocalDate dateIssue, LocalDate dateReturn, int fineRange) {
 		super();
 		this.userName = userName;
 		this.bookCode = bookCode;
 		this.dateIssue = dateIssue;
 		this.dateReturn = dateReturn;
-		this.dateReturned = dateReturned;
 		this.fineRange = fineRange;
 	}
 	public BookIssue(int bookIssueNo) {
