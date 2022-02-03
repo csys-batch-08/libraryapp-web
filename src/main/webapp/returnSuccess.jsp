@@ -6,13 +6,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Fine Payment</title>
-<link rel="stylesheet" href="assets/css/returnsuccess.css">
+<link rel="stylesheet" href="assets/css/returnbook.css">
 </head>
 <body>
 <div class="topnav" >
 <h1 style="float: left;">Library Management</h1>
-  <a class="active" href="index.jsp">Home</a>
-  <a class="active" href="user.jsp">User</a>
+  <a  href="index.jsp">Home</a>
+  <a  href="user.jsp">User</a>
 </div>
 
 <fieldset id="register">

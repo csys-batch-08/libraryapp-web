@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.library.connection.*;
 import com.library.dao.FinesDao;
 import com.library.model.*;
+import com.library.util.*;
 
 public class FinesDaoImpl implements FinesDao {
 	public void insert(Fines fine) throws SQLException  {

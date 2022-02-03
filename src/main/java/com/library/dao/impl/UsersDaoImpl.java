@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.library.connection.*;
 import com.library.dao.UsersDao;
 import com.library.model.*;
+import com.library.util.*;
 
 public class UsersDaoImpl implements UsersDao{
 	public boolean insert(Users user) throws SQLException  {

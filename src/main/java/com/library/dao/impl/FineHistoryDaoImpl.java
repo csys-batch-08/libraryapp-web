@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.library.connection.ConnectionUtil;
 import com.library.dao.FineHistoryDao;
 import com.library.model.FineHistory;
+import com.library.util.ConnectionUtil;
 
 public class FineHistoryDaoImpl implements FineHistoryDao {
 
