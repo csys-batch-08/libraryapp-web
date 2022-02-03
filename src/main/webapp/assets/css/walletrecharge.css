@@ -1,0 +1,28 @@
+@charset "ISO-8859-1";
+
+         #register{
+        background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+            background-repeat: no-repeat;
+            width: 350px;
+            margin-top:50px;
+            margin-left: 600px;
+            
+        }
+
+       html
+        {
+          background-image:url(../images/Bgimage.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+            font-size:larger;
+        }
+        button,a{
+        font-size:medium;
+        text-decoration:none;
+        color:black;
+        }
+
+h3 {
+	text-transform: capitalize;
+}

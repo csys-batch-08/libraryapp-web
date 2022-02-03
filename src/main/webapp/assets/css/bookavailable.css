@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+  #register{
+        background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+            width: 500px;
+            margin-left: 480px;
+            margin-top: 150px;
+            
+        }
+        body{
+            background-image: url(../images/Bgimage.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+        }

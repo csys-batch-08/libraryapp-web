@@ -11,59 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-   <style type="text/css">
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 20px;
-}
-
-        #register{
-            width: 350px;
-            margin-left: 350px;
-            
-            
-        }
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-           background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-        label{
-        font-size:larger;
-        }
-		button{
-		font-size:larger;
-		}
-		.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a {
-  background-color: black;
-  color: white;
-  float: right;
-}  
-form{
-border:2px solid white;
-border-radius: 10px;
-width:500px;
-background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-} 
-input{
-border:2px solidx;}
-</style>
+    <link rel="stylesheet" href="assets/css/addorderbook.css">
 </head>
 <body>
 

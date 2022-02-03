@@ -6,34 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Recharge Wallet</title>
-<style>
-        #register{
-        background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
-            background-repeat: no-repeat;
-            width: 350px;
-            margin-top:50px;
-            margin-left: 600px;
-            
-        }
-
-       html
-        {
-          background-image:url(Assets/Bgimage.jpeg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-            font-size:larger;
-        }
-        button,a{
-        font-size:medium;
-        text-decoration:none;
-        color:black;
-        }
-
-h3 {
-	text-transform: capitalize;
-}
-    </style>
+ <link rel="stylesheet" href="assets/css/walletrecharge.css">
 </head>
 <body>
 
@@ -41,14 +14,14 @@ h3 {
 <legend></legend>
 <h1>Welcome</h1>
 
-	<p>${user} your walletamount is ${userWalletLogin }.It is very low</p>
+	<p>${user} your wallet amount is Rs. ${userWalletLogin }.It is very low</p>
 	<p>You have to recharge your wallet with rs.500 to enter in to library</p>
 	<p>Are you ready to pay </p>
 	<button type="submit"><a href="loginwallet.jsp">Pay now</a></button>&emsp;
 	<button type="submit"><a href="index.jsp">Pay later</button>&emsp;
 	<button><a href="logout.jsp">Logout</a></button>
 			
-
+</fieldset>
 </body>
 <script>
 

@@ -7,22 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Book Available</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-        #register{
-        background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-            width: 500px;
-            margin-left: 480px;
-            margin-top: 150px;
-            
-        }
-        body{
-            background-image: url(Assets/Bgimage.jpeg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/bookavailable.css">
 </head>
 <body>
 

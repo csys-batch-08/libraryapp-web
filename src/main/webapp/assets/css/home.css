@@ -1,0 +1,152 @@
+@charset "ISO-8859-1";
+
+*{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+#about{
+background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+width:1250px;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  color:white;
+}
+.brand-title{
+  font-size: 1.5rem;
+  margin: .5rem;
+}
+.navbar-links ul{
+  margin: 0;
+  padding:0 ;
+  display: flex;
+  align-items: center;
+}
+.navbar-links li{
+  list-style: none;
+}
+.navbar-links li a{
+  text-decoration: none;
+  color : white;
+  padding: 1rem;
+  display: bolck;
+}
+.navbar-links li:hover{
+  background-color: #555;
+}
+.toggle-btn{
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 31px;
+  height: 21px
+}
+.toggle-btn .bar{
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media(max-width: 600px){
+  .toggle-btn{
+    display: flex;
+  }
+  .navbar-links{
+    display: none;
+    width: 100%;
+  }
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-links ul{
+    width: 100%;
+    flex-direction: column;
+  }
+  .navbar-links li{
+    text-align: center;
+  }
+  .navbar-links li a{
+    padding: .5rem 1rem;
+  }
+  .navbar-links.active{
+    display: flex;
+  }
+}
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+h4{
+font-size:larger;
+font-weight: bold;
+color:yellow;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:larger;
+}
+body{
+  background-image: url('../images/Rose-flowers-books.jpg');
+           background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+          
+        }
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: rgba(71, 90, 28, 0.945);
+}
+
+/* Add a color to the active/current link */
+.topnav a {
+  background-color: black;
+  color: white;
+  float: right;
+}
+p,pre{
+  color:white;
+  font-size: large;
+}
+fieldset{
+  width: 200px;
+}
+
+#about{
+text-align: justify;}
+h1{
+color:yellow;
+text-shadow: 2px 2px #ff0000;
+}
+#foot{
+  text-align: center;
+
+}
+#quotes{
+  position:relative;
+  float: right;
+  width:50%;
+  top:-450px;
+  height:50px;
+}
+#award,#contact{
+  color: red;
+}

@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+  #register{
+            width: 350px;
+            margin-left: 600px;
+            border-radius:18px;
+            text-decoration:none;
+            
+        }
+        a{
+        text-decoration:none;
+        }
+         
+        body{
+            background-image: url(../images/Rose-flowers-books.jpg);
+           background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+        }

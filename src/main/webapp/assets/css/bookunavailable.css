@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+a{
+text-decoration:none;
+}
+        #register{
+        background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+            width: 350px;
+            margin-left: 600px;
+            color:white;
+            
+        }
+        a{
+        color:white;
+        }
+        #but{
+        color:black;
+        font-size:medium;
+        }
+        body{
+            background-image: url(../images/Bgimage.jpeg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+        }

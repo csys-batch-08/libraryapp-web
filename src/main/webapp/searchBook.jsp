@@ -7,81 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Book Search</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style type="text/css">
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 20px;
-}
-
-
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            
-            
-        }
-        .alignment{
-        margin-top:150px;}
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-           background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-		button{
-		font-size:larger;
-		}
-		
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.button {
-  background-color:pink; 
-  border: none;
-  color: white;
-  padding: 4px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 20px;
-}
-.button1 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid pink;
-  }
-  .button1:hover {
-  background-color:black;
-  color: white;
-}
-
-
-
-/* Add a color to the active/current link */
-.topnav a {
-  
-  color: white;
-  float: right;
-}   
-.topnav{
-background-color: gray;
-overflow:hidden;}
-
-</style>
+<link rel="stylesheet" href="assets/css/searchbook.css">
 </head>
 <body>
 <%
@@ -94,7 +20,7 @@ overflow:hidden;}
 	
 <div class="topnav" >
 <h1 style="float:left;">Library Management</h1>
-  <a class="active" href="user.jsp">Home</a>
+  <a href="user.jsp">Home</a>
   <a href="logout.jsp">Logout</a>  
 
 </div>

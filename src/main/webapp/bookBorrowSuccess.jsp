@@ -6,37 +6,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Borrow Book</title>
-<style>
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            border-radius:18px;
-            text-decoration:none;
-            
-        }
-        a{
-        text-decoration:none;
-        }
-         
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-           background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-
-    </style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/borrowbook.css">
 </head>
 <body>
+<div class="topnav" >
+<h1 style="float:left;"> Library Management</h1>
+  <a class="active" href="user.jsp">Home</a>
+  <a href="logout.jsp">Logout</a>  
+</div>
 
 <fieldset id="register">
 <legend></legend>
 <h2>The Book is in Rack number : <c:out value="${rack }" /></h2>
-<span class="badge bg-success">Book Borrowed Success</span>
+<span class="badge bg-success">Book Borrowed Success</span><br>
 
-<button><a href="user.jsp">Back To User</a></button>
 
-<button><a href="logout.jsp">logout</a></button>
 </fieldset>
 </body>
 </html>

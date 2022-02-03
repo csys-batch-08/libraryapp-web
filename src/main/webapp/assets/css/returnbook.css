@@ -1,0 +1,51 @@
+@charset "ISO-8859-1";
+
+#register {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+	width: 350px;
+	margin-left: 600px;
+	margin-top: 150px;
+}
+
+body {
+	background-image: url(../images/Bgimage.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+}
+
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a {
+	color: white;
+	float: right;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+#para {
+	text-transform: capitalize;
+}
+
+
+
+#log {
+	color: black;
+	font-size: larger;
+}
+
+#log:hover {
+	background-color: gray;
+}
+
+.topnav {
+	background-color: gray;
+	overflow: hidden;
+}

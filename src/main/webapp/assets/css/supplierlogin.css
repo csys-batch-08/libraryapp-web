@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 20px;
+}
+#capital{
+text-transform: capitalize;
+}
+
+        table{
+            width: 350px;
+            margin-left: 600px;
+            font-size:larger;
+            color:white;
+            
+        }
+        body{
+            background-image: url(../images/Rose-flowers-books.jpg);
+           background-repeat: no-repeat;
+            background-size:cover;
+            color:springgreen;
+        }

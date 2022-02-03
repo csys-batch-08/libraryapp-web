@@ -6,42 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>New Book Request</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
- 
-<style>
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            
-        }
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-        .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.topnav a {
-  
-  color: white;
-  float: right;
-} 
-.topnav{
-background-color: gray;
-overflow:hidden;
-}
-
-    </style>
+<link rel="stylesheet" href="assets/css/requestbook.css">
 </head>
 <body>
 

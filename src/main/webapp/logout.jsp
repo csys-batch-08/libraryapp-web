@@ -5,23 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Logout</title>
-<style>
-        #register{
-            width: 450px;
-            margin-left: 550px;
-            margin-top:200px;
-            
-        }
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-            text-decoration:none;
-            font-size:larger;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/logout.css">
 </head>
 <body>
 

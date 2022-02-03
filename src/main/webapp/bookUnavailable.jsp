@@ -4,32 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<style>
-a{
-text-decoration:none;
-}
-        #register{
-        background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-            width: 350px;
-            margin-left: 600px;
-            color:white;
-            
-        }
-        a{
-        color:white;
-        }
-        #but{
-        color:black;
-        font-size:medium;
-        }
-        body{
-            background-image: url(Assets/Bgimage.jpeg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/bookunavailable.css">
 <title>Book Unavailable</title>
 </head>
 <body>

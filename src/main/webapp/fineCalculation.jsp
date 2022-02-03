@@ -6,27 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Fine Calculation</title>
-<style>
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            
-        }
-        button{
-        font-size:medium;
-        }
-        body{
-            background-image: url(Assets/Bgimage.jpeg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:springgreen;
-            font-size:larger;
-        }
-        #para{
-        text-transform:capitalize;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/finecalculation.css">
 </head>
 <body>
 

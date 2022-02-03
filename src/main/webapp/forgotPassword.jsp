@@ -5,21 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Forgot Password</title>
-<style>
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            
-        }
-        body{
-            background-image: url(Assets/Bgimage.jpeg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:springgreen;
-            font-size:larger;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/forgotpassword.css">
 </head>
 <body>
 <fieldset id="register">

@@ -9,47 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        #register{
-        background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
-            width: 370px;
-            margin-left: 600px;
-            font-size:larger;
-            color:white;
-            position:absolute;
-            right:100px;
-            top:10px;
-        }
-        body{
-            height:100vh;
-            background-image: url(Assets/Rose-flowers-books.jpg);
-            background-repeat: no-repeat;
-            background-position:center;
-            background-size:cover;
-            color:springgreen;
-        }
-
- .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a {
-  background-color: black;
-  color: white;
-  float: left;
-}
-   
-</style>
+   <link rel="stylesheet" href="assets/css/signup.css">
 </head>
 <body>
 

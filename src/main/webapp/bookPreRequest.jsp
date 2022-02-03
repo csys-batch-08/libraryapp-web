@@ -6,25 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>PreRequest Book</title>
-<style>
-        #register{
-            width: 350px;
-            margin-left: 600px;
-            border-radius:25px;
-            
-        }
-        body{
-            background-image: url(Assets/Rose-flowers-books.jpg);
-            background-repeat: no-repeat;
-            background-size:cover;
-            color:white;
-            font-size:larger;
-        }
-        a{
-        text-decoration:none;
-        }
-
-    </style>
+<link rel="stylesheet" href="assets/css/bookprerequest.css">
 </head>
 <body>
 
@@ -34,6 +16,7 @@
 	
 	<h3><c:out value="${preRequestStatus}" /></h3>
 	<button><a href="logout.jsp">logout</a></button>
+	<button><a href="user.jsp">User</a></button>
 </fieldset>
 </body>
 </html>
