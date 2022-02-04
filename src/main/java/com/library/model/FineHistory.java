@@ -8,7 +8,14 @@ public class FineHistory {
 	private String userName;
 	private int fineAmount;
 	private String collectedTime;
+	private int serialNo;
 	
+	public int getSerialNo() {
+		return serialNo;
+	}
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
 	public String getuserName() {
 		return userName;
 	}

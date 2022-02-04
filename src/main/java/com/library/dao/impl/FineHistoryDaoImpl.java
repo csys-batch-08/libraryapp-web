@@ -53,12 +53,13 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {
-		String query="Select user_name,fine_amount,collected_time from fine_history";
+		String query="Select s_no,user_name,fine_amount,collected_time from fine_history order by s_no desc";
 		 con=ConnectionUtil.getDBConnect();
 		 pstmt=con.prepareStatement(query);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()) {
 			FineHistory fine=new FineHistory();
+			fine.setSerialNo(rs.getInt("s_no"));
 			fine.setuserName(rs.getString("user_name"));
 			fine.setfineAmount(rs.getInt("fine_amount"));
 			fine.setCollectedTime(rs.getTimestamp("collected_time").toLocalDateTime().format(formatter));

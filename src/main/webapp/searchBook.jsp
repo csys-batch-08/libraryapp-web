@@ -41,12 +41,12 @@
 </fieldset>
 
 	<c:if test="${not empty authorNotFound}">
-	   <h1>Invalid Author</h1>
+	   <h1>Books written by Author you search is not available</h1>
 	   
   </c:if>
 	
 	<c:if test="${not empty categoryNotFound}">
-	   <h1>Invalid Category</h1>
+	   <h1>The Category of Book you search is not available </h1>
 	   
    </c:if>
 

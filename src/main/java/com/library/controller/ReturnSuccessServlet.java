@@ -39,7 +39,7 @@ public class ReturnSuccessServlet extends HttpServlet {
 						userWallet=user.setFine(u3);
 						FineHistory fh1 = new FineHistory(userName, fineOf);
 						fineHistory.insert(fh1);
-						
+						session.setAttribute("userWalletLogin", userWallet);
 						request.setAttribute("userWallet", userWallet);
 						RequestDispatcher rd=request.getRequestDispatcher("returnSuccess.jsp");
 						rd.forward(request, response);

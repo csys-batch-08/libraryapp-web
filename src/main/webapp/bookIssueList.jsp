@@ -34,6 +34,8 @@
 <th id="head5"><strong>Return Date</strong></th>
 <th id="head6"><strong>Date Returned</strong></th>
 <th id="head7"><strong>Fine Range in Month</strong></th>
+<th id="head7"><strong>Fine </strong></th>
+
 </tr>
 <c:forEach var="books" items="${BookIssueList }">				
 <tr>
@@ -44,6 +46,7 @@
 <td> ${books.dateReturn}</td>
 <td> ${books.dateReturned}</td>
 <td> ${books.fineRange}</td>
+<td>Rs. ${books.fine}</td>
 
 </tr>	
 </c:forEach>

@@ -62,7 +62,7 @@
 	<br>
 	<h1>
 		Your User Wallet Amount is
-		${userWalletLogin}</h1>
+		${sessionScope.userWalletLogin}</h1>
 		<br><br>
 <c:if test="${not empty eligible}">   
 <h1 style="color:red;background-color:white;font-size:25px;float:left;">You Reached the maximum limit to Borrow Book</h1>
