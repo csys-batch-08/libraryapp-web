@@ -35,8 +35,8 @@
 	   <h1 style="color:red;background-color:white;font-size:25px;float:right;">Invalid Credentials</h1>
 	   
    </c:if>
-   <label for="showPassword" > Show Password</label>
-    <input type="checkbox" onclick="myFunction()" id="showPassword" style="color:red;"><br><br>
+   
+    <input type="checkbox" onfocus="myFunction()" id="showPassword" style="color:red;"><label for="showPassword" > Show Password</label><br><br>
      
     <button type="submit">Log In</button>
     

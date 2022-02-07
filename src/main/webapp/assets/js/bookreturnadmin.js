@@ -14,4 +14,4 @@ if(mm<10){
 } 
 
 today = yyyy+'-'+mm+'-'+dd;
-document.getElementById("datefield").setAttribute("min", today);
+document.getElementById("returndate").setAttribute("min", today);
