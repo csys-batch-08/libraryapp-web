@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="com.library.util.*" import="com.library.dao.impl.*" import="com.library.model.*"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
 
 
 <link rel="style" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -31,7 +32,15 @@ float: left;
 background-color:black;
 
 }
+span {
+padding: 20px;
+letter-spacing: 20px;
+text-decoration: none;
 
+}
+a{
+text-decoration: none;
+color:white;}
 
 </style>
 
@@ -63,7 +72,7 @@ background-color:black;
 <td>${fine.serialNo}</td>
 <td>${fine.userName}</td>
 <td>Rs. ${fine.fineAmount}</td>
-<td>${fine.collectedTime}</td>
+<td>${fine.collectedTime.format( DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:SS"))}</td>
 </tr>	
 				
 			</c:forEach>

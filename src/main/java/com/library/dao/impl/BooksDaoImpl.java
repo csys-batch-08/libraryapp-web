@@ -14,6 +14,10 @@ import com.library.model.*;
 import com.library.util.*;
 
 public class BooksDaoImpl implements BooksDao {
+	String bookTitle="book_title";
+	String author="author";
+	String preRequest="prerequest";
+	String category="category";
 	public void insert(Books book) throws SQLException  {
 		
 		String insertQuery="insert into book_details (book_code,book_title,category,author,price,rack_num) values (?,?,?,?,?,?)";
@@ -62,9 +66,9 @@ public class BooksDaoImpl implements BooksDao {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				Books books=new Books();
-				books.setBookTitle(rs.getString("book_title"));
-				books.setAuthor(rs.getString("author"));
-				books.setCategory(rs.getString("category"));
+				books.setBookTitle(rs.getString(bookTitle));
+				books.setAuthor(rs.getString(author));
+				books.setCategory(rs.getString(category));
 				list.add(books);
 				
 				
@@ -101,7 +105,7 @@ public class BooksDaoImpl implements BooksDao {
 			if (authorResultSet.next()){
 				do {
 				Books authorBookList=new Books();
-				authorBookList.setBookTitle(authorResultSet.getString("book_title"));
+				authorBookList.setBookTitle(authorResultSet.getString(bookTitle));
 				bookList.add(authorBookList);
 				}while(authorResultSet.next());
 				
@@ -142,7 +146,7 @@ public class BooksDaoImpl implements BooksDao {
 			if (catergoryResultSet.next()) {
 				do {
 				books=new Books();
-				books.setBookTitle(catergoryResultSet.getString("book_title"));
+				books.setBookTitle(catergoryResultSet.getString(bookTitle));
 				bookList.add(books);
 
 			}while (catergoryResultSet.next());
@@ -237,7 +241,7 @@ public void delete(Books book) throws SQLException {
 		    ResultSet rs=null;
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				if(rs.getString("availability").equals("available")&&(rs.getString("prerequest").equals(book.getUserName())||rs.getString("prerequest").equals("none"))) {
+				if(rs.getString("availability").equals("available")&&(rs.getString(preRequest).equals(book.getUserName())||rs.getString(preRequest).equals("none"))) {
 					return "available";
 					
 				}
@@ -465,7 +469,7 @@ public void delete(Books book) throws SQLException {
 			if(rs.next()) {
 				do {
 				book=new Books();
-				book.setBookTitle(rs.getString("book_title"));
+				book.setBookTitle(rs.getString(bookTitle));
 				
 				returnBook.add(book);
 				}while(rs.next());
@@ -501,12 +505,12 @@ public void delete(Books book) throws SQLException {
 			rs=pstmt.executeQuery();
 				while(rs.next()){
 					Books book=new Books();
-					book.setBookTitle(rs.getString("book_title"));
-					book.setCategory(rs.getString("category"));
-					book.setAuthor(rs.getString("author"));
+					book.setBookTitle(rs.getString(bookTitle));
+					book.setCategory(rs.getString(category));
+					book.setAuthor(rs.getString(author));
 					book.setPrice(rs.getInt("price"));
 					book.setRackNum(rs.getInt("rack_num"));
-					book.setPrerequest(rs.getString("prerequest"));
+					book.setPrerequest(rs.getString(preRequest));
 					bookList.add(book);
 					
 				}
@@ -537,12 +541,12 @@ public void delete(Books book) throws SQLException {
 			List<Books> unavailableBookList=new ArrayList<>();
 			while(rs.next()) {
 				Books book=new Books();
-				book.setBookTitle(rs.getString("book_title"));
-				book.setCategory(rs.getString("category"));
-				book.setAuthor(rs.getString("author"));
+				book.setBookTitle(rs.getString(bookTitle));
+				book.setCategory(rs.getString(category));
+				book.setAuthor(rs.getString(author));
 				book.setPrice(rs.getInt("price"));
 				book.setUserName(rs.getString("user_name"));
-				book.setPrerequest(rs.getString("prerequest"));
+				book.setPrerequest(rs.getString(preRequest));
 				unavailableBookList.add(book);
 				
 			}

@@ -1,5 +1,7 @@
 package com.library.model;
 
+import java.time.LocalDateTime;
+
 public class FineHistory {
 	
 	public FineHistory() {
@@ -7,7 +9,7 @@ public class FineHistory {
 	}
 	private String userName;
 	private int fineAmount;
-	private String collectedTime;
+	private LocalDateTime collectedTime;
 	private int serialNo;
 	
 	public int getSerialNo() {
@@ -29,10 +31,10 @@ public class FineHistory {
 		this.fineAmount = fineAmount;
 	}
 	
-	public String getCollectedTime() {
+	public LocalDateTime getCollectedTime() {
 		return collectedTime;
 	}
-	public void setCollectedTime(String collectedTime) {
+	public void setCollectedTime(LocalDateTime collectedTime) {
 		this.collectedTime = collectedTime;
 	}
 	public FineHistory(String userName, int fineAmount) {
@@ -40,7 +42,7 @@ public class FineHistory {
 		this.userName = userName;
 		this.fineAmount = fineAmount;
 	}
-	public FineHistory(String userName, int fineAmount, String collectedTime) {
+	public FineHistory(String userName, int fineAmount, LocalDateTime collectedTime) {
 		super();
 		this.userName = userName;
 		this.fineAmount = fineAmount;

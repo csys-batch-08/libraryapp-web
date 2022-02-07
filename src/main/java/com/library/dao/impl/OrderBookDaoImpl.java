@@ -13,7 +13,8 @@ import com.library.model.OrderBook;
 import com.library.util.ConnectionUtil;
 
 public class OrderBookDaoImpl implements OrderBookDao {
-	
+	String book="book_name";
+	String author="author";
 	public void insert(OrderBook orderBook) throws SQLException  {
 		Connection con = null;
 		PreparedStatement pstmt=null;
@@ -110,8 +111,8 @@ public List<OrderBook> view(OrderBook order) throws SQLException  {
 	List<OrderBook> orderBook=new ArrayList<>();
 	while(rs.next()) {
 		order=new OrderBook();
-		order.setBookName(rs.getString("book_name"));
-		order.setAuthor(rs.getString("author"));
+		order.setBookName(rs.getString(book));
+		order.setAuthor(rs.getString(author));
 		orderBook.add(order);
 	}
 	return orderBook;
@@ -172,8 +173,8 @@ public List<OrderBook> adminView() throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBookName(rs.getString("book_name"));
-			orderBook.setAuthor(rs.getString("author"));
+			orderBook.setBookName(rs.getString(book));
+			orderBook.setAuthor(rs.getString(author));
 			orderBook.setStatus(rs.getString("status"));
 			orderList.add(orderBook);
 			
@@ -214,8 +215,8 @@ public List<OrderBook> userView(OrderBook order) throws SQLException  {
 		do{ 
 			
 			OrderBook orderBook=new OrderBook();
-			orderBook.setBookName(resultSet.getString("book_name"));
-			orderBook.setAuthor(resultSet.getString("author"));
+			orderBook.setBookName(resultSet.getString(book));
+			orderBook.setAuthor(resultSet.getString(author));
 			orderBook.setStatus(resultSet.getString("status"));
 			userOrderList.add(orderBook);
 			

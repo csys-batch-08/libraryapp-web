@@ -30,7 +30,7 @@
 <th id="head"><strong>Email</strong></th>
 <th id="head"><strong>User Wallet</strong></th>
 </tr>
-<c:forEach var="users" items="${adminUserList }">
+<c:forEach var="users" items="${adminUserList } ">
 
 <tr>
 <td>${users.userName }</td>

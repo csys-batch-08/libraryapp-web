@@ -1,10 +1,10 @@
 package com.library.dao.impl;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,8 +48,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 
 	public List<FineHistory> view() throws SQLException {
 		List<FineHistory> fineList = new ArrayList<>();
-		DateTimeFormatter formatter =
-			     DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		try {
@@ -62,7 +61,7 @@ public class FineHistoryDaoImpl implements FineHistoryDao {
 			fine.setSerialNo(rs.getInt("s_no"));
 			fine.setuserName(rs.getString("user_name"));
 			fine.setfineAmount(rs.getInt("fine_amount"));
-			fine.setCollectedTime(rs.getTimestamp("collected_time").toLocalDateTime().format(formatter));
+			fine.setCollectedTime(rs.getTimestamp("collected_time").toLocalDateTime());
 			fineList.add(fine);
 			
 			}
