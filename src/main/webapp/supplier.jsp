@@ -25,7 +25,7 @@
         <form action="adminjsp" method="post">
         <div class="container-mt-1" >
         
-        <label for="ztext">User name</label><br>
+        <label for="text">User name</label><br>
         <input type="text" id="text" name="text"  required pattern="[A-Za-z]{3,}" ><br><br>
         <label for="text1">City</label><br>
         <input type="text" id="text1" name="text1"  required pattern="[A-Za-z]{3,}" ><br><br>
