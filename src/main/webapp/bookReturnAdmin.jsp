@@ -19,7 +19,7 @@
     <input type="text" id = "uname" name="uname1" required pattern="[A-Za-z]{3,}" oninvalid="setCustomValidity('Username must contains only alphabets')" onchange="try{setCustomValidity('')}catch(e){}" ><br><br>
     <label for= "password">Password</label>
     <input type="password" id="password" name="password1" required pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" ><br><br>
-    <label for"datefield" name="returndate">Date Returned</label>
+    <label for"datefield">Date Returned</label>
     <input type="date" id="datefield" name="returndate" required><br><br>
     <button type="submit">Log In</button>
    <c:if test="${not empty AdminError}">

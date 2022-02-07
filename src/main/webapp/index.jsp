@@ -36,7 +36,7 @@
 	   
    </c:if>
    <label for="showPassword" > Show Password</label>
-    <input type="checkbox" onclick="myFunction()" id="" style="color:red;"><br><br>
+    <input type="checkbox" onclick="myFunction()" id="showPassword" style="color:red;"><br><br>
      
     <button type="submit">Log In</button>
     
