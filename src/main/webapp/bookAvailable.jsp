@@ -17,7 +17,7 @@
 <h3>Hi admin Enter your user name</h3>
 <form action="borrowadmin" method="post">
 <div class="container">
-<label for="User Name">User Name</label>
+<label for="uname">User Name</label>
     <input type="text" id = "uname" name="uname" required pattern="[A-Za-z]{3,}" oninvalid="setCustomValidity('Username must only have alphabets')" onchange="try{setCustomValidity('')}catch(e){}"  ><br><br>
     <label for= "password">Password&emsp;   </label>
     <input type="password" id="password" name="password" required pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" ><br><br>

@@ -23,9 +23,9 @@
         <fieldset id="register">
             <legend><h3>Fine register</h3></legend>
         <form class="container" action="finedetail" method="post">
-        <label for="user name">Fine Range</label><br>
+        <label for="text">Fine Range</label><br>
         <input type="text" id="text" name="text" required pattern="[0-9]{1,}"><br><br>
-        <label for="city">Fine Amount</label><br>
+        <label for="text1">Fine Amount</label><br>
         <input type="text" id="text1" name="text1" required pattern="[0-9]{1,}"><br><br>
         
         <button type="submit">Add Fine Details</button>

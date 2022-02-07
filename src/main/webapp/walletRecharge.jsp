@@ -18,7 +18,7 @@
 	<p>You have to recharge your wallet with rs.500 to enter in to library</p>
 	<p>Are you ready to pay </p>
 	<button type="submit"><a href="loginwallet.jsp">Pay now</a></button>&emsp;
-	<button type="submit"><a href="index.jsp">Pay later</button>&emsp;
+	<button type="submit"><a href="index.jsp">Pay later</a></button>&emsp;
 	<button><a href="logout.jsp">Logout</a></button>
 			
 </fieldset>

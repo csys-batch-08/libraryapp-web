@@ -19,10 +19,10 @@
 <legend></legend>
 <h1>New Book Request</h1>
 <form action="requestBook" method="post" >
-<label>Book Name</label><br>
-<input type="text" name="bookName" pattern="[A-Za-z\s]{3,}" required><br><br>
-<label>Author Name</label><br>
-<input type="text" name="authorName" pattern="[A-Za-z\s]{3,}" required><br><br>
+<label for="bookname">Book Name</label><br>
+<input type="text" id="bookname" name="bookName" pattern="[A-Za-z\s]{3,}" required><br><br>
+<label for="authorname">Author Name</label><br>
+<input type="text" name="authorName" id="authorname" pattern="[A-Za-z\s]{3,}" required><br><br>
 <button type="submit">Request Book</button>
 <button><a href="Logout.jsp">logout</a></button>
 </form>

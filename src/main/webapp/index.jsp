@@ -26,9 +26,9 @@
         <form action="Index" method="post">
             
             <br>
-    <label for="User Name" style="color:white;"><h3>User Name</h3></label>
+    <label for="uname" style="color:white;"><h3>User Name</h3></label>
     <input type="text" id = "uname" name="uname" pattern="[A-Za-z\s]{3,}" required class="form-control form-control-lg" oninvalid="this.setCustomValidity('Username must be more than 3 charcters')" onchange="try{setCustomValidity('')}catch(e){}"><br>
-    <label for= "password"style="color:white;"	><h3>Password</h3></label>
+    <label for= "myInput"style="color:white;"	><h3>Password</h3></label>
     
     <input type="password" id="myInput" name="password" pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" class="form-control form-control-lg" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" 	 required>
     <c:if test="${not empty invalidUser}">

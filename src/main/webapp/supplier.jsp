@@ -25,11 +25,11 @@
         <form action="adminjsp" method="post">
         <div class="container-mt-1" >
         
-        <label for="user name">User name</label><br>
+        <label for="ztext">User name</label><br>
         <input type="text" id="text" name="text"  required pattern="[A-Za-z]{3,}" ><br><br>
-        <label for="city">City</label><br>
+        <label for="text1">City</label><br>
         <input type="text" id="text1" name="text1"  required pattern="[A-Za-z]{3,}" ><br><br>
-        <label for="mobileno">Mobile number</label><br>
+        <label for="text3">Mobile number</label><br>
         <input type="tel" id="text3" name="text3" required pattern="[6-9][0-9]{9}"><br><br>
         <button type="submit">Add Supplier</button>
        </div>

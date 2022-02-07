@@ -28,13 +28,13 @@
 <fieldset id="register" class="alignment">
 <legend></legend>
 <form action="authorSearch" method="post">
-<label >Search By Author Name</label><br>
-<input type="text" name="author" pattern="[A-Za-z\s]{3,}" required>
+<label for="author">Search By Author Name</label><br>
+<input type="text" id="author" name="author" pattern="[A-Za-z\s]{3,}" required>
 <button type="submit" class="button button1">Search Book</button>
 </form>
 <form action="categorySearch" method="post">
-<label >Search By Category Name</label>
-<input type="text" name="category" pattern="[A-Za-z\s]{3,}" required>
+<label for="category">Search By Category Name</label>
+<input type="text" name="category" id="category" pattern="[A-Za-z\s]{3,}" required>
 <button type="submit" class="button button1">Search Book</button>
 
 </form>

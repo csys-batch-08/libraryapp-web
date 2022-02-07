@@ -37,23 +37,23 @@
         <form action="signUp" method="post" class="was-validated">
         <div class="container mt-1">
         <div class="mb-1 mt-1">
-        <label for="user name" class="form-label">User name</label><br>
+        <label for="text" class="form-label">User name</label><br>
         <input type="text" id="text" name="text" class="form-control" required pattern="[A-Za-z]{3,}" oninvalid="setCustomValidity('UserName must have alphabets only')" onchange="try{setCustomValidity('')}catch(e){}"  >
         </div>
         <div class="mb-1 mt-1">
-        <label for="city" class="form-label" >City</label><br>
+        <label for="text1" class="form-label" >City</label><br>
         <input type="text" id="text1" class="form-control" name="text1" required pattern="[A-Za-z]{3,}" oninvalid="setCustomValidity('City name must have alphabets only')" onchange="try{setCustomValidity('')}catch(e){}"  >
         </div>
         <div class="mb-1 mt-1">
-        <label for="password" class="form-label">Password</label><br>
+        <label for="text2" class="form-label">Password</label><br>
         <input type="password" id="text2" class="form-control" name="text2" required pattern="^(?=.*[0-9])(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,16}$" oninvalid="setCustomValidity('Password must contains a alphabet, a number and a special character')" onchange="try{setCustomValidity('')}catch(e){}" >
         </div>
         <div class="mb-1 mt-1">
-        <label for="mobileno" class="form-label">Mobile number</label><br>
+        <label for="text3" class="form-label">Mobile number</label><br>
         <input type="number" id="text3" class="form-control" name="text3" required pattern="[6-9][0-9]{9}" oninvalid="setCustomValidity('Mobile Number must be 10 numbers length')" onchange="try{setCustomValidity('')}catch(e){}" >
         </div>
         <div class="mb-1 mt-1">
-        <label for="email" class="form-label" >Email Id</label><br>
+        <label for="text4" class="form-label" >Email Id</label><br>
         <input type="email" id="text4" name="text4"  class="form-control" required pattern="([a-zA-Z0-9]+[@][a-zA-Z]+[.][a-z]+{15,40})" oninvalid="setCustomValidity('Please type in username@*.com format')" onchange="try{setCustomValidity('')}catch(e){}" >
         </div>
         
