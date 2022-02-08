@@ -18,6 +18,7 @@
 <body>
 
 	<div class="topnav">
+	
 		<h2 style="float: left;">Library Management</h2>
 		<a href="user.jsp">Home</a> 
 		<a href="logout.jsp">Logout</a>
