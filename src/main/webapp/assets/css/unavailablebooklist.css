@@ -23,12 +23,12 @@ table, th, td {
 		font-size:larger;
 		}
 		.topnav a {
-  float: left;
-  color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  color: white;
+  float: right;
 }
 .topnav a:hover {
   background-color: #ddd;
@@ -49,10 +49,7 @@ background-color:white;
 #capital{
 text-transform: capitalize;}
 /* Add a color to the active/current link */
-.topnav a {
-   color: white;
-  float: right;
-}  
+  
 .topnav{
 background-color:gray;
 } 

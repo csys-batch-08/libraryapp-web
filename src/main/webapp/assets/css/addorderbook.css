@@ -31,6 +31,8 @@ table, th, td {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  float: right;
+  background-color: black;
 }
 .topnav a:hover {
   background-color: #ddd;
@@ -38,11 +40,7 @@ table, th, td {
 }
 
 /* Add a color to the active/current link */
-.topnav a {
-  background-color: black;
-  color: white;
-  float: right;
-}  
+
 form{
 border:2px solid white;
 border-radius: 10px;

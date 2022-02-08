@@ -3,11 +3,9 @@
 *{
   box-sizing: border-box;
 }
-body{
-  margin: 0;
-  padding: 0;
-}
+
 #about{
+text-align: justify;
 background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
 width:1250px;
 }
@@ -95,18 +93,22 @@ color:yellow;
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
-  color: #f2f2f2;
+
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size:larger;
+   background-color: black;
+  color: white;
+  float: right;
 }
 body{
   background-image: url('../images/Rose-flowers-books.jpg');
            background-repeat: no-repeat;
             background-size:cover;
             color:white;
+             margin: 0;
+  padding: 0;
           
         }
 /* Change the color of links on hover */
@@ -116,11 +118,7 @@ body{
 }
 
 /* Add a color to the active/current link */
-.topnav a {
-  background-color: black;
-  color: white;
-  float: right;
-}
+
 p,pre{
   color:white;
   font-size: large;
@@ -129,8 +127,7 @@ fieldset{
   width: 200px;
 }
 
-#about{
-text-align: justify;}
+
 h1{
 color:yellow;
 text-shadow: 2px 2px #ff0000;

@@ -20,12 +20,13 @@
         }
 
  .topnav a {
-  float: left;
-  color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  background-color:black;
+  color: white;
+  float: right;
 }
 .topnav a:hover {
   background-color: #ddd;
@@ -33,9 +34,5 @@
 }
 
 /* Add a color to the active/current link */
-.topnav a {
-  background-color: black;
-  color: white;
-  float: left;
-}
+
   

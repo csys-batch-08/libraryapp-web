@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import java.io.IOException;
+
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import com.library.dao.impl.BookIssueDaoImpl;
 import com.library.dao.impl.FinesDaoImpl;
 import com.library.dao.impl.UsersDaoImpl;
-import com.library.exception.InvalidFineException;
 import com.library.model.BookIssue;
 import com.library.model.Fines;
 import com.library.model.Users;
@@ -52,7 +52,6 @@ public class BookReturnAdmin extends HttpServlet {
 					
 					Users users=new Users(userName);
 					user.delete(users);
-					//throw new InvalidFineException();
 					response.sendRedirect("invalidFine.jsp");
 			}
 			

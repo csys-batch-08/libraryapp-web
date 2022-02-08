@@ -1,8 +1,6 @@
 @charset "ISO-8859-1";
 
-a{
-text-decoration:none;
-}
+
         #register{
         background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
             width: 350px;
@@ -12,6 +10,7 @@ text-decoration:none;
             
         }
         a{
+        text-decoration:none;
         color:white;
         }
         #but{

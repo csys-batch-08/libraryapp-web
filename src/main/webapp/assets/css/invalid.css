@@ -26,12 +26,13 @@ table, th, td {
 		font-size:larger;
 		}
 		.topnav a {
-  float: left;
-  color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+   background-color: black;
+  color: white;
+  float: right;
 }
 .topnav a:hover {
   background-color: #ddd;
@@ -39,11 +40,7 @@ table, th, td {
 }
 
 /* Add a color to the active/current link */
-.topnav a {
-  
-  color: white;
-  float: right;
-} 
+
 .topnav{
 background-color: gray;
 overflow:hidden;
