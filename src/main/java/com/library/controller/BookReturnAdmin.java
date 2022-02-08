@@ -52,7 +52,8 @@ public class BookReturnAdmin extends HttpServlet {
 					
 					Users users=new Users(userName);
 					user.delete(users);
-					throw new InvalidFineException();
+					//throw new InvalidFineException();
+					response.sendRedirect("invalidFine.jsp");
 			}
 			
 			Fines f1 = new Fines(userFine);
