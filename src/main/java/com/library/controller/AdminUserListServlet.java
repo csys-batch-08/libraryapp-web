@@ -29,7 +29,7 @@ public class AdminUserListServlet extends HttpServlet {
 		try {
 			userList = user.userList();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		request.setAttribute("adminUserList", userList);
 		RequestDispatcher rd=request.getRequestDispatcher("userList.jsp");
