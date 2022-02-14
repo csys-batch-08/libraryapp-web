@@ -103,8 +103,8 @@ public void delete(BookIssue bookIssue) throws SQLException  {
 
 public int getBookIssueNo(BookIssue book) throws SQLException {
 	
-	String query="Select book_issue_no from book_issue_details where user_name in ? and book_title in ? and date_issue in ? and date_return in ?";
-	Connection con=null;
+	String query ="Select book_issue_no from book_issue_details where user_name in ? and book_title in ? and date_issue in ? and date_return in ?";
+		Connection con=null;
 	PreparedStatement pstmt=null;
 	try {
 		con=ConnectionUtil.getDBConnect();
